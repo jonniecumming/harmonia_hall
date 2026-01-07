@@ -16,7 +16,7 @@ import dj_database_url
 
 # Load environment variables from env.py if it exists
 if os.path.isfile("env.py"):
-    import env  # noqa: F401
+    import env  # noqa: F401 (noqa tells the linter to ignore unused import)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -87,6 +87,7 @@ WSGI_APPLICATION = "harmonia_hall_project.wsgi.application"
 #     }
 # }
 
+DATABASES = {'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

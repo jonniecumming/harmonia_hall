@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render  # noqa: F401 (noqa tells the linter to ignore unused import)
 from django.http import HttpResponse
 
 # Create your views here.
