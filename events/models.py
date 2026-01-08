@@ -10,7 +10,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class Event(models.Model):
     title = models.CharField(max_length=200, unique=True)
     venue = models.CharField(max_length=200)
-    summary = models.CharField(max_length=500)
+    excerpt = models.CharField(max_length=500)
     description = models.TextField()
     date = models.DateTimeField()
     time = models.TimeField()
