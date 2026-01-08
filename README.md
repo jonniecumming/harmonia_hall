@@ -1,4 +1,4 @@
-# harmonia_hall
+# Harmonia Hall
 
 <!-- TABLE OF CONTENTS to be modified for this project -->
 <details>
@@ -25,3 +25,60 @@
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
+
+## About the Project ##
+<!-- Overview of project -->
+This project...
+
+Users should be able to...
+
+Design...
+
+## Desktop ##
+- Desktop view screenshot
+## Tablet ##
+- Tablet view screenshot
+## Mobile ##
+- Mobile view screenshot
+
+## UX Design ##
+
+- Icons, Fonts,
+- colour palette
+- Wireframes (by page, not device, e.g. 3 device home, 3 device, about... etc.)
+
+## User Stories ##
+- written out user stories
+- overview of user stories (% of Must/Should/Could/Won't?)
+- screenshot of project board
+
+## Features ##
+- Home page (with screenshot): what does it offer to a user?
+- About page (with screenshot): what does it offer to a user?
+- contact...
+- bookings...
+- Navigation bar (with screenshot): what does it offer to a user?
+- Footer...
+- Sign in...
+- Sign out...
+- Admin...
+- Entity Relationship Diagram
+
+## Testing ##
+- Manual Testing (various browsers)
+- Lighthouse
+- Responsive Testing
+- Validator Testing (W3C HTML, CSS, Python PEP8, JS (-JS hint?) )
+
+## Use of AI ##
+- How has this been used i the project (bugs, code, planning, etc.)
+
+## Deployment ##
+- How the site was deplyed (Steps, see Mark B's Blog for example)
+- Live link
+
+## Credits ##
+
+### Content ###
+
+### Media ###
