@@ -16,7 +16,7 @@ import dj_database_url
 
 # Load environment variables from env.py if it exists
 if os.path.isfile("env.py"):
-    import env  # noqa: F401 (noqa tells the linter to ignore unused import)
+    import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

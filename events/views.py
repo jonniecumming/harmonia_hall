@@ -6,3 +6,5 @@ from django.http import HttpResponse
 
 def home_page_view(request):
     return HttpResponse("Welcome to Harmonia Hall Events!")
+
+# query to fetch all events in db will go here
