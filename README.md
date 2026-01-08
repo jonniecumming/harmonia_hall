@@ -44,8 +44,7 @@ Design...
 
 <!-- Overview of UX Design of project -->
 ## UX Design ##
-
-- Icons, Fonts,
+- Icons, Fonts, e.g. [**Font Awesome**](https://fontawesome.com)
 - colour palette
 - Wireframes (by page, not device, e.g. 3 device home, 3 device, about... etc.)
 
