@@ -1,6 +1,6 @@
 # Harmonia Hall
 
-<!-- TABLE OF CONTENTS to be modified for this project -->
+<!-- TABLE OF CONTENTS (to be modified for this project) -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -34,24 +34,28 @@ Users should be able to...
 
 Design...
 
+<!-- Deployed homepage screenshot examples of site -->
 ## Desktop ##
-- Desktop view screenshot
+- Deployed Desktop view screenshot
 ## Tablet ##
-- Tablet view screenshot
+- Deployed Tablet view screenshot
 ## Mobile ##
-- Mobile view screenshot
+- Deployed Mobile view screenshot
 
+<!-- Overview of UX Design of project -->
 ## UX Design ##
 
 - Icons, Fonts,
 - colour palette
 - Wireframes (by page, not device, e.g. 3 device home, 3 device, about... etc.)
 
+<!-- Overview of User Stories project -->
 ## User Stories ##
 - written out user stories
 - overview of user stories (% of Must/Should/Could/Won't?)
 - screenshot of project board
 
+<!-- Overview of features of the project -->
 ## Features ##
 - Home page (with screenshot): what does it offer to a user?
 - About page (with screenshot): what does it offer to a user?
@@ -64,19 +68,26 @@ Design...
 - Admin...
 - Entity Relationship Diagram
 
+<!-- Overview of bugs and solutions -->
+## Bugs ##
+
+<!-- Overview of testing done -->
 ## Testing ##
 - Manual Testing (various browsers)
 - Lighthouse
 - Responsive Testing
 - Validator Testing (W3C HTML, CSS, Python PEP8, JS (-JS hint?) )
 
+<!-- Overview of AI use within project -->
 ## Use of AI ##
 - How has this been used i the project (bugs, code, planning, etc.)
 
+<!-- Overview of How the project was deplyed -->
 ## Deployment ##
 - How the site was deplyed (Steps, see Mark B's Blog for example)
 - Live link
 
+<!-- Credits for project -->
 ## Credits ##
 
 ### Content ###
