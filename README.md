@@ -79,12 +79,12 @@ Design...
 
 <!-- Overview of AI use within project -->
 ## Use of AI ##
-- How has this been used i the project (bugs, code, planning, etc.)
+- How has this been used in the project (bugs, code, planning, etc.)
 - commit messages skeleton
 
-<!-- Overview of How the project was deplyed -->
+<!-- Overview of How the project was deployed -->
 ## Deployment ##
-- How the site was deplyed (Steps, see Mark B's Blog for example)
+- How the site was deployed (Steps, see Mark B's Blog for example)
 - Live link
 
 <!-- Credits for project -->
