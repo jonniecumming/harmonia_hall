@@ -14,12 +14,12 @@ class Event(models.Model):
     description = models.TextField()
     date = models.DateField()
     time = models.TimeField()
-    capacity = models.IntegerField()
+    capacity = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     status = models.IntegerField(choices=STATUS, default=0)
 
     def __str__(self):
-        return self.title
+        return f'{self.title} - {self.date} at {self.time}'
 
 # bookings model
 
