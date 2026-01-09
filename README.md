@@ -28,9 +28,9 @@
 
 ## About the Project ##
 <!-- Overview of project -->
-This project...
+The aim of this project is to create a small concert venue bookings site, where visitors can browse the upcoming concerts/events at the ficticious venue, 'Harmonia Hall' and book tickets for a desired event.
 
-Users should be able to...
+Users should be able to create an account and then be able to book an event. Once this has happend, they can view their bookings, modify the number of tickets or delete the event.
 
 Design...
 
@@ -79,11 +79,12 @@ Design...
 
 <!-- Overview of AI use within project -->
 ## Use of AI ##
-- How has this been used i the project (bugs, code, planning, etc.)
+- How has this been used in the project (bugs, code, planning, etc.)
+- commit messages skeleton
 
-<!-- Overview of How the project was deplyed -->
+<!-- Overview of How the project was deployed -->
 ## Deployment ##
-- How the site was deplyed (Steps, see Mark B's Blog for example)
+- How the site was deployed (Steps, see Mark B's Blog for example)
 - Live link
 
 <!-- Credits for project -->

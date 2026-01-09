@@ -1,0 +1,1 @@
+web: gunicorn harmonia_hall_project.wsgi
