@@ -18,6 +18,8 @@ class Event(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
     status = models.IntegerField(choices=STATUS, default=0)
 
+    def __str__(self):
+        return self.title
 
 # bookings model
 
