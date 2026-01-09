@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Harmonia Hall - Events</title>
-</head>
-<body>
-    <h1>Upcoming Events</h1>
-    
-    {% if events %}
+    <head>
+        <title>Harmonia Hall - Events</title>
+    </head>
+    <body>
+        <h1>Upcoming Events</h1>
+
+        {% if events %}
         <ul>
-        {% for event in events %}
+            {% for event in events %}
             <li>
                 <h2>{{ event.title }}</h2>
                 <p><strong>Date:</strong> {{ event.date }}</p>
@@ -18,12 +18,11 @@
                 <p><strong>Capacity:</strong> {{ event.capacity }}</p>
                 <p><strong>Price:</strong> ${{ event.price }}</p>
             </li>
-        {% endfor %}
+            {% endfor %}
         </ul>
-    {% else %}
+        {% else %}
         <p>No upcoming events.</p>
-    {% endif %}
-</body>
+        {% endif %}
+    </body>
 </html>
 
-<h1>Upcoming Events</h1>
