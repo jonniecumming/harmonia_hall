@@ -47,6 +47,12 @@ Design...
 - Icons, Fonts, e.g. [**Font Awesome**](https://fontawesome.com)
 - colour palette
 - Wireframes (by page, not device, e.g. 3 device home, 3 device, about... etc.)
+![Home page wireframe](/images/wireframe-home.png)
+![What's on page wireframe](/images/wireframe-whats-on.png)
+![Sign in page wireframe](/images/wireframe-sign-in.png)
+![Bookings page wireframe](/images/wireframe-bookings.png)
+![about page wireframe](/images/wireframe-about.png)
+![Contact page wireframe](/images/wireframe-contact.png)
 
 <!-- Overview of User Stories project -->
 ## User Stories
