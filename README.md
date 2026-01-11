@@ -7,14 +7,17 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#desktop-appearance">Desktop Appearance</a></li>
+        <li><a href="#tablet-appearance">Tablet Appearance</a></li>
+        <li><a href="#mobile-appearance">Mobile Appearance</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#ux-design">UX Design</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#wireframes">Wireframes</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -35,11 +38,11 @@ Users should be able to create an account and then be able to book an event. Onc
 Design...
 
 <!-- Deployed homepage screenshot examples of site -->
-## Desktop
+### Desktop Appearance
 - Deployed Desktop view screenshot
-## Tablet
+### Tablet Appearance
 - Deployed Tablet view screenshot
-## Mobile
+### Mobile Appearance
 - Deployed Mobile view screenshot
 
 <!-- Overview of UX Design of project -->
@@ -47,6 +50,8 @@ Design...
 - Icons, Fonts, e.g. [**Font Awesome**](https://fontawesome.com)
 - colour palette
 - Wireframes (by page, not device, e.g. 3 device home, 3 device, about... etc.)
+
+### Wireframes
 ![Home page wireframe](/images/wireframe-home.png)
 ![What's on page wireframe](/images/wireframe-whats-on.png)
 ![Sign in page wireframe](/images/wireframe-sign-in.png)
