@@ -26,7 +26,7 @@
   </ol>
 </details>
 
-## About the Project ##
+## About the Project
 <!-- Overview of project -->
 The aim of this project is to create a small concert venue bookings site, where visitors can browse the upcoming concerts/events at the ficticious venue, 'Harmonia Hall' and book tickets for a desired event.
 
@@ -35,27 +35,27 @@ Users should be able to create an account and then be able to book an event. Onc
 Design...
 
 <!-- Deployed homepage screenshot examples of site -->
-## Desktop ##
+## Desktop
 - Deployed Desktop view screenshot
-## Tablet ##
+## Tablet
 - Deployed Tablet view screenshot
-## Mobile ##
+## Mobile
 - Deployed Mobile view screenshot
 
 <!-- Overview of UX Design of project -->
-## UX Design ##
+## UX Design
 - Icons, Fonts, e.g. [**Font Awesome**](https://fontawesome.com)
 - colour palette
 - Wireframes (by page, not device, e.g. 3 device home, 3 device, about... etc.)
 
 <!-- Overview of User Stories project -->
-## User Stories ##
+## User Stories
 - written out user stories
 - overview of user stories (% of Must/Should/Could/Won't?)
 - screenshot of project board
 
 <!-- Overview of features of the project -->
-## Features ##
+## Features
 - Home page (with screenshot): what does it offer to a user?
 - About page (with screenshot): what does it offer to a user?
 - contact...
@@ -68,28 +68,28 @@ Design...
 - Entity Relationship Diagram
 
 <!-- Overview of bugs and solutions -->
-## Bugs ##
+## Bugs
 
 <!-- Overview of testing done -->
-## Testing ##
+## Testing
 - Manual Testing (various browsers)
 - Lighthouse
 - Responsive Testing
 - Validator Testing (W3C HTML, CSS, Python PEP8, JS (-JS hint?) )
 
 <!-- Overview of AI use within project -->
-## Use of AI ##
+## Use of AI
 - How has this been used in the project (bugs, code, planning, etc.)
 - commit messages skeleton
 
 <!-- Overview of How the project was deployed -->
-## Deployment ##
+## Deployment
 - How the site was deployed (Steps, see Mark B's Blog for example)
 - Live link
 
 <!-- Credits for project -->
-## Credits ##
+## Credits
 
-### Content ###
+### Content
 
-### Media ###
+### Media
