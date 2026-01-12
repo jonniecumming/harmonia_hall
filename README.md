@@ -55,7 +55,8 @@ Design...
 ### Wireframes
 Wireframes were created for different viewports (mobile, tablet and desktop) to help visualise how the site would look on different devices.
 
-I used the software Balsamiq, to create these diagrams.
+I used the software _Balsamiq_, to create these diagrams.
+
 ![Home page wireframe](/images/wireframe-home.png)
 ![What's on page wireframe](/images/wireframe-whats-on.png)
 ![Sign in page wireframe](/images/wireframe-sign-in.png)
@@ -108,3 +109,5 @@ I used the software Balsamiq, to create these diagrams.
 ### Content
 
 ### Media
+
+`This is an example of how to write command line text`
