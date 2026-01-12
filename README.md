@@ -20,12 +20,13 @@
         <li><a href="#wireframes">Wireframes</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#user-stores">User Stories</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#bugs">Bugs</a></li>
+    <li><a href="#testing">License</a></li>
+    <li><a href="#use-of-ai">Use of AI</a></li>
+    <li><a href="#deployment">Deployment</a></li>
+    <li><a href="#credits">Credits</a></li>
   </ol>
 </details>
 
@@ -52,6 +53,9 @@ Design...
 - Wireframes (by page, not device, e.g. 3 device home, 3 device, about... etc.)
 
 ### Wireframes
+Wireframes were created for different viewports (mobile, tablet and desktop) to help visualise how the site would look on different devices.
+
+I used the software Balsamiq, to create these diagrams.
 ![Home page wireframe](/images/wireframe-home.png)
 ![What's on page wireframe](/images/wireframe-whats-on.png)
 ![Sign in page wireframe](/images/wireframe-sign-in.png)
