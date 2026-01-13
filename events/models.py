@@ -20,6 +20,9 @@ class Event(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
     status = models.IntegerField(choices=STATUS, default=0)
 
+    class Meta:
+        ordering = ['date', 'time']
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
