@@ -16,4 +16,9 @@ class EventListView(ListView):
     template_name = "events/event_list.html"
     context_object_name = "events"
 
-# query to fetch all events in db will go here
+# list view for what's on
+class WhatsOnView(ListView):
+    model = Event
+    template_name = "events/whats_on.html"
+    context_object_name = "events"
+

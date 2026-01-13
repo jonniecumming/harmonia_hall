@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User  # noqa: F401 (noqa tells the Flake8 to ignore unused import for now)
+from django.contrib.auth.models import User
 from django.utils.text import slugify
 
 STATUS = ((0, "Draft"), (1, "Published"))
