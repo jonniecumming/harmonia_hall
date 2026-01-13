@@ -29,7 +29,15 @@ class Event(models.Model):
     def __str__(self):
         return f'{self.title} - {self.date} at {self.time}'
 
-# bookings model
 
+# bookings model
+class Booking(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='bookings')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookings')
+    number_of_tickets = models.PositiveIntegerField()
+    booking_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Booking by {self.user.username} for {self.event.title} - {self.number_of_tickets} tickets'
 
 # users model
