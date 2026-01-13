@@ -3,6 +3,24 @@
 {% block content %}
 
 <!-- whats_on.html content starts here -->
+<h1>Upcoming Events</h1>
 
+        {% if events %}
+        <ul>
+            {% for event in events %}
+            <li>
+                <h2>{{ event.title }}</h2>
+                <p><strong>Date:</strong> {{ event.date }}</p>
+                <p><strong>Time:</strong> {{ event.time }}</p>
+                <p><strong>Venue:</strong> {{ event.venue }}</p>
+                <p><strong>Description:</strong> {{ event.description }}</p>
+                <p><strong>Capacity:</strong> {{ event.capacity }}</p>
+                <p><strong>Price:</strong> ${{ event.price }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No upcoming events.</p>
+        {% endif %}
 <!-- whats_on.html content ends here -->
 {% endblock %}
