@@ -22,13 +22,6 @@ class EventListView(ListView):
     context_object_name = "events"
 
 
-# list view for what's on
-class WhatsOnView(ListView):
-    model = Event
-    template_name = "events/whats_on.html"
-    context_object_name = "events"
-
-
 # event detail view
 class EventDetailView(DetailView):
     model = Event
