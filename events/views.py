@@ -49,7 +49,7 @@ class EventDetailView(DetailView):
 
 
 # bookings view
-class BookingsView(ListView):
+class BookingsView(LoginRequiredMixin, ListView):
     model = Booking
     template_name = "events/bookings.html"
     context_object_name = "bookings"
