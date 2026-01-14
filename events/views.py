@@ -20,7 +20,7 @@ class EventListView(ListView):
 class WhatsOnView(ListView):
     model = Event
     template_name = "events/whats_on.html"
-    context_object_name = "events"
+    context_object_name = "whats_on"
 
 # bookings view
 class BookingsView(ListView):
