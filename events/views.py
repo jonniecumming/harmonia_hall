@@ -26,6 +26,13 @@ class WhatsOnView(ListView):
     context_object_name = "events"
 
 
+# event detail view
+class EventDetailView(ListView):
+    model = Event
+    template_name = "events/event_detail.html"
+    context_object_name = "event"
+
+
 # bookings view
 class BookingsView(ListView):
     model = Booking

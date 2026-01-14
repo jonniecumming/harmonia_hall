@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import BookingsView, EventListView, HomeView, WhatsOnView
+from .views import BookingsView, EventDetailView, EventListView, HomeView, WhatsOnView
 
 # URL patterns for events app
 urlpatterns = [
@@ -8,4 +8,5 @@ urlpatterns = [
     path('events/', EventListView.as_view(), name='event-list'),
     path('bookings/', BookingsView.as_view(), name='bookings'),
     path('whats-on/', WhatsOnView.as_view(), name='whats-on'),
+    path('events/<slug:slug>/', EventDetailView.as_view(), name='event-detail'),
 ]
