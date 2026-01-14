@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Event Details -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ object.title }}</h2>
+                    <p><strong>Date:</strong> {{ object.date }}</p>
+                    <p><strong>Time:</strong> {{ object.time }}</p>
+                    <p><strong>Venue:</strong> {{ object.venue }}</p>
+                    <p><strong>Price per Ticket:</strong> ${{ object.price }}</p>
+                    <p><strong>Available Tickets:</strong> {{ available_seats }}</p>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">Reserve Tickets</h3>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="id_number_of_tickets" class="form-label">
+                                How many tickets do you want to reserve?
+                            </label>
+                            <input type="number" 
+                                   name="number_of_tickets" 
+                                   id="id_number_of_tickets"
+                                   class="form-control" 
+                                   min="1" 
+                                   max="{{ available_seats }}"
+                                   required>
+                        </div>
+
+                        {% if form.number_of_tickets.errors %}
+                            <div class="alert alert-danger">
+                                {{ form.number_of_tickets.errors }}
+                            </div>
+                        {% endif %}
+
+                        <button type="submit" class="btn btn-primary">Confirm Reservation</button>
+                        <a href="{% url 'event-detail' object.slug %}" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

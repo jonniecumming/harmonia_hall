@@ -1,28 +1,35 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Harmonia Hall - Events</title>
-    </head>
-    <body>
-        <h1>Upcoming Events</h1>
+{% extends "base.html" %}
+{% load static %}
 
-        {% if events %}
-        <ul>
-            {% for event in events %}
-            <li>
-                <h2>{{ event.title }}</h2>
-                <p><strong>Date:</strong> {{ event.date }}</p>
-                <p><strong>Time:</strong> {{ event.time }}</p>
-                <p><strong>Venue:</strong> {{ event.venue }}</p>
-                <p><strong>Description:</strong> {{ event.description }}</p>
-                <p><strong>Capacity:</strong> {{ event.capacity }}</p>
-                <p><strong>Price:</strong> ${{ event.price }}</p>
-            </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p>No upcoming events.</p>
-        {% endif %}
-    </body>
-</html>
+{% block content %}
+<div class="container mt-5">
+    <h1>Upcoming Events</h1>
+
+    {% if events %}
+    <div class="row">
+        {% for event in events %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{% url 'event-detail' event.slug %}">{{ event.title }}</a>
+                    </h5>
+                    <p class="card-text">
+                        <strong>Date:</strong> {{ event.date }}<br>
+                        <strong>Time:</strong> {{ event.time }}<br>
+                        <strong>Venue:</strong> {{ event.venue }}<br>
+                        <strong>Price:</strong> ${{ event.price }}
+                    </p>
+                    <p class="card-text text-muted">{{ event.description|truncatewords:20 }}</p>
+                    <a href="{% url 'event-detail' event.slug %}" class="btn btn-primary">View Event</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No upcoming events.</p>
+    {% endif %}
+</div>
+{% endblock %}
 

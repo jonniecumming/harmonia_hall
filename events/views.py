@@ -66,24 +66,37 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         """Get the event from the URL slug"""
         return Event.objects.get(slug=self.kwargs['slug'])
 
+    def get_context_data(self, **kwargs):
+        """Add event and available seats to context"""
+        context = super().get_context_data(**kwargs)
+        event = self.get_object()
+        booked = Booking.objects.filter(event=event).aggregate(
+            total=Sum('number_of_tickets')
+        )['total'] or 0
+        available_seats = event.capacity - booked
+        
+        context['object'] = event
+        context['available_seats'] = available_seats
+        return context
+
     def form_valid(self, form):
         """Check capacity before saving booking"""
         event = self.get_object()
         tickets_requested = form.cleaned_data['number_of_tickets']
 
-        # Count already booked tickets for this event
+        """Count already booked tickets for this event"""
         booked = Booking.objects.filter(event=event).aggregate(
             total=Sum('number_of_tickets')
         )['total'] or 0
 
-        # Check if tickets available
+        """Check if tickets available"""
         if booked + tickets_requested > event.capacity:
             form.add_error('number_of_tickets', 'Not enough tickets available. Only {} tickets left.'.format(
                     event.capacity - booked
                 ))
             return self.form_invalid(form)
 
-        # Save booking with user and event
+        """Save booking with user and event"""
         booking = form.save(commit=False)
         booking.user = self.request.user
         booking.event = event
