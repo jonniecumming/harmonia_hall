@@ -8,6 +8,17 @@
 <p><strong>Venue:</strong> {{ event.venue }}</p>
 <p><strong>Description:</strong> {{ event.description }}</p>
 <p><strong>Capacity:</strong> {{ event.capacity }}</p>
+<p><strong>Available Seats:</strong> {{ available_seats }}</p>
 <p><strong>Price:</strong> ${{ event.price }}</p>
+{% if user.is_authenticated %}
+    <h2>Book Tickets</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Book Now</button>
+    </form>
+{% else %}
+    <p>Please <a href="{% url 'account_login' %}">log in</a> to book tickets.</p>
+{% endif %}
 <!-- event_detail.html content ends here -->
 {% endblock content %}
