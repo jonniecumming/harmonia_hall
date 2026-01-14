@@ -56,7 +56,7 @@ class BookingsView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         """Return bookings for the logged-in user"""
-        return Booking.objects.filter(user=self.request.user).order_by('-booking_date')
+        return Booking.objects.filter(user=self.request.user)
 
 
 # create booking view
