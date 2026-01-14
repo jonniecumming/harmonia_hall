@@ -30,10 +30,22 @@ class WhatsOnView(ListView):
 
 
 # event detail view
-class EventDetailView(ListView):
+class EventDetailView(DetailView):
     model = Event
     template_name = "events/event_detail.html"
     context_object_name = "event"
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        event = self.get_object()
+        booked = Booking.objects.filter(event=event).aggregate(
+            total=Sum('number_of_tickets')
+        )['total'] or 0
+        context['available_seats'] = event.capacity - booked
+        context['form'] = BookingForm()
+        return context
 
 
 # bookings view
