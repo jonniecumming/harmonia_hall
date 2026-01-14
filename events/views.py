@@ -54,6 +54,10 @@ class BookingsView(LoginRequiredMixin, ListView):
     template_name = "events/bookings.html"
     context_object_name = "bookings"
 
+    def get_queryset(self):
+        """Return bookings for the logged-in user"""
+        return Booking.objects.filter(user=self.request.user).order_by('-booking_date')
+
 
 # create booking view
 class BookingCreateView(LoginRequiredMixin, CreateView):
