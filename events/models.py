@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from django.db.models import Sum
+from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -10,7 +12,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 # events model
 class Event(models.Model):
     title = models.CharField(max_length=200, unique=True, db_index=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
     venue = models.CharField(max_length=200)
     summary = models.CharField(max_length=500)
     description = models.TextField()
@@ -19,6 +21,7 @@ class Event(models.Model):
     capacity = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     status = models.IntegerField(choices=STATUS, default=0)
+    event_image = CloudinaryField('image', default='placeholder')
 
     class Meta:
         ordering = ['date', 'time']
@@ -31,6 +34,15 @@ class Event(models.Model):
 
     def __str__(self):
         return f'{self.title} - {self.date} at {self.time}'
+
+    def get_available_seats(self, exclude_booking=None):
+        """Calculate available seats for this event"""
+        query = Booking.objects.filter(event=self)
+        if exclude_booking:
+            query = query.exclude(id=exclude_booking.id)
+
+        booked = query.aggregate(total=Sum('number_of_tickets'))['total'] or 0
+        return self.capacity - booked
 
 
 # bookings model

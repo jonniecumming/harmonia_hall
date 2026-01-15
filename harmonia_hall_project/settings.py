@@ -41,18 +41,20 @@ CSRF_TRUSTED_ORIGINS = [
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'cloudinary_storage',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    "django_summernote",
-    "events",
+    'django_summernote',
+    'cloudinary',
+    'events',
 ]
 
 SITE_ID = 1
@@ -150,3 +152,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+# Cloudinary configuration
+import cloudinary
+cloudinary.config(secure=True)
