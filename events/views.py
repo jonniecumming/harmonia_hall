@@ -132,3 +132,14 @@ class BookingUpdateView(LoginRequiredMixin, DetailView):
             return self.form_invalid(form)
 
         return super().form_valid(form)
+
+
+# delete booking view
+class BookingDeleteView(LoginRequiredMixin, DetailView):
+    model = Booking
+    template_name = "events/booking_confirm_delete.html"
+    success_url = reverse_lazy('bookings')
+
+    def get_object(self):
+        """Only allow users to delete their own bookings"""
+        return Booking.objects.filter(user=self.request.user)
