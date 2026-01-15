@@ -1,7 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Sum
 
 from .models import Event, Booking
 from .forms import BookingForm
@@ -17,8 +16,7 @@ class BookingValidationMixin:
         available = event.get_available_seats(exclude_booking=exclude_booking)
 
         if tickets_requested > available:
-            form.add_error('number_of_tickets', 
-                f'Not enough tickets available. Only {available} tickets left.')
+            form.add_error('number_of_tickets', f'Not enough tickets available. Only {available} tickets left.')
             return False
         return True
 

@@ -21,7 +21,7 @@
                         <strong>Venue:</strong> {{ event.venue }}<br>
                         <strong>Price:</strong> £{{ event.price }}
                     </p>
-                    <p class="card-text text-muted">{{ event.description|truncatewords:20 }}</p>
+                    <p class="card-text text-muted">{{ event.summary }}</p>
                     <a href="{% url 'event-detail' event.slug %}" class="btn btn-primary">View Event</a>
                 </div>
             </div>

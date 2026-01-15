@@ -13,10 +13,14 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+import cloudinary
 
 # Load environment variables from env.py if it exists
 if os.path.isfile("env.py"):
     import env  # noqa: F401 (noqa tells the linter to ignore unused import)
+
+# Configure Cloudinary after loading env variables
+cloudinary.config(secure=True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -152,6 +156,3 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-# Cloudinary configuration
-import cloudinary
-cloudinary.config(secure=True)
