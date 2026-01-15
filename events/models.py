@@ -52,6 +52,9 @@ class Booking(models.Model):
     number_of_tickets = models.PositiveIntegerField()
     booking_date = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        unique_together = ('user', 'event')
+
     def __str__(self):
         return f'Booking by {self.user.username} for {self.event.title} - {self.number_of_tickets} tickets'
 
