@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from django.db.models import Sum
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -31,6 +32,15 @@ class Event(models.Model):
 
     def __str__(self):
         return f'{self.title} - {self.date} at {self.time}'
+
+    def get_available_seats(self, exclude_booking=None):
+        """Calculate available seats for this event"""
+        query = Booking.objects.filter(event=self)
+        if exclude_booking:
+            query = query.exclude(id=exclude_booking.id)
+
+        booked = query.aggregate(total=Sum('number_of_tickets'))['total'] or 0
+        return self.capacity - booked
 
 
 # bookings model

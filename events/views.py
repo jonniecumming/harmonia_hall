@@ -5,6 +5,24 @@ from django.db.models import Sum
 
 from .models import Event, Booking
 from .forms import BookingForm
+
+
+# Mixin for booking capacity validation
+class BookingValidationMixin:
+    """Mixin to validate booking capacity"""
+
+    def validate_booking_capacity(self, form, event, exclude_booking=None):
+        """Check if enough tickets are available"""
+        tickets_requested = form.cleaned_data['number_of_tickets']
+        available = event.get_available_seats(exclude_booking=exclude_booking)
+
+        if tickets_requested > available:
+            form.add_error('number_of_tickets', 
+                f'Not enough tickets available. Only {available} tickets left.')
+            return False
+        return True
+
+
 # Create your views here.
 
 
@@ -33,16 +51,13 @@ class EventDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         event = self.get_object()
-        booked = Booking.objects.filter(event=event).aggregate(
-            total=Sum('number_of_tickets')
-        )['total'] or 0
-        context['available_seats'] = event.capacity - booked
+        context['available_seats'] = event.get_available_seats()
         context['form'] = BookingForm()
         return context
 
 
 # create booking view
-class BookingCreateView(LoginRequiredMixin, CreateView):
+class BookingCreateView(LoginRequiredMixin, BookingValidationMixin, CreateView):
     model = Booking
     form_class = BookingForm
     template_name = "events/booking_form.html"
@@ -56,33 +71,17 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         """Add event and available seats to context"""
         context = super().get_context_data(**kwargs)
         event = self.get_object()
-        booked = Booking.objects.filter(event=event).aggregate(
-            total=Sum('number_of_tickets')
-        )['total'] or 0
-        available_seats = event.capacity - booked
-
         context['event'] = event
-        context['available_seats'] = available_seats
+        context['available_seats'] = event.get_available_seats()
         return context
 
     def form_valid(self, form):
         """Check capacity before saving booking"""
         event = self.get_object()
-        tickets_requested = form.cleaned_data['number_of_tickets']
 
-        """Count already booked tickets for this event"""
-        booked = Booking.objects.filter(event=event).aggregate(
-            total=Sum('number_of_tickets')
-        )['total'] or 0
-
-        """Check if tickets available"""
-        if booked + tickets_requested > event.capacity:
-            form.add_error('number_of_tickets', 'Not enough tickets available. Only {} tickets left.'.format(
-                    event.capacity - booked
-                ))
+        if not self.validate_booking_capacity(form, event):
             return self.form_invalid(form)
 
-        """Save booking with user and event"""
         booking = form.save(commit=False)
         booking.user = self.request.user
         booking.event = event
@@ -103,7 +102,7 @@ class BookingsView(LoginRequiredMixin, ListView):
 
 
 # update booking view
-class BookingUpdateView(LoginRequiredMixin, UpdateView):
+class BookingUpdateView(LoginRequiredMixin, BookingValidationMixin, UpdateView):
     model = Booking
     form_class = BookingForm
     template_name = "events/booking_form.html"
@@ -118,32 +117,15 @@ class BookingUpdateView(LoginRequiredMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         booking = self.get_object()
         event = booking.event
-        
-        # Calculate available seats (excluding this booking's current tickets)
-        booked = Booking.objects.filter(event=event).exclude(
-            id=booking.id
-        ).aggregate(total=Sum('number_of_tickets'))['total'] or 0
-        available_seats = event.capacity - booked
-        
-        context['available_seats'] = available_seats
+        context['available_seats'] = event.get_available_seats(exclude_booking=booking)
         return context
 
     def form_valid(self, form):
         """Validate capacity before saving"""
         booking = self.get_object()
         event = booking.event
-        new_tickets = form.cleaned_data['number_of_tickets']
 
-        # Get bookings for this event EXCLUDING this booking
-        booked = Booking.objects.filter(event=event).exclude(
-            id=booking.id
-        ).aggregate(total=Sum('number_of_tickets'))['total'] or 0
-
-        # Check if new total exceeds capacity
-        if booked + new_tickets > event.capacity:
-            form.add_error('number_of_tickets', 'Not enough tickets available. Only {} tickets left.'.format(
-                    event.capacity - booked
-                ))
+        if not self.validate_booking_capacity(form, event, exclude_booking=booking):
             return self.form_invalid(form)
 
         return super().form_valid(form)
