@@ -21,7 +21,7 @@ class Event(models.Model):
     capacity = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     status = models.IntegerField(choices=STATUS, default=0)
-    event_image = CloudinaryField('image', blank=True, null=True, default='harmonia_hall/placeholder_event_image')
+    event_image = CloudinaryField('image', default='placeholder')
 
     class Meta:
         ordering = ['date', 'time']
