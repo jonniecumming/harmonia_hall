@@ -18,7 +18,7 @@
                         <strong>Date:</strong> {{ event.date }}<br>
                         <strong>Time:</strong> {{ event.time }}<br>
                         <strong>Venue:</strong> {{ event.venue }}<br>
-                        <strong>Price:</strong> ${{ event.price }}
+                        <strong>Price:</strong> £{{ event.price }}
                     </p>
                     <p class="card-text text-muted">{{ event.description|truncatewords:20 }}</p>
                     <a href="{% url 'event-detail' event.slug %}" class="btn btn-primary">View Event</a>
