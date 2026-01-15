@@ -30,12 +30,21 @@ class HomeView(ListView):
     template_name = "events/index.html"
     paginate_by = 6
 
+    def get_queryset(self):
+        """Only show published events"""
+        return Event.objects.filter(status=1).order_by('date', 'time')
+
 
 # list view for events
 class EventListView(ListView):
     model = Event
-    template_name = "events/event_list.html"
+    template_name = "events/whats_on.html"
     context_object_name = "events"
+    paginate_by = 6
+
+    def get_queryset(self):
+        """Only show published events"""
+        return Event.objects.filter(status=1).order_by('date', 'time')
 
 
 # event detail view
@@ -45,6 +54,10 @@ class EventDetailView(DetailView):
     context_object_name = "event"
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
+
+    def get_queryset(self):
+        """Only allow viewing published events"""
+        return Event.objects.filter(status=1)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
