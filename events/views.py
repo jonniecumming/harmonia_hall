@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum
 
@@ -61,7 +61,7 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         )['total'] or 0
         available_seats = event.capacity - booked
 
-        context['object'] = event
+        context['event'] = event
         context['available_seats'] = available_seats
         return context
 
@@ -103,15 +103,30 @@ class BookingsView(LoginRequiredMixin, ListView):
 
 
 # update booking view
-class BookingUpdateView(LoginRequiredMixin, DetailView):
+class BookingUpdateView(LoginRequiredMixin, UpdateView):
     model = Booking
     form_class = BookingForm
     template_name = "events/booking_form.html"
     success_url = reverse_lazy('bookings')
 
-    def get_object(self):
+    def get_queryset(self):
         """Only allow users to edit their own bookings"""
         return Booking.objects.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        """Add available seats to context"""
+        context = super().get_context_data(**kwargs)
+        booking = self.get_object()
+        event = booking.event
+        
+        # Calculate available seats (excluding this booking's current tickets)
+        booked = Booking.objects.filter(event=event).exclude(
+            id=booking.id
+        ).aggregate(total=Sum('number_of_tickets'))['total'] or 0
+        available_seats = event.capacity - booked
+        
+        context['available_seats'] = available_seats
+        return context
 
     def form_valid(self, form):
         """Validate capacity before saving"""
@@ -135,11 +150,11 @@ class BookingUpdateView(LoginRequiredMixin, DetailView):
 
 
 # delete booking view
-class BookingDeleteView(LoginRequiredMixin, DetailView):
+class BookingDeleteView(LoginRequiredMixin, DeleteView):
     model = Booking
     template_name = "events/booking_confirm_delete.html"
     success_url = reverse_lazy('bookings')
 
-    def get_object(self):
+    def get_queryset(self):
         """Only allow users to delete their own bookings"""
         return Booking.objects.filter(user=self.request.user)
