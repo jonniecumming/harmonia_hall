@@ -10,7 +10,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 # events model
 class Event(models.Model):
     title = models.CharField(max_length=200, unique=True, db_index=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
     venue = models.CharField(max_length=200)
     summary = models.CharField(max_length=500)
     description = models.TextField()
