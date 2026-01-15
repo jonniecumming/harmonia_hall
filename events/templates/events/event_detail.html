@@ -30,7 +30,7 @@
 
                     <div class="mb-4">
                         <h5>Event Description</h5>
-                        <p>{{ event.description }}</p>
+                        <p>{{ event.description|safe }}</p>
                     </div>
 
                     {% if user.is_authenticated %}
