@@ -93,13 +93,13 @@ class BookingCreateView(LoginRequiredMixin, BookingValidationMixin, CreateView):
     def form_valid(self, form):
         """Check capacity and prevent duplicate bookings"""
         event = self.get_object()
-        
+
         # Check if user already has a booking for this event
         existing_booking = Booking.objects.filter(
-            user=self.request.user, 
+            user=self.request.user,
             event=event
         ).exists()
-        
+
         if existing_booking:
             form.add_error(None, 'You already have a booking for this event. Please edit your existing booking to change the number of tickets.')
             return self.form_invalid(form)
