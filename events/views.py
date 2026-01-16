@@ -1,7 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Sum
 
 from .models import Event, Booking
 from .forms import BookingForm
@@ -17,8 +16,10 @@ class BookingValidationMixin:
         available = event.get_available_seats(exclude_booking=exclude_booking)
 
         if tickets_requested > available:
-            form.add_error('number_of_tickets', 
-                f'Not enough tickets available. Only {available} tickets left.')
+            if available == 0:
+                form.add_error('number_of_tickets', 'This event is fully booked. No tickets are available.')
+            else:
+                form.add_error('number_of_tickets', f'You requested {tickets_requested} tickets but only {available} ticket(s) available. Please reduce your quantity.')
             return False
         return True
 
@@ -30,14 +31,24 @@ class BookingValidationMixin:
 class HomeView(ListView):
     model = Event
     template_name = "events/index.html"
+    context_object_name = "events"
     paginate_by = 6
+
+    def get_queryset(self):
+        """Only show published events"""
+        return Event.objects.filter(status=1).order_by('date', 'time')
 
 
 # list view for events
 class EventListView(ListView):
     model = Event
-    template_name = "events/event_list.html"
+    template_name = "events/whats_on.html"
     context_object_name = "events"
+    paginate_by = 6
+
+    def get_queryset(self):
+        """Only show published events"""
+        return Event.objects.filter(status=1).order_by('date', 'time')
 
 
 # event detail view
@@ -47,6 +58,10 @@ class EventDetailView(DetailView):
     context_object_name = "event"
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
+
+    def get_queryset(self):
+        """Only allow viewing published events"""
+        return Event.objects.filter(status=1)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -76,8 +91,18 @@ class BookingCreateView(LoginRequiredMixin, BookingValidationMixin, CreateView):
         return context
 
     def form_valid(self, form):
-        """Check capacity before saving booking"""
+        """Check capacity and prevent duplicate bookings"""
         event = self.get_object()
+        
+        # Check if user already has a booking for this event
+        existing_booking = Booking.objects.filter(
+            user=self.request.user, 
+            event=event
+        ).exists()
+        
+        if existing_booking:
+            form.add_error(None, 'You already have a booking for this event. Please edit your existing booking to change the number of tickets.')
+            return self.form_invalid(form)
 
         if not self.validate_booking_capacity(form, event):
             return self.form_invalid(form)

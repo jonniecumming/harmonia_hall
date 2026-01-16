@@ -3,7 +3,25 @@
 {% block content %}
 
 <!-- index.html content starts here -->
-<h1>Harmonia Hall home page</h1>
 <p>Welcome to Harmonia Hall, your premier destination for live music and events.</p>
+
+<!-- Brief overview of upcoming events -->
+<h3>Upcoming Events</h3>
+        {% if events %}
+        <ul>
+            {% for event in events %}
+            <li>
+                <h2>{{ event.title }}</h2>
+                <p><strong>Date:</strong> {{ event.date }}</p>
+                <p><strong>Time:</strong> {{ event.time }}</p>
+                <p><strong>Venue:</strong> {{ event.venue }}</p>
+                <p><strong>Summary:</strong> {{ event.summary }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No upcoming events.</p>
+        {% endif %}
+
 <!-- index.html content ends here -->
 {% endblock %}

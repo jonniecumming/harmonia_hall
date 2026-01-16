@@ -13,7 +13,7 @@
                         <p><strong>Date:</strong> {{ event.date }}</p>
                         <p><strong>Time:</strong> {{ event.time }}</p>
                         <p><strong>Venue:</strong> {{ event.venue }}</p>
-                        <p><strong>Price:</strong> <span class="h5">${{ event.price }}</span></p>
+                        <p><strong>Price:</strong> <span class="h5">£{{ event.price }}</span></p>
                     </div>
 
                     <div class="card bg-light mb-3">
@@ -30,7 +30,7 @@
 
                     <div class="mb-4">
                         <h5>Event Description</h5>
-                        <p>{{ event.description }}</p>
+                        <p>{{ event.description|safe }}</p>
                     </div>
 
                     {% if user.is_authenticated %}
