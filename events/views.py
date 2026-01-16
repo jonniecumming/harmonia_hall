@@ -2,7 +2,6 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib import messages
 
 from .models import Event, Booking
 from .forms import BookingForm
@@ -24,9 +23,6 @@ class BookingValidationMixin:
                 form.add_error('number_of_tickets', f'You requested {tickets_requested} tickets but only {available} ticket(s) available. Please reduce your quantity.')
             return False
         return True
-
-
-# Create your views here.
 
 
 # home view
@@ -79,7 +75,7 @@ class BookingCreateView(LoginRequiredMixin, BookingValidationMixin, SuccessMessa
     form_class = BookingForm
     template_name = "events/booking_form.html"
     success_url = reverse_lazy('bookings')
-    
+
     def get_success_message(self, cleaned_data):
         """Display success message with ticket count"""
         booking = self.object
@@ -118,7 +114,7 @@ class BookingCreateView(LoginRequiredMixin, BookingValidationMixin, SuccessMessa
         booking.user = self.request.user
         booking.event = event
         booking.save()
-        
+
         # Store booking in self.object so get_success_message can access it
         self.object = booking
 
@@ -137,7 +133,7 @@ class BookingsView(LoginRequiredMixin, ListView):
 
 
 # update booking view
-class BookingUpdateView(LoginRequiredMixin, BookingValidationMixin, UpdateView):
+class BookingUpdateView(LoginRequiredMixin, BookingValidationMixin, SuccessMessageMixin, UpdateView):
     model = Booking
     form_class = BookingForm
     template_name = "events/booking_form.html"
@@ -156,14 +152,22 @@ class BookingUpdateView(LoginRequiredMixin, BookingValidationMixin, UpdateView):
         return context
 
     def form_valid(self, form):
-        """Validate capacity before saving"""
+        """Validate capacity and store booking for success message"""
         booking = self.get_object()
         event = booking.event
 
+        # Validate capacity (exclude current booking from calculation)
         if not self.validate_booking_capacity(form, event, exclude_booking=booking):
             return self.form_invalid(form)
 
+        # Save the form and store in self.object for get_success_message
+        self.object = form.save()
         return super().form_valid(form)
+
+    def get_success_message(self, cleaned_data):
+        """Display success message with updated ticket count"""
+        booking = self.object
+        return f'✓ Booking updated! You now have {booking.number_of_tickets} ticket(s) for {booking.event.title}.'
 
 
 # delete booking view
