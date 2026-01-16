@@ -1,6 +1,8 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 
 from .models import Event, Booking
 from .forms import BookingForm
@@ -72,11 +74,16 @@ class EventDetailView(DetailView):
 
 
 # create booking view
-class BookingCreateView(LoginRequiredMixin, BookingValidationMixin, CreateView):
+class BookingCreateView(LoginRequiredMixin, BookingValidationMixin, SuccessMessageMixin, CreateView):
     model = Booking
     form_class = BookingForm
     template_name = "events/booking_form.html"
     success_url = reverse_lazy('bookings')
+    
+    def get_success_message(self, cleaned_data):
+        """Display success message with ticket count"""
+        booking = self.object
+        return f'✓ Booking confirmed! You have reserved {booking.number_of_tickets} ticket(s) for {booking.event.title}.'
 
     def get_object(self):
         """Get the event from the URL slug"""
@@ -111,6 +118,9 @@ class BookingCreateView(LoginRequiredMixin, BookingValidationMixin, CreateView):
         booking.user = self.request.user
         booking.event = event
         booking.save()
+        
+        # Store booking in self.object so get_success_message can access it
+        self.object = booking
 
         return super().form_valid(form)
 
