@@ -16,7 +16,10 @@ class BookingValidationMixin:
         available = event.get_available_seats(exclude_booking=exclude_booking)
 
         if tickets_requested > available:
-            form.add_error('number_of_tickets', f'Not enough tickets available. Only {available} tickets left.')
+            if available == 0:
+                form.add_error('number_of_tickets', 'This event is fully booked. No tickets are available.')
+            else:
+                form.add_error('number_of_tickets', f'You requested {tickets_requested} tickets but only {available} ticket(s) available. Please reduce your quantity.')
             return False
         return True
 
@@ -28,6 +31,7 @@ class BookingValidationMixin:
 class HomeView(ListView):
     model = Event
     template_name = "events/index.html"
+    context_object_name = "events"
     paginate_by = 6
 
     def get_queryset(self):
@@ -97,7 +101,7 @@ class BookingCreateView(LoginRequiredMixin, BookingValidationMixin, CreateView):
         ).exists()
         
         if existing_booking:
-            form.add_error(None, 'You already have a booking for this event. Edit your existing booking if you need to change the number of tickets.')
+            form.add_error(None, 'You already have a booking for this event. Please edit your existing booking to change the number of tickets.')
             return self.form_invalid(form)
 
         if not self.validate_booking_capacity(form, event):

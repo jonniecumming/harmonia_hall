@@ -37,6 +37,19 @@
                     <form method="post">
                         {% csrf_token %}
                         
+                        <!-- Non-field errors (like duplicate bookings) -->
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Unable to Book:</strong>
+                                <ul class="mb-0">
+                                    {% for error in form.non_field_errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endif %}
+                        
                         <div class="mb-3">
                             <label for="id_number_of_tickets" class="form-label">
                                 How many tickets do you want to reserve?
@@ -44,15 +57,22 @@
                             <input type="number" 
                                    name="number_of_tickets" 
                                    id="id_number_of_tickets"
-                                   class="form-control" 
+                                   class="form-control {% if form.number_of_tickets.errors %}is-invalid{% endif %}" 
                                    min="1" 
                                    max="{{ available_seats }}"
                                    required>
                         </div>
 
+                        <!-- Field-specific errors (invalid ticket count) -->
                         {% if form.number_of_tickets.errors %}
-                            <div class="alert alert-danger">
-                                {{ form.number_of_tickets.errors }}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Invalid Number of Tickets:</strong>
+                                <ul class="mb-0">
+                                    {% for error in form.number_of_tickets.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         {% endif %}
 
