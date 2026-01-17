@@ -7,6 +7,9 @@
         <ul>
             {% for booking in bookings %}
             <li>
+                {% if booking.event.event_image %}
+                    <img src="{{ booking.event.event_image.url }}" alt="{{ booking.event.title }}" style="max-width: 200px;">
+                {% endif %}
                 <h2>{{ booking.event.title }}</h2>
                 <p><strong>Date:</strong> {{ booking.event.date }}</p> 
                 <p><strong>Time:</strong> {{ booking.event.time }}</p>
