@@ -77,9 +77,9 @@ class BookingCreateView(LoginRequiredMixin, BookingValidationMixin, SuccessMessa
     success_url = reverse_lazy('bookings')
 
     def get_success_message(self, cleaned_data):
-        """Display success message with ticket count"""
         booking = self.object
-        return f'✓ Booking confirmed! You have reserved {booking.number_of_tickets} ticket(s) for {booking.event.title}.'
+        total = booking.get_total_cost()
+        return f'✓ Booking confirmed! You have reserved {booking.number_of_tickets} ticket(s) for {booking.event.title}. Total: £{total}'
 
     def get_object(self):
         """Get the event from the URL slug"""
@@ -165,9 +165,10 @@ class BookingUpdateView(LoginRequiredMixin, BookingValidationMixin, SuccessMessa
         return super().form_valid(form)
 
     def get_success_message(self, cleaned_data):
-        """Display success message with updated ticket count"""
+        """Display success message with updated ticket count and total cost"""
         booking = self.object
-        return f'✓ Booking updated! You now have {booking.number_of_tickets} ticket(s) for {booking.event.title}.'
+        total = booking.get_total_cost()
+        return f'✓ Booking updated! You now have {booking.number_of_tickets} ticket(s) for {booking.event.title}. Total: £{total}'
 
 
 # delete booking view
