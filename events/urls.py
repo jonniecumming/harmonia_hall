@@ -1,10 +1,11 @@
 from django.urls import path
 
-from .views import BookingCreateView, BookingsView, EventDetailView, EventListView, HomeView, BookingUpdateView, BookingDeleteView
+from .views import BookingCreateView, BookingsView, EventDetailView, EventListView, HomeView, BookingUpdateView, BookingDeleteView, AboutView
 
 # URL patterns for events app
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
+    path('about/', AboutView.as_view(), name='about'),
     path('bookings/', BookingsView.as_view(), name='bookings'),
     path('bookings/<int:pk>/edit/', BookingUpdateView.as_view(), name='booking-update'),
     path('bookings/<int:pk>/delete/', BookingDeleteView.as_view(), name='booking-delete'),
