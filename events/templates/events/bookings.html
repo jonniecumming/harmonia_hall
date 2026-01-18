@@ -19,6 +19,7 @@
                 <p><strong>Price:</strong> £{{ booking.event.price }}</p>
                 <p><strong>Number of Tickets:</strong> {{ booking.number_of_tickets }}</p>
                 <p><strong>Booking Date:</strong> {{ booking.booking_date }}</p>
+                <p><strong>Total Cost:</strong> £{{ booking.get_total_cost }}</p>
                 
                 <!-- Edit and Delete Buttons -->
                 <a href="{% url 'booking-update' booking.id %}" class="btn btn-warning btn-sm">
