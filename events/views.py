@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 
@@ -179,3 +179,8 @@ class BookingDeleteView(LoginRequiredMixin, DeleteView):
     def get_queryset(self):
         """Only allow users to delete their own bookings"""
         return Booking.objects.filter(user=self.request.user)
+
+
+# about view
+class AboutView(TemplateView):
+    template_name = "about.html"
