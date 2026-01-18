@@ -2,13 +2,24 @@
 {% load static %}
 
 {% block content %}
-<!-- Hero section -->
+<!-- Simple Hero section -->
+<div class="hero-section position-relative mb-5" style="max-width: 1300px; margin: 0 auto;">
+    <img src="{% static 'images/hero.jpg' %}" class="img-fluid w-100" alt="Harmonia Hall" style="min-height: 300px; object-fit: cover;">
+</div>
 
-
-<!-- 3 sections about the Harmonia Hall with images and text using bootstrap cards with more interesting formatting -->
+<!-- 5 sections about the Harmonia Hall with images and text using bootstrap cards with more interesting formatting -->
 <div class="container mt-5">
     <h1>About Harmonia Hall</h1>
     <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{% static 'images/events.jpg' %}" class="card-img-top" alt="Events at Harmonia Hall">
+                <div class="card-body">
+                    <h5 class="card-title">Our Events</h5>
+                    <p class="card-text">From world-renowned artists to emerging talents, Harmonia Hall hosts a diverse array of events throughout the year. Our carefully curated lineup ensures there is something for every music lover to enjoy.</p>
+                </div>
+            </div>
+        </div>
         <div class="col-md-4">
             <div class="card mb-4">
                 <img src="{% static 'images/history.jpg' %}" class="card-img-top" alt="History of Harmonia Hall">
@@ -36,8 +47,17 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{% static 'images/architecture.jpg' %}" class="card-img-top" alt="Architecture of Harmonia Hall">
+                <div class="card-body">
+                    <h5 class="card-title">Our Architecture</h5>
+                    <p class="card-text">Harmonia Hall boasts stunning architecture that blends historic charm with modern amenities. Our beautifully restored interior provides an intimate setting that enhances the concert experience for both performers and audiences.</p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</div> 
 
 <!-- CTA button linking to browse events -->
 {% endblock %}

@@ -32,6 +32,7 @@
 
 ## About the Project
 <!-- Overview of project -->
+### Rationale
 The aim of this project is to provide a solution to the following problem faced by the fictious venue, Harmonia Hall, and its event attendees:
 
 "Harmonia Hall and its event attendees currently lack an efficient, centralized platform to manage event bookings and capacity. The venue struggles to prevent overbooking, track event capacity accurately, and manage multiple bookings, while attendees face difficulties in discovering upcoming events, making reservations, and managing their bookings effectively. This fragmented and manual process results in capacity management issues, double bookings, missed events, and a poor user experience for both venue operators and customers seeking to attend live music events."

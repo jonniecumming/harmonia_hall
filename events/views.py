@@ -1,7 +1,8 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, TemplateView
+from django.views.generic import ListView, CreateView, DeleteView, DetailView, UpdateView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.utils import timezone
 
 from .models import Event, Booking
 from .forms import BookingForm
@@ -33,8 +34,12 @@ class HomeView(ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        """Only show published events"""
-        return Event.objects.filter(status=1).order_by('date', 'time')
+        """Only show published events from today onwards"""
+        today = timezone.now().date()
+        return Event.objects.filter(
+            status=1,
+            date__gte=today
+        ).order_by('date', 'time')
 
 
 # list view for events
@@ -45,8 +50,12 @@ class EventListView(ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        """Only show published events"""
-        return Event.objects.filter(status=1).order_by('date', 'time')
+        """Only show published events from today onwards"""
+        today = timezone.now().date()
+        return Event.objects.filter(
+            status=1,
+            date__gte=today
+        ).order_by('date', 'time')
 
 
 # event detail view
