@@ -3,7 +3,14 @@
 {% block content %}
 
 <!-- index.html content starts here -->
-<p>Welcome to Harmonia Hall, your premier destination for live music and events.</p>
+<!-- Welcome message to Harmonia Hall -->
+<div class="container mt-5">
+    <div class="jumbotron text-center bg-light p-5 rounded">
+        <h1 class="display-4">Welcome to Harmonia Hall</h1>
+        <p class="lead">Discover and book tickets for the best live music events in town!</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'event-list' %}" role="button">Explore Events</a>
+    </div>
+</div>
 
 <!-- Brief overview of upcoming events -->
 
