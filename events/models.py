@@ -58,4 +58,8 @@ class Booking(models.Model):
     def __str__(self):
         return f'Booking by {self.user.username} for {self.event.title} - {self.number_of_tickets} tickets'
 
+    def get_total_cost(self):
+        """Calculate total booking cost (price * number of tickets)"""
+        return self.event.price * self.number_of_tickets
+
 # users model
