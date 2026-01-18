@@ -3,25 +3,45 @@
 {% block content %}
 
 <!-- index.html content starts here -->
-<p>Welcome to Harmonia Hall, your premier destination for live music and events.</p>
+<!-- Welcome message to Harmonia Hall -->
+<div class="container mt-5">
+    <div class="jumbotron text-center bg-light p-5 rounded">
+        <h1 class="display-4">Welcome to Harmonia Hall</h1>
+        <p class="lead">Discover and book tickets for the best live music events in town!</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'event-list' %}" role="button">Explore Events</a>
+    </div>
+</div>
 
 <!-- Brief overview of upcoming events -->
-<h3>Upcoming Events</h3>
-        {% if events %}
-        <ul>
-            {% for event in events %}
-            <li>
-                <h2>{{ event.title }}</h2>
-                <p><strong>Date:</strong> {{ event.date }}</p>
-                <p><strong>Time:</strong> {{ event.time }}</p>
-                <p><strong>Venue:</strong> {{ event.venue }}</p>
-                <p><strong>Summary:</strong> {{ event.summary }}</p>
-            </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p>No upcoming events.</p>
-        {% endif %}
 
-<!-- index.html content ends here -->
+<div class="container mt-5">
+    <h3>Upcoming Events</h3>
+
+    {% if events %}
+    <div class="row">
+        {% for event in events %}
+        <div class="col-md-12 mb-4">
+            <div class="card h-100">
+                <img src="{{ event.event_image.url }}" class="card-img-top" alt="{{ event.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{% url 'event-detail' event.slug %}">{{ event.title }}</a>
+                    </h5>
+                    <p class="card-text">
+                        <strong>Date:</strong> {{ event.date }}<br>
+                        <strong>Time:</strong> {{ event.time }}<br>
+                        <strong>Venue:</strong> {{ event.venue }}<br>
+                        <strong>Price:</strong> £{{ event.price }}
+                    </p>
+                    <p class="card-text text-muted">{{ event.summary }}</p>
+                    <a href="{% url 'event-detail' event.slug %}" class="btn btn-primary">View Event</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No upcoming events.</p>
+    {% endif %}
+</div>
 {% endblock %}

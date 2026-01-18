@@ -4,6 +4,7 @@
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
+{% url 'about' as about_url %}
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -46,9 +47,14 @@
                             href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == whats_on_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'whats-on' %}">What's On</a>
+                        <a class="nav-link {% if request.path == event_list_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'event-list' %}">What's On</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == about_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'about' %}">About</a>
+                    </li>
+                    <!-- Authenticated user links -->
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == bookings_url %}active{% endif %}" aria-current="page"

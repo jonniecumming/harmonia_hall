@@ -1,7 +1,8 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, DeleteView, DetailView, UpdateView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.utils import timezone
 
 from .models import Event, Booking
 from .forms import BookingForm
@@ -33,8 +34,12 @@ class HomeView(ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        """Only show published events"""
-        return Event.objects.filter(status=1).order_by('date', 'time')
+        """Only show published events from today onwards"""
+        today = timezone.now().date()
+        return Event.objects.filter(
+            status=1,
+            date__gte=today
+        ).order_by('date', 'time')
 
 
 # list view for events
@@ -45,8 +50,12 @@ class EventListView(ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        """Only show published events"""
-        return Event.objects.filter(status=1).order_by('date', 'time')
+        """Only show published events from today onwards"""
+        today = timezone.now().date()
+        return Event.objects.filter(
+            status=1,
+            date__gte=today
+        ).order_by('date', 'time')
 
 
 # event detail view
@@ -77,9 +86,9 @@ class BookingCreateView(LoginRequiredMixin, BookingValidationMixin, SuccessMessa
     success_url = reverse_lazy('bookings')
 
     def get_success_message(self, cleaned_data):
-        """Display success message with ticket count"""
         booking = self.object
-        return f'✓ Booking confirmed! You have reserved {booking.number_of_tickets} ticket(s) for {booking.event.title}.'
+        total = booking.get_total_cost()
+        return f'✓ Booking confirmed! You have reserved {booking.number_of_tickets} ticket(s) for {booking.event.title}. Total: £{total}'
 
     def get_object(self):
         """Get the event from the URL slug"""
@@ -165,9 +174,10 @@ class BookingUpdateView(LoginRequiredMixin, BookingValidationMixin, SuccessMessa
         return super().form_valid(form)
 
     def get_success_message(self, cleaned_data):
-        """Display success message with updated ticket count"""
+        """Display success message with updated ticket count and total cost"""
         booking = self.object
-        return f'✓ Booking updated! You now have {booking.number_of_tickets} ticket(s) for {booking.event.title}.'
+        total = booking.get_total_cost()
+        return f'✓ Booking updated! You now have {booking.number_of_tickets} ticket(s) for {booking.event.title}. Total: £{total}'
 
 
 # delete booking view
@@ -179,3 +189,8 @@ class BookingDeleteView(LoginRequiredMixin, DeleteView):
     def get_queryset(self):
         """Only allow users to delete their own bookings"""
         return Booking.objects.filter(user=self.request.user)
+
+
+# about view
+class AboutView(TemplateView):
+    template_name = "about.html"

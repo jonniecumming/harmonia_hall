@@ -14,12 +14,16 @@
                         <p><strong>Time:</strong> {{ event.time }}</p>
                         <p><strong>Venue:</strong> {{ event.venue }}</p>
                         <p><strong>Price per Ticket:</strong> £{{ event.price }}</p>
+                        <p><strong>Number of Tickets:</strong> {{ booking.number_of_tickets }}</p>
+                        <p><strong>Total Cost:</strong> £{{ booking.get_total_cost }}</p>
                     {% else %}
                         <h2 class="card-title">{{ object.event.title }}</h2>
                         <p><strong>Date:</strong> {{ object.event.date }}</p>
                         <p><strong>Time:</strong> {{ object.event.time }}</p>
                         <p><strong>Venue:</strong> {{ object.event.venue }}</p>
                         <p><strong>Price per Ticket:</strong> £{{ object.event.price }}</p>
+                        <p><strong>Number of Tickets:</strong> {{ booking.number_of_tickets }}</p>
+                        <p><strong>Total Cost:</strong> £{{ booking.get_total_cost }}</p>
                     {% endif %}
                     <p><strong>Available Tickets:</strong> {{ available_seats }}</p>
                 </div>

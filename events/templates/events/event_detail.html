@@ -6,6 +6,9 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card mb-4">
+                {% if event.event_image %}
+                    <img src="{{ event.event_image.url }}" class="card-img-top" alt="{{ event.title }}">
+                {% endif %}
                 <div class="card-body">
                     <h1 class="card-title">{{ event.title }}</h1>
                     
