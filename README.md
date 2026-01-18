@@ -20,7 +20,7 @@
         <li><a href="#wireframes">Wireframes</a></li>
       </ul>
     </li>
-    <li><a href="#user-stores">User Stories</a></li>
+    <li><a href="#user-stories">User Stories</a></li>
     <li><a href="#features">Features</a></li>
     <li><a href="#bugs">Bugs</a></li>
     <li><a href="#testing">License</a></li>
@@ -32,9 +32,15 @@
 
 ## About the Project
 <!-- Overview of project -->
-The aim of this project is to create a small concert venue bookings site, where visitors can browse the upcoming concerts/events at the ficticious venue, 'Harmonia Hall' and book tickets for a desired event.
+The aim of this project is to provide a solution to the following problem faced by the fictious venue, Harmonia Hall, and its event attendees:
 
-Users should be able to create an account and then be able to book an event. Once this has happend, they can view their bookings, modify the number of tickets or delete the event.
+"Harmonia Hall and its event attendees currently lack an efficient, centralized platform to manage event bookings and capacity. The venue struggles to prevent overbooking, track event capacity accurately, and manage multiple bookings, while attendees face difficulties in discovering upcoming events, making reservations, and managing their bookings effectively. This fragmented and manual process results in capacity management issues, double bookings, missed events, and a poor user experience for both venue operators and customers seeking to attend live music events."
+
+This web application addresses these challenges by providing a comprehensive, user-friendly booking platform that streamlines the entire event management process. The platform enables attendees to easily discover upcoming events, view real-time availability, and securely reserve tickets with capacity tracking to prevent overbooking. Built-in booking management features allow users to view, modify, or cancel their reservations at any time, while administrators benefit from a robust backend system to create, manage, and monitor events and bookings. By implementing real-time capacity validation, enforcing one booking per user per event, and providing clear error messaging and confirmation feedback, the application eliminates double bookings, ensures accurate capacity management, and delivers a seamless, trustworthy booking experience for both venue operators and customers.
+
+With this in mind, this application is designed for two primary user groups. First, it serves music enthusiasts and event-goers who seek a convenient, reliable platform to discover upcoming live music and other events, browse event details, and securely book tickets without the fear of overbooking or capacity conflicts. Second, it caters to venue administrators and staff at Harmonia Hall, who require efficient tools to create and manage events, track real-time capacity and bookings, and maintain accurate event listings. Whether its users are looking to attend their next favorite concert or manage a busy event venue, this application provides an intuitive, reliable solution that enhances the overall event experience for both attendees and venue operators alike.
+
+
 
 Design...
 
@@ -67,6 +73,9 @@ I used the software _Balsamiq_, to create these diagrams.
 <!-- Overview of User Stories project -->
 ## User Stories
 ### ADD Screenshot of project board here !
+
+<details>
+<summary><strong>Must Have's</strong></summary>
 
 ### Must Have:
 #### User Story: User Registration
@@ -134,6 +143,12 @@ Acceptance criteria:
 - Form fields have suitable aria labels.
 - Error messages are clear and descriptive.
 - Interactive elements are accessible via keyboard shortcuts and screen readers.
+
+</details>
+
+<details>
+<summary><strong>Should Have's</strong></summary>
+
 ### Should Have:
 #### User Story: Profile Management
 As a **site user**, I can **view my profile information** so that **I can confirm my details are correct**.
@@ -159,6 +174,11 @@ As a **site visitor**, I want to **be able find out information about the venue 
 Acceptance criteria:
 - A user is able to find out suitable information and pictures of the venue that match what would be expected.
 
+</details>
+
+<details>
+<summary><strong>Could Have's</strong></summary>
+
 ### Could Have:
 #### User Story: Contact Us
 As a **site visitor**, I can **find relevant contact information, including a contact form** so that **I can get in touch about more specific queries relating to the events**.
@@ -171,12 +191,19 @@ As a **site admin**, I can **view all bookings for a concert** so that **I can m
 Acceptance criteria:
 - The site allows admins to view bookings for an event, including the total number of bookings per event.
 
+</details>
+
+<details>
+<summary><strong>Won't Have's</strong></summary>
+
 ### Won't Have:
 #### User Story: Search for Events
 As a **site user**, I can **search for events with keywords** so that **I can find the events I am looking for**.
 Acceptance criteria:
 - A user is able to easily navigate to a search bar.
 - Entering keywords into the search will bring up corresponding/relevant events.
+
+</details>
 
 <!-- Overview of features of the project -->
 ## Features
