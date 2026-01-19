@@ -88,7 +88,7 @@ class BookingCreateView(LoginRequiredMixin, BookingValidationMixin, SuccessMessa
     def get_success_message(self, cleaned_data):
         booking = self.object
         total = booking.get_total_cost()
-        return f'✓ Booking confirmed! You have reserved {booking.number_of_tickets} ticket(s) for {booking.event.title}. Total: £{total}'
+        return f'✓ Booking confirmed! You have reserved {booking.number_of_tickets} ticket(s) for {booking.event.title}. This will be payable on entry. Total: £{total}'
 
     def get_object(self):
         """Get the event from the URL slug"""
@@ -177,7 +177,7 @@ class BookingUpdateView(LoginRequiredMixin, BookingValidationMixin, SuccessMessa
         """Display success message with updated ticket count and total cost"""
         booking = self.object
         total = booking.get_total_cost()
-        return f'✓ Booking updated! You now have {booking.number_of_tickets} ticket(s) for {booking.event.title}. Total: £{total}'
+        return f'✓ Booking updated! You now have {booking.number_of_tickets} ticket(s) for {booking.event.title}. This will be payable on entry. Total: £{total}'
 
 
 # delete booking view
