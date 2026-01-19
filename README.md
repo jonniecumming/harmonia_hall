@@ -16,10 +16,8 @@
     <li>
       <a href="#ux-design">UX Design</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
         <li><a href="#wireframes">Wireframes</a></li>
-        <li><a href="#database-structure">Database Structure</a></li>
+        <li><a href="#database-structure-erd">Database Structure (ERD)</a></li>
       </ul>
     </li>
     <li>
@@ -29,6 +27,8 @@
         <li><a href="#should-haves">Should Have's</a></li>
         <li><a href="#could-haves">Could Have's</a></li>
         <li><a href="#wont-haves">Won't Have's</a></li>
+        <li><a href="#project-board">Project Board</a></li>
+        <li><a href="#outcomes">Outcomes</a></li>
       </ul>
     </li>
     <li><a href="#features">Features</a></li>
@@ -39,14 +39,26 @@
         <li><a href="#bookings-page">Bookings Page</a></li>
         <li><a href="#navigation-bar">Navigation Bar</a></li>
         <li><a href="#footer">Footer</a></li>
-        <li><a href="#sign-in-sign-out">Sign In/Sign Out</a></li>
-        <li><a href="#admin-interface">Admin Interface</a></li>
+        <li><a href="#sign-in">Sign In</a></li>
+        <li><a href="#sign-out">Sign Out</a></li>
+        <li><a href="#admin">Admin</a></li>
       </ul>
     </li>
-        
-
     <li><a href="#bugs">Bugs</a></li>
-    <li><a href="#testing">License</a></li>
+      <ul>
+        <li><a href="#bug-1">Bug 1</a></li>
+        <li><a href="#bug-2">Bug 2</a></li>
+        <li><a href="#bug-3">Bug 3</a></li>
+      </ul>
+    </li>
+    <li><a href="#testing">Testing</a></li>
+      <ul>
+        <li><a href="#manual-testing">Manual Testing</a></li>
+        <li><a href="#lighthouse-testing">Lighthouse Testing</a></li>
+        <li><a href="#responsive-testing">Responsive Testing</a></li>
+        <li><a href="#validator-testing">Validator Testing</a></li>
+      </ul>
+    </li>
     <li><a href="#use-of-ai">Use of AI</a></li>
     <li><a href="#deployment">Deployment</a></li>
     <li><a href="#credits">Credits</a></li>
@@ -64,11 +76,15 @@ This web application addresses these challenges by providing a comprehensive, us
 
 With this in mind, this application is designed for two primary user groups. First, it serves music enthusiasts and event-goers who seek a convenient, reliable platform to discover upcoming live music and other events, browse event details, and securely book tickets without the fear of overbooking or capacity conflicts. Second, it caters to venue administrators and staff at Harmonia Hall, who require efficient tools to create and manage events, track real-time capacity and bookings, and maintain accurate event listings. Whether its users are looking to attend their next favorite concert or manage a busy event venue, this application provides an intuitive, reliable solution that enhances the overall event experience for both attendees and venue operators alike.
 
-
-
-Design...
+The MVP (minimum viable product) for this project includes the following core features:
+- User Registration and Authentication: Allow users to create accounts, log in, and log out securely.
+- Event Listings: Display a list of upcoming events with details such as date, time, location, and availability.
+- Event Details: Provide detailed information about each event, including descriptions, images, and current capacity.
+- Booking System: Enable logged-in users to create, view, update, and cancel bookings for events, with real-time capacity validation to prevent overbooking.
+- Admin Interface: Provide administrators with tools to create, update, and delete events, as well as view all bookings.
 
 <!-- Deployed homepage screenshot examples of site -->
+Below are screenshots of the deployed site on different devices:
 ### Desktop Appearance
 - Deployed Desktop view screenshot
 ### Tablet Appearance
@@ -86,26 +102,26 @@ Design...
 Wireframes were created for different viewports (mobile, tablet and desktop) to help visualise how the site would look on different devices.
 
 I used the software _Balsamiq_, to create the following wireframe diagrams.
-
+### Home Page
 ![Home page wireframe](/images/wireframe-home.png)
-*Home page with featured upcoming events page*
-
+*Home page with featured upcoming events*
+### What's On Page
 ![What's on page wireframe](/images/wireframe-whats-on.png)
-*What's On page with events listing*
-
+*What's On page with events listings*
+### Sign In Page
 ![Sign in page wireframe](/images/wireframe-sign-in.png)
-*User Sign in page*
-
+*User sign in with authentication*
+### Bookings Page
 ![Bookings page wireframe](/images/wireframe-bookings.png)
-*User's bookings management page*
-
+*User's event bookings management*
+### About Page
 ![about page wireframe](/images/wireframe-about.png)
-*Venue information and details page*
-
+*Venue information and details*
+### Contact Page
 ![Contact page wireframe](/images/wireframe-contact.png)
 *Contact page for information and inquiries*
 
-### Database Structure
+### Database Structure (ERD)
 The database structure for this project is based around three main models: Event, Booking, and User (using Django's built-in User model). This is illustrated in the Entity Relationship Diagram (ERD) below.
 
 ![ERD](/images/erd.png)
@@ -246,6 +262,15 @@ Acceptance criteria:
 
 </details>
 
+### Project Board
+... The project board for this project can be found here: [link to project board]
+
+### Outcomes
+- Must Haves: All completed successfully.
+- Should Haves: ...
+- Could Haves: ...
+- Won't Haves: ...
+
 <!-- Overview of features of the project -->
 ## Features
 - Home page (with screenshot): what does it offer to a user?
@@ -268,10 +293,14 @@ Acceptance criteria:
 - How it was fixed.
 <!-- Overview of testing done -->
 ## Testing
-- Manual Testing (various browsers)
-- Lighthouse
-- Responsive Testing
-- Validator Testing (W3C HTML, CSS, Python PEP8, JS (-JS hint?) )
+### Manual Testing
+- Description of manual testing done, e.g., functionality, links, forms, etc.
+### Lighthouse Testing
+- Description of Lighthouse testing done, e.g., performance, accessibility, best practices, SEO.
+### Responsive Testing
+- Description of responsive testing done, e.g., different devices, screen sizes, etc.
+### Validator Testing
+- Description of validator testing done, e.g., W3C HTML, CSS, Python PEP8, JS (-JS hint? ).
 
 <!-- Overview of AI use within project -->
 ## Use of AI
