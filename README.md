@@ -2,11 +2,12 @@
 
 <!-- TABLE OF CONTENTS (to be modified for this project) -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Index</summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#rationale">Rationale</a></li>
         <li><a href="#desktop-appearance">Desktop Appearance</a></li>
         <li><a href="#tablet-appearance">Tablet Appearance</a></li>
         <li><a href="#mobile-appearance">Mobile Appearance</a></li>
@@ -18,10 +19,32 @@
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
         <li><a href="#wireframes">Wireframes</a></li>
+        <li><a href="#database-structure">Database Structure</a></li>
       </ul>
     </li>
-    <li><a href="#user-stories">User Stories</a></li>
+    <li>
+      <a href="#user-stories">User Stories</a>
+      <ul>
+        <li><a href="#must-haves">Must Have's</a></li>
+        <li><a href="#should-haves">Should Have's</a></li>
+        <li><a href="#could-haves">Could Have's</a></li>
+        <li><a href="#wont-haves">Won't Have's</a></li>
+      </ul>
+    </li>
     <li><a href="#features">Features</a></li>
+      <ul>
+        <li><a href="#home-page">Home Page</a></li>
+        <li><a href="#about-page">About Page</a></li>
+        <li><a href="#contact-page">Contact Page</a></li>
+        <li><a href="#bookings-page">Bookings Page</a></li>
+        <li><a href="#navigation-bar">Navigation Bar</a></li>
+        <li><a href="#footer">Footer</a></li>
+        <li><a href="#sign-in-sign-out">Sign In/Sign Out</a></li>
+        <li><a href="#admin-interface">Admin Interface</a></li>
+      </ul>
+    </li>
+        
+
     <li><a href="#bugs">Bugs</a></li>
     <li><a href="#testing">License</a></li>
     <li><a href="#use-of-ai">Use of AI</a></li>
@@ -62,20 +85,37 @@ Design...
 ### Wireframes
 Wireframes were created for different viewports (mobile, tablet and desktop) to help visualise how the site would look on different devices.
 
-I used the software _Balsamiq_, to create these diagrams.
+I used the software _Balsamiq_, to create the following wireframe diagrams.
 
 ![Home page wireframe](/images/wireframe-home.png)
+*Home page with featured upcoming events page*
+
 ![What's on page wireframe](/images/wireframe-whats-on.png)
+*What's On page with events listing*
+
 ![Sign in page wireframe](/images/wireframe-sign-in.png)
+*User Sign in page*
+
 ![Bookings page wireframe](/images/wireframe-bookings.png)
+*User's bookings management page*
+
 ![about page wireframe](/images/wireframe-about.png)
+*Venue information and details page*
+
 ![Contact page wireframe](/images/wireframe-contact.png)
+*Contact page for information and inquiries*
+
+### Database Structure
+The database structure for this project is based around three main models: Event, Booking, and User (using Django's built-in User model). This is illustrated in the Entity Relationship Diagram (ERD) below.
+
+![ERD](/images/erd.png)
+*Entity Relationship Diagram (ERD) showing database structure*
 
 <!-- Overview of User Stories project -->
 ## User Stories
 ### ADD Screenshot of project board here !
 
-<details>
+<details id="must-haves">
 <summary><strong>Must Have's</strong></summary>
 
 ### Must Have:
@@ -147,7 +187,7 @@ Acceptance criteria:
 
 </details>
 
-<details>
+<details id="should-haves">
 <summary><strong>Should Have's</strong></summary>
 
 ### Should Have:
@@ -177,7 +217,7 @@ Acceptance criteria:
 
 </details>
 
-<details>
+<details id="could-haves">
 <summary><strong>Could Have's</strong></summary>
 
 ### Could Have:
@@ -194,7 +234,7 @@ Acceptance criteria:
 
 </details>
 
-<details>
+<details id="wont-haves">
 <summary><strong>Won't Have's</strong></summary>
 
 ### Won't Have:
@@ -217,11 +257,15 @@ Acceptance criteria:
 - Sign in...
 - Sign out...
 - Admin...
-- Entity Relationship Diagram
 
 <!-- Overview of bugs and solutions -->
 ## Bugs
-
+- Bug 1: description...
+- How it was fixed.
+- Bug 2: description...
+- How it was fixed.
+- Bug 3: description...
+- How it was fixed.
 <!-- Overview of testing done -->
 ## Testing
 - Manual Testing (various browsers)
@@ -231,19 +275,48 @@ Acceptance criteria:
 
 <!-- Overview of AI use within project -->
 ## Use of AI
+
+During this project, AI was utilised in a few ways. Initially, I wanted to use AI to help me plan out certain aspects of the project, such as the user stories and features. I found this to be a useful starting point, as it helped me to think about what I wanted to achieve with the project, and how I could break it down into manageable parts. However, I made sure that I changed and refined the suggestions so that they fit my specific project needs, rather than just accepting them as they were.
+
+For code generation, I picked Claude as my preferred AI tool. From what I understand and have experienced so far, I found Claude to be particularly good at understanding the context of my project, and providing the most relevant suggestions.
+
+I used it to suggest how it could help with certain functions and methods. I wanted to make sure that for every use of AI, I reviewed the code thoroughly to ensure it made sense to me, and that it was keeping what I wanted to achieve in mind. 
+
+I also used Claude to help with debugging certain issues I was having. When doing this, I made sure to understand what the suggestions were doing, and why they would help solve the issue. I would also make sure to challenge the suggestions if I felt they were not correct, which on a number of occasions they were not, despite my careful and descriptive prompting. One particular area that Claude helped in this way, was with booking capacity validation, which was a tricky area to get right. As I primarily used Claude as my client, I created a claude.md file in the root of my project to follow Django best practices. This helped to ensure that the suggestions I received about the Django framework were in line with best practices.
+
+
+- Which AI tools were used (e.g., ChatGPT, DALL·E 2, etc.)
+- Purpose of use (e.g., code generation, image creation, etc.)
 - How has this been used in the project (bugs, code, planning, etc.)
 - commit messages skeleton
 
 <!-- Overview of How the project was deployed -->
-## Deployment
-- How the site was deployed (Steps, see Mark B's Blog for example)
-- Live link
+## Deployment 
+The site was deployed to Heroku from the main branch of my GitHub repository. Bewlow are the steps I took to deploy the site:
+
+1. I navigated to my Heroku account and create a new app
+2. I gave the app an appropriate and unique name and selected the region closest to me (Europe).
+3. In the "Deploy" tab, I connected my GitHub repository to Heroku by searching for the repository name and clicking "Connect".
+4. I then went to the "Settings" tab and clicked on "Reveal Config Vars"
+5. I added the necessary config vars, such as my `SECRET_KEY`, `DATABASE_URL`, `CLOUDINARY_URL`, as these environment variables are required for the app to run correctly.
+6. Next, I went back to the "Deploy" tab, selected the main branch, and deployed the app by clicking on "Deploy Branch".
+7. Once the deployment was complete, I navigated to the "Overview" tab and clicked on "Open App" to view my live site.
+
+Here is the link to the deployed site: [Harmonia Hall on Heroku](https://harmonia-hall-b317b69502c7.herokuapp.com/)
 
 <!-- Credits for project -->
 ## Credits
+### Inspiration
+- Inspiration for project idea: e.g., personal experience, other websites, etc.
+- Similar projects or tutorials that helped
+### Code
+- Libraries, frameworks, plugins used (e.g., Django, Bootstrap, jQuery)
+- Stack Overflow, GitHub repositories, etc.
 
 ### Content
+- Text content sources: e.g., Wikipedia, blogs, articles, etc.
 
 ### Media
-
-`This is an example of how to write command line text`
+- Image sources: Unsplash, iStock
+### Acknowledgements
+- Mentors, tutors, peers, etc.
