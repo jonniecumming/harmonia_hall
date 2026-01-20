@@ -8,51 +8,66 @@
 </div>
 
 <!-- 5 sections about the Harmonia Hall with images and text using bootstrap cards with more interesting formatting -->
-<div class="container mt-5">
-    <h1>About Harmonia Hall</h1>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="{% static 'images/events.jpg' %}" class="card-img-top" alt="Events at Harmonia Hall">
-                <div class="card-body">
-                    <h5 class="card-title">Our Events</h5>
-                    <p class="card-text">From world-renowned artists to emerging talents, Harmonia Hall hosts a diverse array of events throughout the year. Our carefully curated lineup ensures there is something for every music lover to enjoy.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="{% static 'images/history.jpg' %}" class="card-img-top" alt="History of Harmonia Hall">
+<div class="container mt-5 mb-5">
+    <h1 class="mb-4">About Harmonia Hall</h1>
+    <div class="row g-4">
+        <!-- 2 columns wide -->
+        <div class="col-12 col-md-6 col-lg-8">
+            <div class="card h-100">
+                <img src="{% static 'images/history.jpg' %}" class="card-img-top" alt="History" style="height: 300px; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title">Our History</h5>
                     <p class="card-text">Harmonia Hall has been a cultural landmark since its founding in 1920. Over the decades, we have hosted countless performances, from classical concerts to contemporary shows, becoming a beloved venue for artists and audiences alike.</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="{% static 'images/mission.jpg' %}" class="card-img-top" alt="Mission of Harmonia Hall">
+
+        <!-- 1 column -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100">
+                <img src="{% static 'images/mission.jpg' %}" class="card-img-top" alt="Mission" style="height: 300px; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title">Our Mission</h5>
                     <p class="card-text">At Harmonia Hall, our mission is to foster a vibrant arts community by providing a platform for diverse performances and educational programs. We are dedicated to enriching lives through the power of music and the arts.</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="{% static 'images/community.jpg' %}" class="card-img-top" alt="Community Engagement at Harmonia Hall">
+
+        <!-- Row 2: 1 column -->
+        <div class="col-12 col-lg-4">
+            <div class="card h-100">
+                <img src="{% static 'images/events.jpg' %}" class="card-img-top" alt="Events" style="height: 250px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Our Events</h5>
+                    <p class="card-text">From world-renowned artists to emerging talents, Harmonia Hall hosts a diverse array of events throughout the year. Our carefully curated lineup ensures there is something for every music lover to enjoy.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2 columns -->
+        <div class="col-12 col-lg-8">
+            <div class="card h-100">
+                <img src="{% static 'images/community.jpg' %}" class="card-img-top" alt="Community" style="height: 250px; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title">Community Engagement</h5>
                     <p class="card-text">Harmonia Hall is deeply committed to engaging with our local community. We offer outreach programs, workshops, and special events designed to make the arts accessible to everyone, fostering a love for music across all ages.</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="{% static 'images/architecture.jpg' %}" class="card-img-top" alt="Architecture of Harmonia Hall">
-                <div class="card-body">
-                    <h5 class="card-title">Our Architecture</h5>
-                    <p class="card-text">Harmonia Hall boasts stunning architecture that blends historic charm with modern amenities. Our beautifully restored interior provides an intimate setting that enhances the concert experience for both performers and audiences.</p>
+
+        <!-- Full width -->
+        <div class="col-12">
+            <div class="card">
+                <div class="row g-0 flex-row-reverse">
+                    <div class="col-md-4">
+                        <img src="{% static 'images/architecture.jpg' %}" class="img-fluid rounded-end" alt="Architecture" style="height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Our Architecture</h5>
+                            <p class="card-text">Harmonia Hall boasts stunning architecture that blends historic charm with modern amenities. This was designed by one of the leading architects of the 20th century, Frank Lloyd Wright. Our beautifully restored interior provides an intimate setting that enhances the concert experience for both performers and audiences.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

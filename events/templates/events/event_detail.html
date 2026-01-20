@@ -2,62 +2,111 @@
 {% load static %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card mb-4">
-                {% if event.event_image %}
-                    <img src="{{ event.event_image.url }}" class="card-img-top" alt="{{ event.title }}">
-                {% endif %}
+<div class="container mt-5 mb-5">
+    <h1 class="mb-4">{{ event.title }}</h1>
+    
+    <!-- Image and Details Row -->
+    <div class="row mb-4">
+        <!-- Event Image (Left) -->
+        <div class="col-12 col-lg-6">
+            {% if event.event_image %}
+                <img src="{{ event.event_image.url }}" class="img-fluid rounded" alt="{{ event.title }}" style="width: 100%; height: auto; max-height: 500px; object-fit: cover;">
+            {% endif %}
+        </div>
+        
+        <!-- Event Details (Right) -->
+        <div class="col-12 col-lg-6">
+            <div class="card">
                 <div class="card-body">
-                    <h1 class="card-title">{{ event.title }}</h1>
-                    
-                    <div class="mb-3">
-                        <p><strong>Date:</strong> {{ event.date }}</p>
-                        <p><strong>Time:</strong> {{ event.time }}</p>
-                        <p><strong>Venue:</strong> {{ event.venue }}</p>
-                        <p><strong>Price:</strong> <span class="h5">£{{ event.price }}</span></p>
-                    </div>
-
-                    <div class="card bg-light mb-3">
-                        <div class="card-body">
-                            <h5>Capacity Information</h5>
-                            <p class="mb-0"><strong>Total Capacity:</strong> {{ event.capacity }} tickets</p>
-                            <p class="mb-0"><strong>Available Tickets:</strong> 
-                                <span class="badge bg-{% if available_seats > 0 %}success{% else %}danger{% endif %}">
-                                    {{ available_seats }}
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-
+                    <!-- Event Details Grid -->
                     <div class="mb-4">
-                        <h5>Event Description</h5>
-                        <p>{{ event.description|safe }}</p>
+                        <h5 class="card-title mb-3">Event Details</h5>
+                        <div class="row g-3">
+                            <!-- Date -->
+                            <div class="col-6">
+                                <p class="mb-0">
+                                    <small class="text-muted"><i class="far fa-calendar"></i> Date</small><br>
+                                    <strong>{{ event.date|date:"d M Y" }}</strong>
+                                </p>
+                            </div>
+                            <!-- Time -->
+                            <div class="col-6">
+                                <p class="mb-0">
+                                    <small class="text-muted"><i class="far fa-clock"></i> Time</small><br>
+                                    <strong>{{ event.time }}</strong>
+                                </p>
+                            </div>
+                            <!-- Venue -->
+                            <div class="col-12 col-md-6">
+                                <p class="mb-0">
+                                    <small class="text-muted"><i class="fas fa-map-marker-alt"></i> Venue</small><br>
+                                    <strong>{{ event.venue }}</strong>
+                                </p>
+                            </div>
+                            <!-- Price -->
+                            <div class="col-12 col-md-6">
+                                <p class="mb-0">
+                                    <small class="text-muted"><i class="fas fa-ticket-alt"></i> Price</small><br>
+                                    <span class="h5 text-primary">£{{ event.price }}</span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    {% if user.is_authenticated %}
-                        {% if available_seats > 0 %}
-                            <a href="{% url 'book-event' event.slug %}" class="btn btn-primary btn-lg">
-                                Reserve Tickets
-                            </a>
-                        {% else %}
-                            <div class="alert alert-warning" role="alert">
-                                This event is fully booked. No tickets available.
-                            </div>
-                        {% endif %}
-                    {% else %}
-                        <div class="alert alert-info" role="alert">
-                            Please <a href="{% url 'account_login' %}">log in</a> to reserve tickets.
-                        </div>
-                    {% endif %}
+                    <!-- Capacity Information -->
+                    <div class="bg-light p-3 rounded">
+                        <h6 class="mb-2">Ticket Availability</h6>
+                        <p class="mb-2">
+                            <strong>Total Capacity:</strong> {{ event.capacity }} tickets
+                        </p>
+                        <p class="mb-0">
+                            <strong>Available:</strong> 
+                            <span class="badge bg-{% if available_seats > 0 %}success{% else %}danger{% endif %} fs-6">
+                                {{ available_seats }} ticket(s)
+                            </span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="mt-4">
-        <a href="{% url 'event-list' %}" class="btn btn-secondary">Back to Events</a>
+    <!-- Description Section (Full Width) -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">About This Event</h5>
+                    <p class="card-text">{{ event.description|safe }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons (Full Width) -->
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex gap-2">
+                {% if user.is_authenticated %}
+                    {% if available_seats > 0 %}
+                        <a href="{% url 'book-event' event.slug %}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-ticket-alt"></i> Reserve Tickets
+                        </a>
+                    {% else %}
+                        <div class="alert alert-warning flex-grow-1 mb-0" role="alert">
+                            This event is fully booked. No tickets available.
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="alert alert-info flex-grow-1 mb-0" role="alert">
+                        Please <a href="{% url 'account_login' %}">log in</a> to reserve tickets.
+                    </div>
+                {% endif %}
+                <a href="{% url 'event-list' %}" class="btn btn-secondary btn-lg">
+                    <i class="fas fa-arrow-left"></i> Back to Events
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

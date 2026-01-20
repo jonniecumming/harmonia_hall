@@ -4,35 +4,52 @@
 
 <!-- bookings.html content starts here -->
 {% if bookings %}
-        <ul>
-            {% for booking in bookings %}
-            <li>
+<div class="container mt-5 mb-5">
+    <h1 class="mb-4">My Bookings</h1>
+    <div class="row">
+        {% for booking in bookings %}
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <!-- Event Image -->
                 {% if booking.event.event_image %}
-                    <img src="{{ booking.event.event_image.url }}" alt="{{ booking.event.title }}" style="max-width: 200px;">
+                    <img src="{{ booking.event.event_image.url }}" class="card-img-top" alt="{{ booking.event.title }}">
                 {% endif %}
-                <h2>{{ booking.event.title }}</h2>
-                <p><strong>Date:</strong> {{ booking.event.date }}</p> 
-                <p><strong>Time:</strong> {{ booking.event.time }}</p>
-                <p><strong>Venue:</strong> {{ booking.event.venue }}</p>
-                <p><strong>Summary:</strong> {{ booking.event.summary }}</p>
-                <p><strong>Price:</strong> £{{ booking.event.price }}</p>
-                <p><strong>Number of Tickets:</strong> {{ booking.number_of_tickets }}</p>
-                <p><strong>Booking Date:</strong> {{ booking.booking_date }}</p>
-                <p><strong>Total Cost:</strong> £{{ booking.get_total_cost }} (payable on entry)</p>
                 
-                <!-- Edit and Delete Buttons -->
-                <a href="{% url 'booking-update' booking.id %}" class="btn btn-warning btn-sm">
-                    Edit
-                </a>
-                <a href="{% url 'booking-delete' booking.id %}" class="btn btn-danger btn-sm">
-                    Delete
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p>No upcoming bookings.</p>
-        {% endif %}
+                <div class="card-body pb-2">
+                    <h5 class="card-title mb-2">{{ booking.event.title }}</h5>
+                    <p class="card-text small mb-0">
+                        <strong>{{ booking.event.date }}</strong> at {{ booking.event.time }}<br>
+                        {{ booking.event.venue }}
+                    </p>
+                </div>
+                
+                <!-- Compact Footer with Tickets, Cost, and Actions -->
+                <div class="card-footer bg-white border-top">
+                    <!-- Tickets and Cost on same line -->
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-primary">{{ booking.number_of_tickets }} ticket(s)</span>
+                        <strong class="text-success">£{{ booking.get_total_cost }}</strong>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="d-flex gap-2">
+                        <a href="{% url 'booking-update' booking.id %}" class="btn btn-sm btn-warning flex-grow-1">Edit</a>
+                        <a href="{% url 'booking-delete' booking.id %}" class="btn btn-sm btn-danger flex-grow-1">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<div class="container mt-5">
+    <div class="alert alert-info">
+        <h4>No upcoming bookings</h4>
+        <p>You haven't made any bookings yet. <a href="{% url 'event-list' %}">Browse events</a> to get started!</p>
+    </div>
+</div>
+{% endif %}
 
 <!-- bookings.html content ends here -->
 {% endblock %}
