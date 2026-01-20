@@ -18,25 +18,16 @@
     <h3 class="mb-4 text-center">Featured Upcoming Events</h3>
     
     <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
-        <!-- Indicators (dots) -->
-        <div class="carousel-indicators">
-            {% for event in carousel_events %}
-            <button type="button" data-bs-target="#eventCarousel" data-bs-slide-to="{{ forloop.counter0 }}" 
-                    {% if forloop.first %}class="active" aria-current="true"{% endif %} 
-                    aria-label="Slide {{ forloop.counter }}"></button>
-            {% endfor %}
-        </div>
-
         <!-- Carousel Items -->
         <div class="carousel-inner">
             {% for event in carousel_events %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <img src="{{ event.event_image.url }}" class="d-block w-100" alt="{{ event.title }}" style="object-fit: cover;">
+                <img src="{{ event.event_image.url }}" class="d-block w-100" alt="{{ event.title }}" style="object-fit: contain; height: 400px; background-color: #f9fafc;">
                 
-                <!-- Text Overlay -->
-                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-3 rounded">
-                    <h5>{{ event.title }}</h5>
-                    <p>
+                <!-- Event Info Below Image -->
+                <div class="p-4 bg-light text-center carousel-info">
+                    <h5 class="card-title">{{ event.title }}</h5>
+                    <p class="card-text mb-3">
                         <strong>Date:</strong> {{ event.date }} | 
                         <strong>Time:</strong> {{ event.time|time:"g:i A" }} | 
                         <strong>Price:</strong> £{{ event.price }}

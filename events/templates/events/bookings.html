@@ -18,7 +18,7 @@
                 <div class="card-body pb-2">
                     <h5 class="card-title mb-2">{{ booking.event.title }}</h5>
                     <p class="card-text small mb-0">
-                        <strong>{{ booking.event.date }}</strong> at {{ booking.event.time }}<br>
+                        <strong>{{ booking.event.date }}</strong> at {{ booking.event.time|time:"g:i A" }}<br>
                         {{ booking.event.venue }}
                     </p>
                 </div>
