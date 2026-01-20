@@ -4,6 +4,7 @@ body {
     background-color: #F9FAFC;
 }
 
+/* Used for navbar in "Harmonia Hall" logo */
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
@@ -19,6 +20,7 @@ body {
     background-color: #fff;
 }
 
+/* Applied to the footer element */
 .dark-bg {
     background-color: #25484E;
 }
