@@ -2,6 +2,7 @@ body {
     background-color: #f9fafc;
 }
 
+/* Keep footer pinned to bottom of window */
 html, body {
     height: 100%;
     display: flex;
@@ -35,6 +36,24 @@ main {
     text-decoration: underline;
 }
 
+/* Add gap between conatiner for forms and footer */
+.container {
+    margin-bottom: 5rem;
+}
+
+/* Center auth forms (login, signup, password reset, etc.) */
+.container form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Center form buttons */
+.container form button,
+.container form .btn {
+    display: inline-block;
+    margin: 0.5rem auto;
+    min-width: 150px;
+}
 
 .light-bg {
     background-color: #fff;
@@ -134,4 +153,5 @@ main {
 .approval {
     color: rgb(222, 146, 168);
 }
+
 /* End of Codestar Blog's CSS */

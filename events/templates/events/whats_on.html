@@ -23,7 +23,7 @@
                     </h5>
                     <p class="card-text">
                         <strong>Date:</strong> {{ event.date }}<br>
-                        <strong>Time:</strong> {{ event.time }}<br>
+                        <strong>Time:</strong> {{ event.time|time:"g:i A" }}<br>
                         <strong>Venue:</strong> {{ event.venue }}<br>
                         <strong>Price:</strong> £{{ event.price }}
                     </p>

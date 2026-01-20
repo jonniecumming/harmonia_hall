@@ -38,7 +38,7 @@
                     <h5>{{ event.title }}</h5>
                     <p>
                         <strong>Date:</strong> {{ event.date }} | 
-                        <strong>Time:</strong> {{ event.time }} | 
+                        <strong>Time:</strong> {{ event.time|time:"g:i A" }} | 
                         <strong>Price:</strong> £{{ event.price }}
                     </p>
                     <a href="{% url 'event-detail' event.slug %}" class="btn btn-primary btn-sm">View Event</a>

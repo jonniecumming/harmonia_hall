@@ -33,7 +33,7 @@
                             <div class="col-6">
                                 <p class="mb-0">
                                     <small class="text-muted"><i class="far fa-clock"></i> Time</small><br>
-                                    <strong>{{ event.time }}</strong>
+                                    <strong>{{ event.time|time:"g:i A" }}</strong>
                                 </p>
                             </div>
                             <!-- Venue -->
