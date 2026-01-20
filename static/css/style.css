@@ -1,13 +1,14 @@
-body {
-    background-color: #f9fafc;
+/* Keep footer pinned to bottom of window */
+html {
+    height: 100%;
 }
 
-/* Keep footer pinned to bottom of window */
-html, body {
-    min-height: 100dvh;
-    height: 100%;
+body {
+    background-color: #f9fafc;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 main {
@@ -188,6 +189,16 @@ main {
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
     opacity: 0.8;
+}
+
+/* Mobile: Move carousel controls up */
+@media (max-width: 767px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        bottom: auto;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 }
 
 /* Footer styling */
