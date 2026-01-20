@@ -205,6 +205,8 @@ main {
 /* Footer styling */
 footer {
     font-family: Lato, sans-serif;
+    margin-top: auto;
+    margin-bottom: 0;
 }
 
 footer i {
