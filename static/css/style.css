@@ -1,4 +1,5 @@
 /* Start of Codestar Blog's CSS */
+
 body {
     background-color: #F9FAFC;
 }
@@ -10,10 +11,6 @@ body {
     color: #4A4A4F;
 }
 
-.red-o {
-    color: #E84610;
-}
-
 .thin {
     font-weight: 300;
 }
@@ -23,7 +20,7 @@ body {
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #25484E;
 }
 
 .main-bg {

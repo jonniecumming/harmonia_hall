@@ -41,6 +41,17 @@ class HomeView(ListView):
             date__gte=today
         ).order_by('date', 'time')
 
+    def get_context_data(self, **kwargs):
+        """Add carousel events to context"""
+        context = super().get_context_data(**kwargs)
+        today = timezone.now().date()
+        # Get only the next 5 events for the carousel
+        context['carousel_events'] = Event.objects.filter(
+            status=1,
+            date__gte=today
+        ).order_by('date', 'time')[:5]
+        return context
+
 
 # list view for events
 class EventListView(ListView):
