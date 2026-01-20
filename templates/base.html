@@ -76,7 +76,11 @@
                     {% endif %}
                 </ul>
                 <span class="navbar-text text-muted">
-                    Welcome to Harmonia Hall
+                    {% if user.is_authenticated %}
+                        Welcome, <strong>{{ user.username }}</strong>
+                    {% else %}
+                        Welcome to Harmonia Hall
+                    {% endif %}
                 </span>
             </div>
         </div>
