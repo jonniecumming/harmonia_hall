@@ -42,6 +42,12 @@ class Event(models.Model):
         booked = query.aggregate(total=Sum('number_of_tickets'))['total'] or 0
         return self.capacity - booked
 
+    def get_total_tickets_sold(self):
+        """Calculate total tickets sold for this event"""
+        total = Booking.objects.filter(event=self).aggregate(total=Sum('number_of_tickets'))['total'] or 0
+        return total
+    get_total_tickets_sold.short_description = "Tickets Sold"
+
 
 # bookings model
 class Booking(models.Model):
