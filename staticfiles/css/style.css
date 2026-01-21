@@ -1,4 +1,7 @@
-/* Keep footer pinned to bottom of window */
+/* ========================================
+   LAYOUT & CORE STYLES
+   ======================================== */
+
 html {
     height: 100%;
 }
@@ -16,39 +19,13 @@ main {
     flex: 1;
 }
 
-/* Used for navbar in "Harmonia Hall" logo */
-.brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #4a4a4f;
-}
 
-/* Applied to the footer element */
-.dark-bg {
-    background-color: #25484e;
-}
+/* ========================================
+   CONTAINER & SPACING
+   ======================================== */
 
-/* Remove underline from event title in card */
-.card-title a {
-    text-decoration: none;
-}
-
-/* underline title on hover */
-.card-title a:hover {
-    text-decoration: underline;
-}
-
-/* Add gap between container for forms and footer */
 .container {
     margin-bottom: 2rem;
-}
-
-/* On larger screens, increase the gap */
-@media (min-width: 768px) {
-    .container {
-        margin-bottom: 5rem;
-    }
 }
 
 /* Center auth forms (login, signup, password reset, etc.) */
@@ -71,60 +48,48 @@ main {
     margin-right: auto !important;
 }
 
-/* Carousel info section positioning */
-.carousel-info {
-    position: relative;
-    z-index: 10;
-}
 
-.light-bg {
-    background-color: #fff;
-}
+/* ========================================
+   TYPOGRAPHY & LINKS
+   ======================================== */
 
-.main-bg {
-    background-color: #f9fafc;
-}
-
-.card {
-    border: none;
-    background-color: transparent;
-}
-
-.image-container {
-    position: relative;
-}
-
-.image-flash {
-    position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #188181;
-}
-
-.scale {
-    width: 100%;
-    height: auto;
-}
-
-.post-link {
+.card-title a {
     text-decoration: none;
+}
+
+.card-title a:hover {
+    text-decoration: underline;
+}
+
+.link {
+    color: #23bbbb;
+    text-decoration: none;
+}
+
+.link:hover,
+.link:active {
     color: #445261;
+    text-decoration: underline;
 }
 
-.post-link:hover,
-.page-link {
-    color: #e84610;
+.text-username {
+    color: #7CAD6B
 }
 
-.post-title {
-    margin-top: 10%;
-    margin-left: 5%;
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.btn-primary {
+    background-color: #38547A;
+    border-color: #38547A;
 }
 
-.post-subtitle {
-    margin-left: 5%;
-    color: lightgray;
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: #25484E;
+    border-color: #25484E;
 }
 
 .btn-signup,
@@ -139,44 +104,25 @@ main {
     color: #23bbbb;
 }
 
-.link {
-    color: #23bbbb;
-    text-decoration: none;
-}
 
-.link:hover,
-.link:active {
-    color: #445261;
-    text-decoration: underline;
-}
+/* ========================================
+   COMPONENTS
+   ======================================== */
 
-.btn-like {
-    color: #e84610;
+.card {
     border: none;
-    background: transparent;
+    background-color: transparent;
 }
 
-.btn-delete {
-    color: #fff;
-    background: #e84610;
+.dark-bg {
+    background-color: #25484e;
 }
 
-.btn-like:hover,
-.btn-like:active {
-    color: #e84610;
-    background: transparent;
-    border: none;
+.carousel-info {
+    position: relative;
+    z-index: 10;
 }
 
-.faded {
-    color: rgb(172, 175, 175);
-}
-
-.approval {
-    color: rgb(222, 146, 168);
-}
-
-/* Carousel controls styling */
 .carousel-control-prev,
 .carousel-control-next {
     opacity: 0.5;
@@ -192,17 +138,15 @@ main {
     opacity: 0.8;
 }
 
-/* Mobile: Move carousel controls up */
-@media (max-width: 767px) {
-    .carousel-control-prev,
-    .carousel-control-next {
-        bottom: auto;
-        top: 50%;
-        transform: translateY(-50%);
-    }
+.jumbotron {
+    padding: 1.5rem !important;
 }
 
-/* Footer styling */
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
 footer {
     font-family: Lato, sans-serif;
     margin-top: auto;
@@ -213,9 +157,30 @@ footer i {
     margin-left: 1rem;
 }
 
-/* Responsive social icons */
 .social-icon {
     font-size: 1.5rem;
+}
+
+
+/* ========================================
+   RESPONSIVE MEDIA QUERIES
+   ======================================== */
+
+/* Container spacing on larger screens */
+@media (min-width: 768px) {
+    .container {
+        margin-bottom: 5rem;
+    }
+}
+
+/* Mobile: Move carousel controls up */
+@media (max-width: 767px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        bottom: auto;
+        top: 35%;
+        transform: translateY(-50%);
+    }
 }
 
 /* Larger icons on small to medium devices */
@@ -224,4 +189,3 @@ footer i {
         font-size: 2rem;
     }
 }
-

@@ -275,12 +275,11 @@ Acceptance criteria:
 ## Features
 - Home page (with screenshot): what does it offer to a user?
 - About page (with screenshot): what does it offer to a user?
-- contact...
-- bookings...
-- Navigation bar (with screenshot): what does it offer to a user?
-- Footer...
-- Sign in...
+- bookings... (with screenshot): what does it offer to a user?
+- Sign in... etc.
 - Sign out...
+- Navigation bar
+- Footer...
 - Admin...
 
 <!-- Overview of bugs and solutions -->
@@ -295,7 +294,20 @@ Acceptance criteria:
 ## Testing
 ### Manual Testing
 - Description of manual testing done, e.g., functionality, links, forms, etc.
+## Manual Testing
+
+| Test | Expected Result | Pass/Fail |
+|--- |--- |--- |
+| Home Page | Page loads with carousel | Pass |
+| Login Form | User logged in | Pass |
+| Carousel | Next event displays | Pass |
+| Responsive | Layout adjusts | Pass |
+| Home page link (nav bar) | Link works | Pass |
+| Home page link (title) | Link works | Pass |
+| About page link | Link works | Pass |
+| Log in link | Link works | Pass |
 ### Lighthouse Testing
+
 - Description of Lighthouse testing done, e.g., performance, accessibility, best practices, SEO.
 ### Responsive Testing
 - Description of responsive testing done, e.g., different devices, screen sizes, etc.

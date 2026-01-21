@@ -15,7 +15,7 @@
 <!-- Bootstrap Carousel for Featured Events -->
 {% if carousel_events %}
 <div class="container mt-5 mb-5">
-    <h3 class="mb-4 text-center">Featured Upcoming Events</h3>
+    <h2 class="mb-4 text-center">Featured Upcoming Events</h2>
     
     <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
         <!-- Carousel Items -->
@@ -26,7 +26,7 @@
                 
                 <!-- Event Info Below Image -->
                 <div class="p-4 bg-light text-center carousel-info">
-                    <h5 class="card-title">{{ event.title }}</h5>
+                    <h3 class="card-title">{{ event.title }}</h3>
                     <p class="card-text mb-3">
                         <strong>Date:</strong> {{ event.date }} | 
                         <strong>Time:</strong> {{ event.time|time:"g:i A" }} | 

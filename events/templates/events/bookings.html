@@ -16,7 +16,7 @@
                 {% endif %}
                 
                 <div class="card-body pb-2">
-                    <h5 class="card-title mb-2">{{ booking.event.title }}</h5>
+                    <h2 class="card-title mb-2">{{ booking.event.title }}</h2>
                     <p class="card-text small mb-0">
                         <strong>{{ booking.event.date }}</strong> at {{ booking.event.time|time:"g:i A" }}<br>
                         {{ booking.event.venue }}
@@ -45,7 +45,7 @@
 {% else %}
 <div class="container mt-5">
     <div class="alert alert-info">
-        <h4>No upcoming bookings</h4>
+        <h2>No upcoming bookings</h2>
         <p>You haven't made any bookings yet. <a href="{% url 'event-list' %}">Browse events</a> to get started!</p>
     </div>
 </div>
