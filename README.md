@@ -134,7 +134,6 @@ The database structure for this project is based around three main models: Event
 <details id="must-haves">
 <summary><strong>Must Have's</strong></summary>
 
-### Must Have:
 #### User Story: User Registration
 As a **site visitor**, I am able to **create an account**, so that I can **book tickets for events**.
 Acceptance criteria:
@@ -206,7 +205,6 @@ Acceptance criteria:
 <details id="should-haves">
 <summary><strong>Should Have's</strong></summary>
 
-### Should Have:
 #### User Story: Profile Management
 As a **site user**, I can **view my profile information** so that **I can confirm my details are correct**.
 Acceptance criteria:
@@ -230,40 +228,41 @@ Acceptance criteria:
 As a **site visitor**, I want to **be able find out information about the venue and site** so that **I can be confident in booking a ticket for an event held here**.
 Acceptance criteria:
 - A user is able to find out suitable information and pictures of the venue that match what would be expected.
-
+#### User Story: View Event Bookings
+As a **site admin**, I can **view all bookings for a concert** so that **I can monitor attendance and capacity**.
+Acceptance criteria:
+- The site allows admins to view bookings for an event, including the total number of bookings per event.
 </details>
 
 <details id="could-haves">
 <summary><strong>Could Have's</strong></summary>
 
-### Could Have:
 #### User Story: Contact Us
 As a **site visitor**, I can **find relevant contact information, including a contact form** so that **I can get in touch about more specific queries relating to the events**.
 Acceptance criteria:
 - A user can easily navigate to a contact page.
 - The contact page includes relevant contact information.
 - The contact page has a contact form that can be filled out by the site visitor.
-#### User Story: View Event Bookings
-As a **site admin**, I can **view all bookings for a concert** so that **I can monitor attendance and capacity**.
-Acceptance criteria:
-- The site allows admins to view bookings for an event, including the total number of bookings per event.
-
-</details>
-
-<details id="wont-haves">
-<summary><strong>Won't Have's</strong></summary>
-
-### Won't Have:
 #### User Story: Search for Events
 As a **site user**, I can **search for events with keywords** so that **I can find the events I am looking for**.
 Acceptance criteria:
 - A user is able to easily navigate to a search bar.
 - Entering keywords into the search will bring up corresponding/relevant events.
+</details>
+
+<details id="wont-haves">
+<summary><strong>Won't Have's</strong></summary>
+
+There were no "won't have" user stories for this project.
 
 </details>
 
 ### Project Board
-... The project board for this project can be found here: [link to project board]
+![GitHub Project board](/images/project-board.png)
+*Screenshot of the project board on GitHub*
+
+The project board for this project can be found here: https://github.com/users/jonniecumming/projects/12/views/1
+
 
 ### Outcomes
 - Must Haves: All completed successfully.
@@ -312,6 +311,13 @@ Acceptance criteria:
 ### Responsive Testing
 - Description of responsive testing done, e.g., different devices, screen sizes, etc.
 ### Validator Testing
+#### W3C HTML Validation
+![W3C HTML Validation](/images/w3c-html-validation.png)
+*Screenshot of passing W3C HTML validation*
+
+#### W3C CSS Validation
+![W3C CSS Validation](/images/w3c-css-validation.png)
+*Screenshot of passing W3C CSS validation*
 - Description of validator testing done, e.g., W3C HTML, CSS, Python PEP8, JS (-JS hint? ).
 
 <!-- Overview of AI use within project -->
@@ -342,6 +348,10 @@ The site was deployed to Heroku from the main branch of my GitHub repository. Be
 5. I added the necessary config vars, such as my `SECRET_KEY`, `DATABASE_URL`, `CLOUDINARY_URL`, as these environment variables are required for the app to run correctly.
 6. Next, I went back to the "Deploy" tab, selected the main branch, and deployed the app by clicking on "Deploy Branch".
 7. Once the deployment was complete, I navigated to the "Overview" tab and clicked on "Open App" to view my live site.
+![Heroku Application Information](/images/heroku-app-info.png)
+*Screenshot of Heroku application information page*
+![Heroku Deployment](/images/heroku-deployment.png)
+*Screenshot of successful Heroku deployment page*
 
 Here is the link to the deployed site: [Harmonia Hall on Heroku](https://harmonia-hall-b317b69502c7.herokuapp.com/)
 
