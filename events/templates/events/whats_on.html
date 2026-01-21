@@ -18,9 +18,9 @@
                 </div>
                 <img src="{{ event.event_image.url }}" class="card-img-top" alt="{{ event.title }}">
                 <div class="card-body">
-                    <h5 class="card-title">
+                    <h2 class="card-title">
                         <a href="{% url 'event-detail' event.slug %}">{{ event.title }}</a>
-                    </h5>
+                    </h2>
                     <p class="card-text">
                         <strong>Date:</strong> {{ event.date }}<br>
                         <strong>Time:</strong> {{ event.time|time:"g:i A" }}<br>

@@ -14,7 +14,7 @@
         <div class="col-12 col-lg-6 mb-4">
             <div class="card h-100">
                 <div class="card-body">
-                    <h5 class="card-title mb-4">Event Summary</h5>
+                    <h2 class="card-title mb-4">Event Summary</h2>
                     
                     {% if event %}
                         <div class="row g-3">
@@ -50,7 +50,7 @@
 
                         <!-- Available Tickets -->
                         <div class="bg-light p-3 rounded mt-4">
-                            <h6 class="mb-2">Availability</h6>
+                            <h3 class="mb-2">Availability</h3>
                             <p class="mb-0">
                                 <strong>Available Tickets:</strong> 
                                 <span class="badge bg-success fs-6">{{ available_seats }}</span>
@@ -90,7 +90,7 @@
 
                         <!-- Available Tickets -->
                         <div class="bg-light p-3 rounded mt-4">
-                            <h6 class="mb-2">Availability</h6>
+                            <h3 class="mb-2">Availability</h3>
                             <p class="mb-0">
                                 <strong>Available Tickets:</strong> 
                                 <span class="badge bg-success fs-6">{{ available_seats }}</span>
@@ -106,9 +106,9 @@
             <div class="card">
                 <div class="card-body">
                     {% if event %}
-                        <h5 class="card-title mb-4">Reserve Your Tickets</h5>
+                        <h2 class="card-title mb-4">Reserve Your Tickets</h2>
                     {% else %}
-                        <h5 class="card-title mb-4">Update Your Booking</h5>
+                        <h2 class="card-title mb-4">Update Your Booking</h2>
                     {% endif %}
 
                     <!-- Non-field errors -->
