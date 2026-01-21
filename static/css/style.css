@@ -213,3 +213,15 @@ footer i {
     margin-left: 1rem;
 }
 
+/* Responsive social icons */
+.social-icon {
+    font-size: 1.5rem;
+}
+
+/* Larger icons on small to medium devices */
+@media (max-width: 768px) {
+    .social-icon {
+        font-size: 2rem;
+    }
+}
+

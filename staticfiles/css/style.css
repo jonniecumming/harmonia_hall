@@ -1,33 +1,88 @@
-/* Start of Codestar Blog's CSS */
-body {
-    background-color: #F9FAFC;
+/* Keep footer pinned to bottom of window */
+html {
+    height: 100%;
 }
 
+body {
+    background-color: #f9fafc;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    flex: 1;
+}
+
+/* Used for navbar in "Harmonia Hall" logo */
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #4A4A4F;
+    color: #4a4a4f;
 }
 
-.red-o {
-    color: #E84610;
+/* Applied to the footer element */
+.dark-bg {
+    background-color: #25484e;
 }
 
-.thin {
-    font-weight: 300;
+/* Remove underline from event title in card */
+.card-title a {
+    text-decoration: none;
+}
+
+/* underline title on hover */
+.card-title a:hover {
+    text-decoration: underline;
+}
+
+/* Add gap between container for forms and footer */
+.container {
+    margin-bottom: 2rem;
+}
+
+/* On larger screens, increase the gap */
+@media (min-width: 768px) {
+    .container {
+        margin-bottom: 5rem;
+    }
+}
+
+/* Center auth forms (login, signup, password reset, etc.) */
+.container form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Center form buttons */
+.container form button,
+.container form .btn {
+    display: inline-block;
+    margin: 0.5rem auto;
+    min-width: 150px;
+}
+
+/* Center Bootstrap grid columns for auth forms */
+.container .col-md-8 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Carousel info section positioning */
+.carousel-info {
+    position: relative;
+    z-index: 10;
 }
 
 .light-bg {
     background-color: #fff;
 }
 
-.dark-bg {
-    background-color: #445261;
-}
-
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: #f9fafc;
 }
 
 .card {
@@ -52,46 +107,6 @@ body {
     height: auto;
 }
 
-.author {
-    color: white;
-    margin: 4px;
-    text-transform: uppercase;
-}
-
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
-}
-
-.masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
-}
-
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-}
-
 .post-link {
     text-decoration: none;
     color: #445261;
@@ -99,7 +114,7 @@ body {
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: #e84610;
 }
 
 .post-title {
@@ -121,11 +136,11 @@ body {
 .btn-signup:hover,
 .btn-signup:active {
     background-color: #fff;
-    color: #23BBBB;
+    color: #23bbbb;
 }
 
 .link {
-    color: #23BBBB;
+    color: #23bbbb;
     text-decoration: none;
 }
 
@@ -136,19 +151,19 @@ body {
 }
 
 .btn-like {
-    color: #E84610;
+    color: #e84610;
     border: none;
     background: transparent;
 }
 
 .btn-delete {
     color: #fff;
-    background: #E84610;
+    background: #e84610;
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
+    color: #e84610;
     background: transparent;
     border: none;
 }
@@ -160,4 +175,53 @@ body {
 .approval {
     color: rgb(222, 146, 168);
 }
-/* End of Codestar Blog's CSS */
+
+/* Carousel controls styling */
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 0.5;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: brightness(0.5);
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 0.8;
+}
+
+/* Mobile: Move carousel controls up */
+@media (max-width: 767px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        bottom: auto;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+/* Footer styling */
+footer {
+    font-family: Lato, sans-serif;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+footer i {
+    margin-left: 1rem;
+}
+
+/* Responsive social icons */
+.social-icon {
+    font-size: 1.5rem;
+}
+
+/* Larger icons on small to medium devices */
+@media (max-width: 768px) {
+    .social-icon {
+        font-size: 2rem;
+    }
+}
+
