@@ -301,11 +301,11 @@ Acceptance criteria:
 | Home Page | Page loads with carousel | Pass |
 | Login Form | User logged in | Pass |
 | Carousel | Next event displays | Pass |
-| Responsive | Layout adjusts | Pass |
-| Home page link (nav bar) | Link works | Pass |
-| Home page link (title) | Link works | Pass |
-| About page link | Link works | Pass |
-| Log in link | Link works | Pass |
+| Responsivity | Layout adjusts | Pass |
+| Home page link (nav bar) | success | success |
+| Home page link (title) | success | success |
+| About page link | success | success |
+| Log in link | success | success |
 ### Lighthouse Testing
 
 - Description of Lighthouse testing done, e.g., performance, accessibility, best practices, SEO.
