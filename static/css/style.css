@@ -72,6 +72,9 @@ main {
     text-decoration: underline;
 }
 
+.text-username {
+    color: #7CAD6B
+}
 
 /* ========================================
    BUTTONS
