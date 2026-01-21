@@ -84,7 +84,7 @@
                 </ul>
                 <span class="navbar-text text-muted">
                     {% if user.is_authenticated %}
-                        Welcome, <strong class="text-primary">{{ user.username }}</strong>
+                        Welcome, <strong class="text-username">{{ user.username }}</strong>
                     {% else %}
                         Welcome to Harmonia Hall
                     {% endif %}
@@ -107,9 +107,11 @@
     
     <!-- Main content -->
     <main>
+        <div style="min-height: calc(100vh - 150px);">
         {% block content %}
         <!-- Main Content Goes here -->
         {% endblock content %}
+        </div>
     </main>
      <!-- Footer -->
     <footer class="footer py-3 dark-bg mt-auto">

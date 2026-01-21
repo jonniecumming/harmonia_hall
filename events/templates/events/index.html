@@ -22,7 +22,7 @@
         <div class="carousel-inner">
             {% for event in carousel_events %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <img src="{{ event.event_image.url }}" class="d-block w-100" alt="{{ event.title }}" style="object-fit: contain; height: 400px; background-color: #f9fafc;">
+                <img src="{{ event.event_image.url }}" class="d-block w-100" alt="{{ event.title }}" style="object-fit: contain; background-color: #f9fafc;">
                 
                 <!-- Event Info Below Image -->
                 <div class="p-4 bg-light text-center carousel-info">
