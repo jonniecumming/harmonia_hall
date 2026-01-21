@@ -275,12 +275,11 @@ Acceptance criteria:
 ## Features
 - Home page (with screenshot): what does it offer to a user?
 - About page (with screenshot): what does it offer to a user?
-- contact...
-- bookings...
-- Navigation bar (with screenshot): what does it offer to a user?
-- Footer...
-- Sign in...
+- bookings... (with screenshot): what does it offer to a user?
+- Sign in... etc.
 - Sign out...
+- Navigation bar
+- Footer...
 - Admin...
 
 <!-- Overview of bugs and solutions -->
@@ -296,6 +295,7 @@ Acceptance criteria:
 ### Manual Testing
 - Description of manual testing done, e.g., functionality, links, forms, etc.
 ### Lighthouse Testing
+
 - Description of Lighthouse testing done, e.g., performance, accessibility, best practices, SEO.
 ### Responsive Testing
 - Description of responsive testing done, e.g., different devices, screen sizes, etc.
