@@ -6,8 +6,6 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
-# Create your models here.
-
 
 # events model
 class Event(models.Model):
@@ -61,5 +59,3 @@ class Booking(models.Model):
     def get_total_cost(self):
         """Calculate total booking cost (price * number of tickets)"""
         return self.event.price * self.number_of_tickets
-
-# users model
