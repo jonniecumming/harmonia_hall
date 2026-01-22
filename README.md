@@ -326,25 +326,37 @@ The project board for this project can be found here: https://github.com/users/j
 ![event detail page](/images/event-detail.png)
 - Event detail page (with screenshot): what does it offer to a user?
 ### Sign In
-![sign in page](/images/signin.png)
+![sign in page](/images/sign-in.png)
 - Sign in... etc.
 ### Sign Out
-![sign out page](/images/signout.png)
+![sign out page](/images/sign-out.png)
 - Sign out...
-### Bookings Page
-![bookings page](/images/bookings.png)
+### Booking Form Page
+![booking form page](/images/booking-form.png)
+- Booking form page (with screenshot): what does it offer to a user?
+### View Bookings Page
+![View bookings page](/images/view-bookings.png)
 - bookings... (with screenshot): what does it offer to a user?
+### Edit Booking Page
+![edit booking page](/images/edit-booking.png)
+- Edit booking page (with screenshot): what does it offer to a user?
 ### Navigation Bar
 ![navigation bar](/images/navbar.png)
 - Navigation bar
+### Title Image
+![title image](/images/title-image.png)
+- Title image...
 ### Footer
 ![footer](/images/footer.png)
 - Footer...
 ### Django Admin Login
-![Django admin login](/images/admin-login.png)
+![Django admin login](/images/django-admin-login.png)
+- Admin...
+### Django Admin
+![Django admin](/images/django-admin.png)
 - Admin...
 ### Django Admin Event Management
-![Django admin event management](/images/admin-events.png)
+![Django admin event management](/images/django-admin-events.png)
 - Event management...
 
 
@@ -389,6 +401,8 @@ Finally, I decided not to prioritise the contact page, as I felt that the About 
 The lighthouse testing was completed for each page, passing all categories. The Best Practices had a lower score due to the use of 3rd party cookies from Cloudinary for image hosting. From my research, this is a common issue when using 3rd party image hosting services, as they often use cookies for tracking and analytics purposes. As this is outside of my control as the developer, I have accepted this lower score in this category.
 ![Lighthouse Report](/images/lighthouse-report.png)
 *Screenshot of Lighthouse report showing scores for performance, accessibility, best practices, and SEO*
+![Cloudinary Cookies](/images/cloudinary-cookies.png)
+*Screenshot showing 3rd party cookies issues due to Cloudinary in Lighthouse report*
 
 ### Responsive Testing
 I tested the responsiveness of the site constantly throughout the development process, using both browser developer tools and real devices such as my iPhone and iPad. I ensured that the layout and functionality of the site adapted correctly to different screen sizes and orientations. When there were issued, I made sure to address them promptly, using media queries and bootstrap to ensure a consistent user experience across all devices.
@@ -404,8 +418,11 @@ The HTML code for the site was validated using the W3C Markup Validation Service
 ![W3C CSS Validation](/images/w3c-css-validation.png)
 *Screenshot of passing W3C CSS validation*
 The CSS code for the site was validated using the W3C CSS Validation Service. No errors were found during this validation process.
-#### Python PEP8 Validation
-On validating my Python code using PEP8 standards, I realised that I had issues with my line lengths exceeding the recommended 79 characters. This was due to my linter being set to a different line length limit. I addressed this by adjusting my linter settings to match PEP8 standards, then subsequently, refactoring my code to ensure compliance with the 79 character limit. This involved breaking up longer lines of code into multiple lines, and ensuring that my code was properly indented and formatted. As this was noticed at a later stage, I was not able to address all instances of this issue, but I made sure to correct as many as possible to improve the overall quality and readability of my code. This is something I will be more mindful of in future projects, ensuring that I adhere to coding standards from the outset, although I am also aware that many teams and projects have their own specific coding standards that may differ from this specific guideline.
+#### CI Linter PEP8 Validation
+![CI Linter PEP8 Validation](/images/ci-linter-validation.png)
+*Screenshot of passing CI Linter PEP8 validation*
+
+On validating my Python code using PEP8 standards, I realised that I had issues with my line lengths exceeding the recommended 79 characters. This was due to my linter being set to a different line length limit. I addressed this by adjusting my linter settings to match PEP8 standards, then subsequently, refactoring my code to ensure compliance with the 79 character limit. This involved breaking up longer lines of code into multiple lines, and ensuring that my code was properly indented and formatted.
 
 I did not use any custom JavaScript in this project, so I felt there was no need to validate any JS code.
 
