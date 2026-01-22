@@ -12,9 +12,9 @@
             <div class="card h-100">
                 <!-- Event Image -->
                 {% if booking.event.event_image %}
-                    <img src="{{ booking.event.event_image.url }}" class="card-img-top" alt="{{ booking.event.title }}">
+                <img src="{{ booking.event.event_image.url }}" class="card-img-top" alt="{{ booking.event.title }}">
                 {% endif %}
-                
+
                 <div class="card-body pb-2">
                     <h2 class="card-title mb-2">{{ booking.event.title }}</h2>
                     <p class="card-text small mb-0">
@@ -22,7 +22,7 @@
                         {{ booking.event.venue }}
                     </p>
                 </div>
-                
+
                 <!-- Compact Footer with Tickets, Cost, and Actions -->
                 <div class="card-footer bg-white border-top">
                     <!-- Tickets and Cost on same line -->
@@ -30,11 +30,13 @@
                         <span class="badge bg-primary">{{ booking.number_of_tickets }} ticket(s)</span>
                         <strong class="text-success">£{{ booking.get_total_cost }}</strong>
                     </div>
-                    
+
                     <!-- Action Buttons -->
                     <div class="d-flex gap-2">
-                        <a href="{% url 'booking-update' booking.id %}" class="btn btn-sm btn-warning flex-grow-1">Edit</a>
-                        <a href="{% url 'booking-delete' booking.id %}" class="btn btn-sm btn-danger flex-grow-1">Delete</a>
+                        <a href="{% url 'booking-update' booking.id %}"
+                            class="btn btn-sm btn-warning flex-grow-1">Edit</a>
+                        <a href="{% url 'booking-delete' booking.id %}"
+                            class="btn btn-sm btn-danger flex-grow-1">Delete</a>
                     </div>
                 </div>
             </div>

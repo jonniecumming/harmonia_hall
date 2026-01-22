@@ -4,16 +4,17 @@
 {% block content %}
 <div class="container mt-5 mb-5">
     <h1 class="mb-4">{{ event.title }}</h1>
-    
+
     <!-- Image and Details Row -->
     <div class="row mb-4">
         <!-- Event Image (Left) -->
         <div class="col-12 col-lg-6">
             {% if event.event_image %}
-                <img src="{{ event.event_image.url }}" class="img-fluid rounded" alt="{{ event.title }}" style="width: 100%; height: auto; max-height: 500px; object-fit: cover;">
+            <img src="{{ event.event_image.url }}" class="img-fluid rounded" alt="{{ event.title }}"
+                style="width: 100%; height: auto; max-height: 500px; object-fit: cover;">
             {% endif %}
         </div>
-        
+
         <!-- Event Details (Right) -->
         <div class="col-12 col-lg-6">
             <div class="card">
@@ -60,7 +61,7 @@
                             <strong>Total Capacity:</strong> {{ event.capacity }} tickets
                         </p>
                         <p class="mb-0">
-                            <strong>Available:</strong> 
+                            <strong>Available:</strong>
                             <span class="badge bg-{% if available_seats > 0 %}success{% else %}danger{% endif %} fs-6">
                                 {{ available_seats }} ticket(s)
                             </span>
@@ -88,19 +89,19 @@
         <div class="col-12">
             <div class="d-flex gap-2">
                 {% if user.is_authenticated %}
-                    {% if available_seats > 0 %}
-                        <a href="{% url 'book-event' event.slug %}" class="btn btn-primary btn-lg">
-                            <i class="fas fa-ticket-alt"></i> Reserve Tickets
-                        </a>
-                    {% else %}
-                        <div class="alert alert-warning flex-grow-1 mb-0" role="alert">
-                            This event is fully booked. No tickets available.
-                        </div>
-                    {% endif %}
+                {% if available_seats > 0 %}
+                <a href="{% url 'book-event' event.slug %}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-ticket-alt"></i> Reserve Tickets
+                </a>
                 {% else %}
-                    <div class="alert alert-info flex-grow-1 mb-0" role="alert">
-                        Please <a href="{% url 'account_login' %}">log in</a> to reserve tickets.
-                    </div>
+                <div class="alert alert-warning flex-grow-1 mb-0" role="alert">
+                    This event is fully booked. No tickets available.
+                </div>
+                {% endif %}
+                {% else %}
+                <div class="alert alert-info flex-grow-1 mb-0" role="alert">
+                    Please <a href="{% url 'account_login' %}">log in</a> to reserve tickets.
+                </div>
                 {% endif %}
                 <a href="{% url 'event-list' %}" class="btn btn-secondary btn-lg">
                     <i class="fas fa-arrow-left"></i> Back to Events

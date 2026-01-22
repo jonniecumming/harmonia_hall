@@ -19,10 +19,10 @@ class Event(models.Model):
     capacity = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     status = models.IntegerField(choices=STATUS, default=0)
-    event_image = CloudinaryField('image', default='static/images/placeholder.jpg')
+    event_image = CloudinaryField("image", default="static/images/placeholder.jpg")
 
     class Meta:
-        ordering = ['date', 'time']
+        ordering = ["date", "time"]
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -31,7 +31,7 @@ class Event(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.title} - {self.date} at {self.time}'
+        return f"{self.title} - {self.date} at {self.time}"
 
     def get_available_seats(self, exclude_booking=None):
         """Calculate available seats for this event"""
@@ -39,28 +39,34 @@ class Event(models.Model):
         if exclude_booking:
             query = query.exclude(id=exclude_booking.id)
 
-        booked = query.aggregate(total=Sum('number_of_tickets'))['total'] or 0
+        booked = query.aggregate(total=Sum("number_of_tickets"))["total"] or 0
         return self.capacity - booked
 
     def get_total_tickets_sold(self):
         """Calculate total tickets sold for this event"""
-        total = Booking.objects.filter(event=self).aggregate(total=Sum('number_of_tickets'))['total'] or 0
+        total = (
+            Booking.objects.filter(event=self).aggregate(
+                total=Sum("number_of_tickets")
+            )["total"]
+            or 0
+        )
         return total
+
     get_total_tickets_sold.short_description = "Tickets Sold"
 
 
 # bookings model
 class Booking(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='bookings')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookings')
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="bookings")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookings")
     number_of_tickets = models.PositiveIntegerField()
     booking_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('user', 'event')
+        unique_together = ("user", "event")
 
     def __str__(self):
-        return f'Booking by {self.user.username} for {self.event.title} - {self.number_of_tickets} tickets'
+        return f"Booking by {self.user.username} for {self.event.title} - {self.number_of_tickets} tickets"
 
     def get_total_cost(self):
         """Calculate total booking cost (price * number of tickets)"""

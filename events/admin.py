@@ -8,7 +8,16 @@ from django_summernote.admin import SummernoteModelAdmin
 # Customize Event admin
 class EventAdmin(SummernoteModelAdmin):
 
-    list_display = ("title", "date", "time", "venue", "capacity", "get_total_tickets_sold", "price", "status")
+    list_display = (
+        "title",
+        "date",
+        "time",
+        "venue",
+        "capacity",
+        "get_total_tickets_sold",
+        "price",
+        "status",
+    )
     list_filter = ("status", "date", "venue")
     search_fields = ("title", "venue", "description")
     prepopulated_fields = {"slug": ("title",)}
@@ -16,7 +25,8 @@ class EventAdmin(SummernoteModelAdmin):
     readonly_fields = ("get_total_tickets_sold",)
 
     fieldsets = (
-        ("Event Details", {"fields": ("title", "slug", "venue", "date", "time")}),
+        ("Event Details", {
+            "fields": ("title", "slug", "venue", "date", "time")}),
         ("Pricing & Capacity", {"fields": ("price", "capacity")}),
         ("Content", {"fields": ("summary", "description", "event_image")}),
         ("Settings", {"fields": ("status",)}),
