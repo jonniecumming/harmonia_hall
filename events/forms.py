@@ -3,12 +3,14 @@ from .models import Booking
 
 
 class BookingForm(forms.ModelForm):
+    """Form for creating and updating event bookings."""
+
     class Meta:
         model = Booking
         fields = ["number_of_tickets"]
 
     def clean_number_of_tickets(self):
-        """Validate that number of tickets is positive"""
+        """Validate tickets: non-empty, positive, and within limit (max 10)."""
         number_of_tickets = self.cleaned_data.get("number_of_tickets")
 
         if number_of_tickets is None:

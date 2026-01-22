@@ -17,12 +17,28 @@ from .forms import BookingForm
 
 # Mixin for booking capacity validation
 class BookingValidationMixin:
-    """Mixin to validate booking capacity"""
+    """
+    Mixin providing ticket capacity validation.
+
+    Validates that requested tickets don't exceed availability and adds
+    form errors if booking violates capacity constraints.
+    """
 
     def validate_booking_capacity(
         self, form, event, exclude_booking=None
     ):
-        """Check if enough tickets are available"""
+        """
+        Validate sufficient tickets are available for booking.
+
+        Args:
+            form: BookingForm instance with cleaned data
+            event: Event being booked
+            exclude_booking: Booking to exclude from
+            capacity check (for updates)
+
+        Returns:
+            bool: True if capacity valid, False with form errors if not
+        """
         tickets_requested = form.cleaned_data["number_of_tickets"]
         available = event.get_available_seats(
             exclude_booking=exclude_booking
@@ -32,8 +48,7 @@ class BookingValidationMixin:
             if available == 0:
                 form.add_error(
                     "number_of_tickets",
-                    "This event is fully booked. "
-                    "No tickets are available.",
+                    "This event is fully booked. " "No tickets are available.",
                 )
             else:
                 form.add_error(
@@ -48,23 +63,24 @@ class BookingValidationMixin:
 
 # home view
 class HomeView(ListView):
+    """Display upcoming events on homepage with carousel."""
+
     model = Event
     template_name = "events/index.html"
     context_object_name = "events"
     paginate_by = 6
 
     def get_queryset(self):
-        """Only show published events from today onwards"""
+        """Return published events from today onwards, ordered by date."""
         today = timezone.now().date()
         return Event.objects.filter(
             status=1, date__gte=today
         ).order_by("date", "time")
 
     def get_context_data(self, **kwargs):
-        """Add carousel events to context"""
+        """Add next 5 upcoming events for carousel to context."""
         context = super().get_context_data(**kwargs)
         today = timezone.now().date()
-        # Get only the next 5 events for the carousel
         context["carousel_events"] = Event.objects.filter(
             status=1, date__gte=today
         ).order_by("date", "time")[:5]
@@ -73,13 +89,15 @@ class HomeView(ListView):
 
 # list view for events
 class EventListView(ListView):
+    """Display all upcoming events in paginated list."""
+
     model = Event
     template_name = "events/whats_on.html"
     context_object_name = "events"
     paginate_by = 6
 
     def get_queryset(self):
-        """Only show published events from today onwards"""
+        """Return published events from today onwards, ordered by date."""
         today = timezone.now().date()
         return Event.objects.filter(
             status=1, date__gte=today
@@ -88,6 +106,8 @@ class EventListView(ListView):
 
 # event detail view
 class EventDetailView(DetailView):
+    """Display full event details and booking form."""
+
     model = Event
     template_name = "events/event_detail.html"
     context_object_name = "event"
@@ -95,10 +115,11 @@ class EventDetailView(DetailView):
     slug_url_kwarg = "slug"
 
     def get_queryset(self):
-        """Only allow viewing published events"""
+        """Return only published events."""
         return Event.objects.filter(status=1)
 
     def get_context_data(self, **kwargs):
+        """Add available seats and blank booking form to context."""
         context = super().get_context_data(**kwargs)
         event = self.get_object()
         context["available_seats"] = event.get_available_seats()
@@ -113,12 +134,19 @@ class BookingCreateView(
     SuccessMessageMixin,
     CreateView,
 ):
+    """Create a new booking for an event.
+
+    Validates user authentication, ticket availability, and
+    prevents duplicate bookings.
+    """
+
     model = Booking
     form_class = BookingForm
     template_name = "events/booking_form.html"
     success_url = reverse_lazy("bookings")
 
     def get_success_message(self, cleaned_data):
+        """Return confirmation message with booking details and total cost."""
         booking = self.object
         total = booking.get_total_cost()
         return (
@@ -129,11 +157,11 @@ class BookingCreateView(
         )
 
     def get_object(self):
-        """Get the event from the URL slug"""
+        """Retrieve the event by slug from URL parameters."""
         return Event.objects.get(slug=self.kwargs["slug"])
 
     def get_context_data(self, **kwargs):
-        """Add event and available seats to context"""
+        """Add event and available seats to context."""
         context = super().get_context_data(**kwargs)
         event = self.get_object()
         context["event"] = event
@@ -141,10 +169,10 @@ class BookingCreateView(
         return context
 
     def form_valid(self, form):
-        """Check capacity and prevent duplicate bookings"""
+        """Validate booking, prevent duplicates, and assign user and event."""
         event = self.get_object()
 
-        # Check if user already has a booking for this event
+        # Prevent duplicate bookings - users can only update existing ones
         existing_booking = Booking.objects.filter(
             user=self.request.user, event=event
         ).exists()
@@ -166,7 +194,6 @@ class BookingCreateView(
         booking.event = event
         booking.save()
 
-        # Store booking in self.object so get_success_message can access it
         self.object = booking
 
         return super().form_valid(form)
@@ -174,12 +201,14 @@ class BookingCreateView(
 
 # bookings view
 class BookingsView(LoginRequiredMixin, ListView):
+    """Display user's bookings and allow editing/deletion."""
+
     model = Booking
     template_name = "events/bookings.html"
     context_object_name = "bookings"
 
     def get_queryset(self):
-        """Return bookings for the logged-in user"""
+        """Return bookings for the logged-in user only."""
         return Booking.objects.filter(user=self.request.user)
 
 
@@ -190,17 +219,22 @@ class BookingUpdateView(
     SuccessMessageMixin,
     UpdateView,
 ):
+    """Update an existing booking's ticket quantity.
+
+    Validates availability excluding current booking to allow reducing tickets.
+    """
+
     model = Booking
     form_class = BookingForm
     template_name = "events/booking_form.html"
     success_url = reverse_lazy("bookings")
 
     def get_queryset(self):
-        """Only allow users to edit their own bookings"""
+        """Return only the current user's bookings."""
         return Booking.objects.filter(user=self.request.user)
 
     def get_context_data(self, **kwargs):
-        """Add available seats to context"""
+        """Add available seats (excluding current booking) to context."""
         context = super().get_context_data(**kwargs)
         booking = self.get_object()
         event = booking.event
@@ -210,22 +244,21 @@ class BookingUpdateView(
         return context
 
     def form_valid(self, form):
-        """Validate capacity and store booking for message"""
+        """Validate capacity and save updated booking quantity."""
         booking = self.get_object()
         event = booking.event
 
-        # Validate capacity (exclude current booking)
+        # Exclude current booking from availability check to allow reductions
         if not self.validate_booking_capacity(
             form, event, exclude_booking=booking
         ):
             return self.form_invalid(form)
 
-        # Save the form and store in self.object for get_success_message
         self.object = form.save()
         return super().form_valid(form)
 
     def get_success_message(self, cleaned_data):
-        """Display success message with updated info"""
+        """Return updated booking confirmation with new total."""
         booking = self.object
         total = booking.get_total_cost()
         return (
@@ -238,15 +271,19 @@ class BookingUpdateView(
 
 # delete booking view
 class BookingDeleteView(LoginRequiredMixin, DeleteView):
+    """Delete a booking after confirmation."""
+
     model = Booking
     template_name = "events/booking_confirm_delete.html"
     success_url = reverse_lazy("bookings")
 
     def get_queryset(self):
-        """Only allow users to delete their own bookings"""
+        """Return only the current user's bookings."""
         return Booking.objects.filter(user=self.request.user)
 
 
 # about view
 class AboutView(TemplateView):
+    """Display static about page."""
+
     template_name = "about.html"

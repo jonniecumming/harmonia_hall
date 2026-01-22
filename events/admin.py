@@ -2,11 +2,9 @@ from django.contrib import admin
 from .models import Event, Booking
 from django_summernote.admin import SummernoteModelAdmin
 
-# Register your models here.
 
-
-# Customize Event admin
 class EventAdmin(SummernoteModelAdmin):
+    """Customized admin for Event model with rich text editing."""
 
     list_display = (
         "title",
@@ -33,8 +31,8 @@ class EventAdmin(SummernoteModelAdmin):
     )
 
 
-# Customize Booking admin
 class BookingAdmin(admin.ModelAdmin):
+    """Customized admin for Booking model with filtering and search."""
 
     list_display = ("id", "user", "event", "number_of_tickets", "booking_date")
     list_filter = ("booking_date", "event")
