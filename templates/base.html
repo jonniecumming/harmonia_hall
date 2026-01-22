@@ -11,7 +11,9 @@
 
 <head>
     <title>{% block title %}Harmonia Hall - Concert Venue & Event Ticketing{% endblock %}</title>
-    <meta name="description" content="{% block meta_description %}Discover and book tickets for live concerts and events at Harmonia Hall. Premium venue hosting world-class performances.{% endblock %}">
+    <meta name="description" content="{% block meta_description %}
+        Discover and book tickets for live concerts and events at Harmonia Hall. Premium venue hosting world-class performances.
+        {% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
@@ -32,6 +34,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
+
 <body class="d-flex flex-column min-vh-100">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
@@ -81,47 +84,52 @@
                 </ul>
                 <span class="navbar-text text-muted">
                     {% if user.is_authenticated %}
-                        Welcome, <strong class="text-username">{{ user.username }}</strong>
+                    Welcome, <strong class="text-username">{{ user.username }}</strong>
                     {% else %}
-                        Welcome to Harmonia Hall
+                    Welcome to Harmonia Hall
                     {% endif %}
                 </span>
             </div>
         </div>
     </nav>
-    
+
     <!-- Messages -->
     {% if messages %}
-        <div class="container mt-3">
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endfor %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+        {% endfor %}
+    </div>
     {% endif %}
-    
+
     <!-- Main content -->
     <main>
         <div style="min-height: calc(100vh - 150px);">
-        {% block content %}
-        <!-- Main Content Goes here -->
-        {% endblock content %}
+            {% block content %}
+            <!-- Main Content Goes here -->
+            {% endblock content %}
         </div>
     </main>
-     <!-- Footer -->
+    <!-- Footer -->
     <footer class="footer py-3 dark-bg mt-auto">
         <p class="m-0 text-center text-white">
             {% block copyright %}
             2026 Harmonia Hall. All rights reserved.
             {% endblock copyright %}
         </p>
-        <p class="m-0 text-center text-white">Follow us: 
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="text-white social-link" aria-label="Facebook"><i class="fab fa-facebook-square social-icon"></i></a>
-            <a href="https://www.twitter.com/" target="_blank" rel="noopener noreferrer" class="text-white social-link" aria-label="Twitter"><i class="fab fa-twitter-square social-icon"></i></a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="text-white social-link" aria-label="Instagram"><i class="fab fa-instagram-square social-icon"></i></a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="text-white social-link" aria-label="YouTube"><i class="fab fa-youtube-square social-icon"></i></a>
+        <p class="m-0 text-center text-white">Follow us:
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="text-white social-link"
+                aria-label="Facebook"><i class="fab fa-facebook-square social-icon"></i></a>
+            <a href="https://www.twitter.com/" target="_blank" rel="noopener noreferrer" class="text-white social-link"
+                aria-label="Twitter"><i class="fab fa-twitter-square social-icon"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
+                class="text-white social-link" aria-label="Instagram"><i
+                    class="fab fa-instagram-square social-icon"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="text-white social-link"
+                aria-label="YouTube"><i class="fab fa-youtube-square social-icon"></i></a>
         </p>
     </footer>
 
@@ -132,4 +140,5 @@
     <!-- Font Awesome Kit -->
     <script src="https://kit.fontawesome.com/d4d26d2540.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

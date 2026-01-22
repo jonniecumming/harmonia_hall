@@ -15,9 +15,7 @@ class BookingForm(forms.ModelForm):
             raise forms.ValidationError("Please enter a number of tickets.")
 
         if number_of_tickets <= 0:
-            raise forms.ValidationError(
-                "Number of tickets must be at least 1."
-            )
+            raise forms.ValidationError("Number of tickets must be at least 1.")
 
         if number_of_tickets > 10:
             raise forms.ValidationError("Maximum 10 tickets per booking.")
