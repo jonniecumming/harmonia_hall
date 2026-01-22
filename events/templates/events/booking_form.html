@@ -4,9 +4,9 @@
 {% block content %}
 <div class="container mt-5 mb-5">
     {% if event %}
-        <h1 class="mb-4">Reserve Tickets for {{ event.title }}</h1>
+    <h1 class="mb-4">Reserve Tickets for {{ event.title }}</h1>
     {% else %}
-        <h1 class="mb-4">Update Your Booking for {{ object.event.title }}</h1>
+    <h1 class="mb-4">Update Your Booking for {{ object.event.title }}</h1>
     {% endif %}
 
     <div class="row">
@@ -15,87 +15,87 @@
             <div class="card h-100">
                 <div class="card-body">
                     <h2 class="card-title mb-4">Event Summary</h2>
-                    
+
                     {% if event %}
-                        <div class="row g-3">
-                            <!-- Date -->
-                            <div class="col-6">
-                                <p class="mb-0">
-                                    <small class="text-muted"><i class="far fa-calendar"></i> Date</small><br>
-                                    <strong>{{ event.date|date:"d M Y" }}</strong>
-                                </p>
-                            </div>
-                            <!-- Time -->
-                            <div class="col-6">
-                                <p class="mb-0">
-                                    <small class="text-muted"><i class="far fa-clock"></i> Time</small><br>
-                                    <strong>{{ event.time|time:"g:i A" }}</strong>
-                                </p>
-                            </div>
-                            <!-- Venue -->
-                            <div class="col-12 col-md-6">
-                                <p class="mb-0">
-                                    <small class="text-muted"><i class="fas fa-map-marker-alt"></i> Venue</small><br>
-                                    <strong>{{ event.venue }}</strong>
-                                </p>
-                            </div>
-                            <!-- Price -->
-                            <div class="col-12 col-md-6">
-                                <p class="mb-0">
-                                    <small class="text-muted"><i class="fas fa-ticket-alt"></i> Price</small><br>
-                                    <span class="h5 text-primary">£{{ event.price }}/ticket</span>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Available Tickets -->
-                        <div class="bg-light p-3 rounded mt-4">
-                            <h3 class="mb-2">Availability</h3>
+                    <div class="row g-3">
+                        <!-- Date -->
+                        <div class="col-6">
                             <p class="mb-0">
-                                <strong>Available Tickets:</strong> 
-                                <span class="badge bg-success fs-6">{{ available_seats }}</span>
+                                <small class="text-muted"><i class="far fa-calendar"></i> Date</small><br>
+                                <strong>{{ event.date|date:"d M Y" }}</strong>
                             </p>
                         </div>
+                        <!-- Time -->
+                        <div class="col-6">
+                            <p class="mb-0">
+                                <small class="text-muted"><i class="far fa-clock"></i> Time</small><br>
+                                <strong>{{ event.time|time:"g:i A" }}</strong>
+                            </p>
+                        </div>
+                        <!-- Venue -->
+                        <div class="col-12 col-md-6">
+                            <p class="mb-0">
+                                <small class="text-muted"><i class="fas fa-map-marker-alt"></i> Venue</small><br>
+                                <strong>{{ event.venue }}</strong>
+                            </p>
+                        </div>
+                        <!-- Price -->
+                        <div class="col-12 col-md-6">
+                            <p class="mb-0">
+                                <small class="text-muted"><i class="fas fa-ticket-alt"></i> Price</small><br>
+                                <span class="h5 text-primary">£{{ event.price }}/ticket</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Available Tickets -->
+                    <div class="bg-light p-3 rounded mt-4">
+                        <h3 class="mb-2">Availability</h3>
+                        <p class="mb-0">
+                            <strong>Available Tickets:</strong>
+                            <span class="badge bg-success fs-6">{{ available_seats }}</span>
+                        </p>
+                    </div>
                     {% else %}
-                        <div class="row g-3">
-                            <!-- Date -->
-                            <div class="col-6">
-                                <p class="mb-0">
-                                    <small class="text-muted"><i class="far fa-calendar"></i> Date</small><br>
-                                    <strong>{{ object.event.date|date:"d M Y" }}</strong>
-                                </p>
-                            </div>
-                            <!-- Time -->
-                            <div class="col-6">
-                                <p class="mb-0">
-                                    <small class="text-muted"><i class="far fa-clock"></i> Time</small><br>
-                                    <strong>{{ object.event.time }}</strong>
-                                </p>
-                            </div>
-                            <!-- Venue -->
-                            <div class="col-12 col-md-6">
-                                <p class="mb-0">
-                                    <small class="text-muted"><i class="fas fa-map-marker-alt"></i> Venue</small><br>
-                                    <strong>{{ object.event.venue }}</strong>
-                                </p>
-                            </div>
-                            <!-- Price -->
-                            <div class="col-12 col-md-6">
-                                <p class="mb-0">
-                                    <small class="text-muted"><i class="fas fa-ticket-alt"></i> Price</small><br>
-                                    <span class="h5 text-primary">£{{ object.event.price }}/ticket</span>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Available Tickets -->
-                        <div class="bg-light p-3 rounded mt-4">
-                            <h3 class="mb-2">Availability</h3>
+                    <div class="row g-3">
+                        <!-- Date -->
+                        <div class="col-6">
                             <p class="mb-0">
-                                <strong>Available Tickets:</strong> 
-                                <span class="badge bg-success fs-6">{{ available_seats }}</span>
+                                <small class="text-muted"><i class="far fa-calendar"></i> Date</small><br>
+                                <strong>{{ object.event.date|date:"d M Y" }}</strong>
                             </p>
                         </div>
+                        <!-- Time -->
+                        <div class="col-6">
+                            <p class="mb-0">
+                                <small class="text-muted"><i class="far fa-clock"></i> Time</small><br>
+                                <strong>{{ object.event.time }}</strong>
+                            </p>
+                        </div>
+                        <!-- Venue -->
+                        <div class="col-12 col-md-6">
+                            <p class="mb-0">
+                                <small class="text-muted"><i class="fas fa-map-marker-alt"></i> Venue</small><br>
+                                <strong>{{ object.event.venue }}</strong>
+                            </p>
+                        </div>
+                        <!-- Price -->
+                        <div class="col-12 col-md-6">
+                            <p class="mb-0">
+                                <small class="text-muted"><i class="fas fa-ticket-alt"></i> Price</small><br>
+                                <span class="h5 text-primary">£{{ object.event.price }}/ticket</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Available Tickets -->
+                    <div class="bg-light p-3 rounded mt-4">
+                        <h3 class="mb-2">Availability</h3>
+                        <p class="mb-0">
+                            <strong>Available Tickets:</strong>
+                            <span class="badge bg-success fs-6">{{ available_seats }}</span>
+                        </p>
+                    </div>
                     {% endif %}
                 </div>
             </div>
@@ -106,22 +106,22 @@
             <div class="card">
                 <div class="card-body">
                     {% if event %}
-                        <h2 class="card-title mb-4">Reserve Your Tickets</h2>
+                    <h2 class="card-title mb-4">Reserve Your Tickets</h2>
                     {% else %}
-                        <h2 class="card-title mb-4">Update Your Booking</h2>
+                    <h2 class="card-title mb-4">Update Your Booking</h2>
                     {% endif %}
 
                     <!-- Non-field errors -->
                     {% if form.non_field_errors %}
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong><i class="fas fa-exclamation-circle"></i> Unable to Book:</strong>
-                            <ul class="mb-0 mt-2">
-                                {% for error in form.non_field_errors %}
-                                    <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong><i class="fas fa-exclamation-circle"></i> Unable to Book:</strong>
+                        <ul class="mb-0 mt-2">
+                            {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                     {% endif %}
 
                     <form method="post" novalidate>
@@ -132,13 +132,9 @@
                             <label for="id_number_of_tickets" class="form-label">
                                 <strong>How many tickets would you like?</strong>
                             </label>
-                            <input type="number" 
-                                   name="number_of_tickets" 
-                                   id="id_number_of_tickets"
-                                   class="form-control form-control-lg {% if form.number_of_tickets.errors %}is-invalid{% endif %}" 
-                                   min="1" 
-                                   max="{{ available_seats }}"
-                                   required>
+                            <input type="number" name="number_of_tickets" id="id_number_of_tickets"
+                                class="form-control form-control-lg {% if form.number_of_tickets.errors %}is-invalid{% endif %}"
+                                min="1" max="{{ available_seats }}" required>
                             <small class="form-text text-muted d-block mt-2">
                                 Maximum {{ available_seats }} ticket(s) available
                             </small>
@@ -146,15 +142,15 @@
 
                         <!-- Field-specific errors -->
                         {% if form.number_of_tickets.errors %}
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong><i class="fas fa-exclamation-circle"></i> Invalid Number of Tickets:</strong>
-                                <ul class="mb-0 mt-2">
-                                    {% for error in form.number_of_tickets.errors %}
-                                        <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong><i class="fas fa-exclamation-circle"></i> Invalid Number of Tickets:</strong>
+                            <ul class="mb-0 mt-2">
+                                {% for error in form.number_of_tickets.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
                         {% endif %}
 
                         <!-- Action Buttons -->
@@ -163,13 +159,13 @@
                                 <i class="fas fa-check"></i> Confirm Reservation
                             </button>
                             {% if event %}
-                                <a href="{% url 'event-detail' event.slug %}" class="btn btn-outline-secondary">
-                                    <i class="fas fa-times"></i> Cancel
-                                </a>
+                            <a href="{% url 'event-detail' event.slug %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
                             {% else %}
-                                <a href="{% url 'event-detail' object.event.slug %}" class="btn btn-outline-secondary">
-                                    <i class="fas fa-times"></i> Cancel
-                                </a>
+                            <a href="{% url 'event-detail' object.event.slug %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
                             {% endif %}
                         </div>
                     </form>

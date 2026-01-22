@@ -8,7 +8,16 @@ from django_summernote.admin import SummernoteModelAdmin
 # Customize Event admin
 class EventAdmin(SummernoteModelAdmin):
 
-    list_display = ("title", "date", "time", "venue", "capacity", "get_total_tickets_sold", "price", "status")
+    list_display = (
+        "title",
+        "date",
+        "time",
+        "venue",
+        "capacity",
+        "get_total_tickets_sold",
+        "price",
+        "status",
+    )
     list_filter = ("status", "date", "venue")
     search_fields = ("title", "venue", "description")
     prepopulated_fields = {"slug": ("title",)}

@@ -68,6 +68,9 @@
 
 ## About the Project
 <!-- Overview of project -->
+![Am I Responsive](/images/responsive.png)
+*Am I Responsive showing the Harmonia Hall site on multiple device sizes*
+
 ### Overview
 This project is a full-stack web application built using the Django framework. It uses Python, HTML and CSS to create a dynamic and responsive site for a fictious concert venue called Harmonia Hall. The application allows users to view upcoming events, book tickets, and manage their bookings. It also includes user authentication features, enabling users to create accounts, log in, and log out securely.
 
@@ -312,6 +315,8 @@ The project board for this project can be found here: https://github.com/users/j
 | Home page link (title) | success | success |
 | About page link | success | success |
 | Log in link | success | success |
+
+
 ### Lighthouse Testing
 
 - Description of Lighthouse testing done, e.g., performance, accessibility, best practices, SEO.
@@ -369,6 +374,15 @@ Here is the link to the deployed site: [Harmonia Hall on Heroku](https://harmoni
 - Similar projects or tutorials that helped
 ### Code
 - Libraries, frameworks, plugins used (e.g., Django, Bootstrap, jQuery)
+For this project, I used the following libraries and frameworks:
+- Django: A high-level Python web framework that encourages rapid development and clean, pragmatic design.
+- Bootstrap: A popular front-end framework for building responsive, mobile-first websites using HTML, CSS, and JavaScript.
+- Font Awesome: A library of icons and social logos for use in web projects.
+- Crispy Forms: A Django app that helps to manage and style forms in a more elegant way.
+- Cloudinary: A cloud-based service for managing images and videos, used here for storing and serving media files.
+- Django Allauth: An integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication.
+- Django Heroku SSL: A Django app that simplifies the process of enabling SSL on Heroku-hosted Django applications.
+- Psycopg2: A PostgreSQL database adapter for Python, used for connecting Django to
 - Stack Overflow, GitHub repositories, etc.
 
 ### Content

@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Harmonia Hall - Book Concert Tickets Online{% endblock %}
-{% block meta_description %}Browse featured concerts and live music events at Harmonia Hall. Easy online ticket booking for the best performances in town.{% endblock %}
+{% block meta_description %}
+Browse featured concerts and live music events at Harmonia Hall. Easy online ticket booking for the best performances in
+town.
+{% endblock %}
 {% block content %}
 
 <!-- index.html content starts here -->
@@ -18,20 +21,21 @@
 {% if carousel_events %}
 <div class="container mt-5 mb-5">
     <h2 class="mb-4 text-center">Featured Upcoming Events</h2>
-    
+
     <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
         <!-- Carousel Items -->
         <div class="carousel-inner">
             {% for event in carousel_events %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <img src="{{ event.event_image.url }}" class="d-block w-100" alt="{{ event.title }}" style="object-fit: contain; background-color: #f9fafc;">
-                
+                <img src="{{ event.event_image.url }}" class="d-block w-100" alt="{{ event.title }}"
+                    style="object-fit: contain; background-color: #f9fafc;">
+
                 <!-- Event Info Below Image -->
                 <div class="p-4 bg-light text-center carousel-info">
                     <h3 class="card-title">{{ event.title }}</h3>
                     <p class="card-text mb-3">
-                        <strong>Date:</strong> {{ event.date }} | 
-                        <strong>Time:</strong> {{ event.time|time:"g:i A" }} | 
+                        <strong>Date:</strong> {{ event.date }} |
+                        <strong>Time:</strong> {{ event.time|time:"g:i A" }} |
                         <strong>Price:</strong> £{{ event.price }}
                     </p>
                     <a href="{% url 'event-detail' event.slug %}" class="btn btn-primary btn-sm">View Event</a>
