@@ -309,6 +309,9 @@ The project board for this project can be found here: https://github.com/users/j
 
 <!-- Overview of bugs and solutions -->
 ## Bugs
+- iPhone footer bug - iPhone safari specific problem (Still an issue?)
+- 
+
 - Bug 1: description...
 - How it was fixed.
 - Bug 2: description...
@@ -337,6 +340,8 @@ The project board for this project can be found here: https://github.com/users/j
 
 ### Lighthouse Testing
 - Description of Lighthouse testing done, e.g., performance, accessibility, best practices, SEO.
+![Lighthouse Report](/images/lighthouse-report.png)
+*Screenshot of Lighthouse report showing scores for performance, accessibility, best practices, and SEO*
 
 ### Responsive Testing
 - Description of responsive testing done, e.g., different devices, screen sizes, etc.
@@ -390,11 +395,24 @@ The site was deployed to Heroku from the main branch of my GitHub repository. Be
 
 Here is the link to the deployed site: [Harmonia Hall on Heroku](https://harmonia-hall-b317b69502c7.herokuapp.com/)
 
-<!-- Credits for project -->
+<!-- Future development -->
+## Future Development
+Some features that could be added in the future to enhance the functionality and user experience of the web application include:
+- Booking options for children/over 65’s/disability spaces
+- Interactive JS seat selection for relevant concerts
+- New Page: How to find us/Plan your visit
+- Add more descriptive data to each event, i.e. genre, to allow for filtering functionality on What’s on page
+- Add News/updates page
+- Add site search feature
+- Calendar view for what’s on page
+- Add Shopping Cart to allow for subtotals, multiple bookings at once.
+- Integrate real payment functionality
+- Option to select venue, to allow for expansion into concerts in other performance spaces within concert venue
+<!-- ========================================
+     CREDITS
+     ======================================== --><!-- Credits for project -->
 ## Credits
-### Inspiration
-- Inspiration for project idea: e.g., personal experience, other websites, etc.
-- Similar projects or tutorials that helped
+
 ### Code
 
 For this project, I used the following libraries and frameworks:
@@ -403,8 +421,9 @@ For this project, I used the following libraries and frameworks:
 - Font Awesome: A library of icons and social logos for use in web projects.
 - Cloudinary: A cloud-based service for managing images and videos, used here for storing and serving event image files.
 - Django Allauth: An integrated set of Django applications addressing authentication, registration and account management.
-- Psycopg2: A PostgreSQL database adapter for Python, used for connecting Django to a PostgreSQL database, hosted by Code Institute.
+- Psycopg2: Used for connecting Django to a PostgreSQL database, hosted by Code Institute.
 - GitHub: For code repository hosting and project board management.
+- Heroku: Cloud platform for deploying and hosting the web application.
 
 ### Content
 - Text content sources: e.g., Wikipedia, blogs, articles, etc.
@@ -413,3 +432,8 @@ For this project, I used the following libraries and frameworks:
 - Image sources: Unsplash, iStock
 ### Acknowledgements
 - Mentors, tutors, peers, etc.
+
+
+- Am I Responsive: for responsive design image
+- Colormind: for colour palette generation
+- Balsamiq: for wireframe creation
