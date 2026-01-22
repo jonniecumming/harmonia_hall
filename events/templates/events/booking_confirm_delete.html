@@ -1,26 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Booking cancellation confirmation page -->
 <div class="container mt-5">
     <h1 class="mb-4">Cancel Booking</h1>
     <div class="row justify-content-center">
         <div class="col-md-6">
+            <!-- Confirmation card with booking details -->
             <div class="card border-danger">
                 <div class="card-body">
                     <h2 class="card-title text-danger">Confirmation</h2>
 
+                    <!-- Alert showing booking details to be cancelled -->
                     <div class="alert alert-warning" role="alert">
                         <p><strong>Event:</strong> {{ object.event.title }}</p>
                         <p><strong>Tickets:</strong> {{ object.number_of_tickets }}</p>
                         <p class="mb-0"><strong>Date:</strong> {{ object.event.date }}</p>
                     </div>
 
+                    <!-- Warning message about irreversible action -->
                     <p class="text-muted">
                         Are you sure you want to cancel this booking? This action cannot be undone.
                     </p>
 
+                    <!-- Form with CSRF token for secure deletion -->
                     <form method="post">
                         {% csrf_token %}
+                        <!-- Confirm and cancel buttons -->
                         <button type="submit" class="btn btn-danger">Yes, Cancel Booking</button>
                         <a href="{% url 'bookings' %}" class="btn btn-secondary">No, Keep Booking</a>
                     </form>
