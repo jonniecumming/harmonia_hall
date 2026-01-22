@@ -7,6 +7,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#overview">Overview</a></li>
         <li><a href="#rationale">Rationale</a></li>
         <li><a href="#desktop-appearance">Desktop Appearance</a></li>
         <li><a href="#tablet-appearance">Tablet Appearance</a></li>
@@ -67,10 +68,13 @@
 
 ## About the Project
 <!-- Overview of project -->
-### Rationale
-The aim of this project is to provide a solution to the following problem faced by the fictious venue, Harmonia Hall, and its event attendees:
+### Overview
+This project is a full-stack web application built using the Django framework. It uses Python, HTML and CSS to create a dynamic and responsive site for a fictious concert venue called Harmonia Hall. The application allows users to view upcoming events, book tickets, and manage their bookings. It also includes user authentication features, enabling users to create accounts, log in, and log out securely.
 
-"Harmonia Hall and its event attendees currently lack an efficient, centralized platform to manage event bookings and capacity. The venue struggles to prevent overbooking, track event capacity accurately, and manage multiple bookings, while attendees face difficulties in discovering upcoming events, making reservations, and managing their bookings effectively. This fragmented and manual process results in capacity management issues, double bookings, missed events, and a poor user experience for both venue operators and customers seeking to attend live music events."
+### Rationale
+The aim of this project is to provide a solution to the following problem faced by the venue, Harmonia Hall, and its event attendees:
+
+"Harmonia Hall and its event attendees currently lack an efficient, centralised platform to manage event bookings and capacity. The venue struggles to prevent overbooking, track event capacity accurately, and manage multiple bookings, while attendees face difficulties in discovering upcoming events, making reservations, and managing their bookings effectively. This fragmented and manual process results in capacity management issues, double bookings, missed events, and a poor user experience for both venue operators and customers seeking to attend live music events."
 
 This web application addresses these challenges by providing a comprehensive, user-friendly booking platform that streamlines the entire event management process. The platform enables attendees to easily discover upcoming events, view real-time availability, and securely reserve tickets with capacity tracking to prevent overbooking. Built-in booking management features allow users to view, modify, or cancel their reservations at any time, while administrators benefit from a robust backend system to create, manage, and monitor events and bookings. By implementing real-time capacity validation, enforcing one booking per user per event, and providing clear error messaging and confirmation feedback, the application eliminates double bookings, ensures accurate capacity management, and delivers a seamless, trustworthy booking experience for both venue operators and customers.
 
@@ -81,16 +85,19 @@ The MVP (minimum viable product) for this project includes the following core fe
 - Event Listings: Display a list of upcoming events with details such as date, time, location, and availability.
 - Event Details: Provide detailed information about each event, including descriptions, images, and current capacity.
 - Booking System: Enable logged-in users to create, view, update, and cancel bookings for events, with real-time capacity validation to prevent overbooking.
-- Admin Interface: Provide administrators with tools to create, update, and delete events, as well as view all bookings.
+
 
 <!-- Deployed homepage screenshot examples of site -->
-Below are screenshots of the deployed site on different devices:
+### Below are screenshots of the deployed site on different devices:
 ### Desktop Appearance
-- Deployed Desktop view screenshot
+![Desktop Appearance](/images/desktop.png)
+*screenshot of deployed site on Desktop*
 ### Tablet Appearance
-- Deployed Tablet view screenshot
+![Tablet Appearance](/images/tablet.png)
+*screenshot of deployed site on Tablet*
 ### Mobile Appearance
-- Deployed Mobile view screenshot
+![Mobile Appearance](/images/mobile.png)
+*screenshot of deployed site on Mobile*
 
 <!-- Overview of UX Design of project -->
 ## UX Design

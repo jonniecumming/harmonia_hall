@@ -135,6 +135,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
+# Allow iframe embedding for responsive testing tools
+X_FRAME_OPTIONS = 'ALLOW-FROM https://ui.responsivelyapp.com/'
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
