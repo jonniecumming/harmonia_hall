@@ -72,8 +72,14 @@ main {
     text-decoration: underline;
 }
 
+/* Override Bootstrap's text-muted for better contrast (WCAG AA) */
+.text-muted {
+    color: #495057 !important;
+}
+
 .text-username {
-    color: #7CAD6B
+    color: #1a2a3a;
+    font-weight: 600;
 }
 
 /* ========================================
@@ -90,6 +96,18 @@ main {
 .btn-primary:focus {
     background-color: #25484E;
     border-color: #25484E;
+}
+
+.btn-outline-primary {
+    color: #38547A;
+    border-color: #38547A;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:focus {
+    background-color: #38547A;
+    border-color: #38547A;
 }
 
 .btn-signup,
