@@ -19,7 +19,9 @@ class Event(models.Model):
     capacity = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     status = models.IntegerField(choices=STATUS, default=0)
-    event_image = CloudinaryField("image", default="static/images/placeholder.jpg")
+    event_image = CloudinaryField(
+        "image", default="static/images/placeholder.jpg"
+    )
 
     class Meta:
         ordering = ["date", "time"]
@@ -57,8 +59,12 @@ class Event(models.Model):
 
 # bookings model
 class Booking(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="bookings")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookings")
+    event = models.ForeignKey(
+        Event, on_delete=models.CASCADE, related_name="bookings"
+    )
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="bookings"
+    )
     number_of_tickets = models.PositiveIntegerField()
     booking_date = models.DateTimeField(auto_now_add=True)
 
@@ -66,7 +72,10 @@ class Booking(models.Model):
         unique_together = ("user", "event")
 
     def __str__(self):
-        return f"Booking by {self.user.username} for {self.event.title} - {self.number_of_tickets} tickets"
+        return (
+            f"Booking by {self.user.username} for "
+            f"{self.event.title} - {self.number_of_tickets} tickets"
+        )
 
     def get_total_cost(self):
         """Calculate total booking cost (price * number of tickets)"""

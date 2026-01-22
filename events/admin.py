@@ -25,7 +25,8 @@ class EventAdmin(SummernoteModelAdmin):
     readonly_fields = ("get_total_tickets_sold",)
 
     fieldsets = (
-        ("Event Details", {"fields": ("title", "slug", "venue", "date", "time")}),
+        ("Event Details", {
+            "fields": ("title", "slug", "venue", "date", "time")}),
         ("Pricing & Capacity", {"fields": ("price", "capacity")}),
         ("Content", {"fields": ("summary", "description", "event_image")}),
         ("Settings", {"fields": ("status",)}),

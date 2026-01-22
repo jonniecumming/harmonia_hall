@@ -19,21 +19,28 @@ from .forms import BookingForm
 class BookingValidationMixin:
     """Mixin to validate booking capacity"""
 
-    def validate_booking_capacity(self, form, event, exclude_booking=None):
+    def validate_booking_capacity(
+        self, form, event, exclude_booking=None
+    ):
         """Check if enough tickets are available"""
         tickets_requested = form.cleaned_data["number_of_tickets"]
-        available = event.get_available_seats(exclude_booking=exclude_booking)
+        available = event.get_available_seats(
+            exclude_booking=exclude_booking
+        )
 
         if tickets_requested > available:
             if available == 0:
                 form.add_error(
                     "number_of_tickets",
-                    "This event is fully booked. No tickets are available.",
+                    "This event is fully booked. "
+                    "No tickets are available.",
                 )
             else:
                 form.add_error(
                     "number_of_tickets",
-                    f"You requested {tickets_requested} tickets but only {available} ticket(s) available. Please reduce your quantity.",
+                    f"You requested {tickets_requested} tickets but "
+                    f"only {available} ticket(s) available. "
+                    "Please reduce your quantity.",
                 )
             return False
         return True
@@ -49,7 +56,9 @@ class HomeView(ListView):
     def get_queryset(self):
         """Only show published events from today onwards"""
         today = timezone.now().date()
-        return Event.objects.filter(status=1, date__gte=today).order_by("date", "time")
+        return Event.objects.filter(
+            status=1, date__gte=today
+        ).order_by("date", "time")
 
     def get_context_data(self, **kwargs):
         """Add carousel events to context"""
@@ -72,7 +81,9 @@ class EventListView(ListView):
     def get_queryset(self):
         """Only show published events from today onwards"""
         today = timezone.now().date()
-        return Event.objects.filter(status=1, date__gte=today).order_by("date", "time")
+        return Event.objects.filter(
+            status=1, date__gte=today
+        ).order_by("date", "time")
 
 
 # event detail view
@@ -97,7 +108,10 @@ class EventDetailView(DetailView):
 
 # create booking view
 class BookingCreateView(
-    LoginRequiredMixin, BookingValidationMixin, SuccessMessageMixin, CreateView
+    LoginRequiredMixin,
+    BookingValidationMixin,
+    SuccessMessageMixin,
+    CreateView,
 ):
     model = Booking
     form_class = BookingForm
@@ -107,7 +121,12 @@ class BookingCreateView(
     def get_success_message(self, cleaned_data):
         booking = self.object
         total = booking.get_total_cost()
-        return f"✓ Booking confirmed! You have reserved {booking.number_of_tickets} ticket(s) for {booking.event.title}. This will be payable on entry. Total: £{total}"
+        return (
+            f"✓ Booking confirmed! You have reserved "
+            f"{booking.number_of_tickets} ticket(s) for "
+            f"{booking.event.title}. This will be payable on "
+            f"entry. Total: £{total}"
+        )
 
     def get_object(self):
         """Get the event from the URL slug"""
@@ -133,7 +152,9 @@ class BookingCreateView(
         if existing_booking:
             form.add_error(
                 None,
-                "You already have a booking for this event. Please edit your existing booking to change the number of tickets.",
+                "You already have a booking for this event. "
+                "Please edit your existing booking to change "
+                "the number of tickets.",
             )
             return self.form_invalid(form)
 
@@ -164,7 +185,10 @@ class BookingsView(LoginRequiredMixin, ListView):
 
 # update booking view
 class BookingUpdateView(
-    LoginRequiredMixin, BookingValidationMixin, SuccessMessageMixin, UpdateView
+    LoginRequiredMixin,
+    BookingValidationMixin,
+    SuccessMessageMixin,
+    UpdateView,
 ):
     model = Booking
     form_class = BookingForm
@@ -180,16 +204,20 @@ class BookingUpdateView(
         context = super().get_context_data(**kwargs)
         booking = self.get_object()
         event = booking.event
-        context["available_seats"] = event.get_available_seats(exclude_booking=booking)
+        context["available_seats"] = event.get_available_seats(
+            exclude_booking=booking
+        )
         return context
 
     def form_valid(self, form):
-        """Validate capacity and store booking for success message"""
+        """Validate capacity and store booking for message"""
         booking = self.get_object()
         event = booking.event
 
-        # Validate capacity (exclude current booking from calculation)
-        if not self.validate_booking_capacity(form, event, exclude_booking=booking):
+        # Validate capacity (exclude current booking)
+        if not self.validate_booking_capacity(
+            form, event, exclude_booking=booking
+        ):
             return self.form_invalid(form)
 
         # Save the form and store in self.object for get_success_message
@@ -197,10 +225,15 @@ class BookingUpdateView(
         return super().form_valid(form)
 
     def get_success_message(self, cleaned_data):
-        """Display success message with updated ticket count and total cost"""
+        """Display success message with updated info"""
         booking = self.object
         total = booking.get_total_cost()
-        return f"✓ Booking updated! You now have {booking.number_of_tickets} ticket(s) for {booking.event.title}. This will be payable on entry. Total: £{total}"
+        return (
+            f"✓ Booking updated! You now have "
+            f"{booking.number_of_tickets} ticket(s) for "
+            f"{booking.event.title}. This will be payable on "
+            f"entry. Total: £{total}"
+        )
 
 
 # delete booking view
