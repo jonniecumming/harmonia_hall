@@ -1,6 +1,6 @@
 # Harmonia Hall
 
-<!-- TABLE OF CONTENTS (to be modified for this project) -->
+<!-- Table of Contents -->
 <details>
   <summary>Index</summary>
   <ol>
@@ -9,6 +9,7 @@
       <ul>
         <li><a href="#overview">Overview</a></li>
         <li><a href="#rationale">Rationale</a></li>
+        <li><a href="#MVP-features">MVP Features</a></li>
         <li><a href="#desktop-appearance">Desktop Appearance</a></li>
         <li><a href="#tablet-appearance">Tablet Appearance</a></li>
         <li><a href="#mobile-appearance">Mobile Appearance</a></li>
@@ -35,14 +36,16 @@
     <li><a href="#features">Features</a></li>
       <ul>
         <li><a href="#home-page">Home Page</a></li>
+        <li><a href="#whats-on-page">What's On Page</a></li>
         <li><a href="#about-page">About Page</a></li>
-        <li><a href="#contact-page">Contact Page</a></li>
+        <li><a href="#event-detail-page">Event Detail Page</a></li>
+        <li><a href="#sign-in">Sign In</a></li>
+        <li><a href="#sign-out">Sign Out</a></li>
         <li><a href="#bookings-page">Bookings Page</a></li>
         <li><a href="#navigation-bar">Navigation Bar</a></li>
         <li><a href="#footer">Footer</a></li>
-        <li><a href="#sign-in">Sign In</a></li>
-        <li><a href="#sign-out">Sign Out</a></li>
-        <li><a href="#admin">Admin</a></li>
+        <li><a href="#django-admin-login">Django Admin Login</a></li>
+        <li><a href="#django-admin-event-management">Django Admin Event Management</a></li>
       </ul>
     </li>
     <li><a href="#bugs">Bugs</a></li>
@@ -62,19 +65,21 @@
     </li>
     <li><a href="#use-of-ai">Use of AI</a></li>
     <li><a href="#deployment">Deployment</a></li>
+    <li><a href="#future-development">Future Development</a></li>
     <li><a href="#credits">Credits</a></li>
   </ol>
 </details>
 
+<!-- About the Project -->
 ## About the Project
-<!-- Overview of project -->
-![Am I Responsive](/images/responsive.png)
-*Am I Responsive showing the Harmonia Hall site on multiple device sizes*
 
+![Am I Responsive](/images/responsive.png)
+*'Am I Responsive' site, showing the Harmonia Hall site on multiple device sizes*
+<!-- Overview of project -->
 ### Overview
 This project is a full-stack web application built using the Django framework. It uses Python, HTML and CSS to create a dynamic and responsive site for a fictious concert venue called Harmonia Hall. The application allows users to view upcoming events, book tickets, and manage their bookings. It also includes user authentication features, enabling users to create accounts, log in, and log out securely.
 
-You can visit the deplyed site at: [Harmonia Hall](https://harmonia-hall-b317b69502c7.herokuapp.com/)
+You can visit the deployed site at: [Harmonia Hall](https://harmonia-hall-b317b69502c7.herokuapp.com/)
 
 ### Rationale
 The aim of this project is to provide a solution to the following problem faced by the venue, Harmonia Hall, and its event attendees:
@@ -83,8 +88,9 @@ The aim of this project is to provide a solution to the following problem faced 
 
 This web application addresses these challenges by providing a comprehensive, user-friendly booking platform that streamlines the entire event management process. The platform enables attendees to easily discover upcoming events, view real-time availability, and securely reserve tickets with capacity tracking to prevent overbooking. Built-in booking management features allow users to view, modify, or cancel their reservations at any time, while administrators benefit from a robust backend system to create, manage, and monitor events and bookings. By implementing real-time capacity validation, enforcing one booking per user per event, and providing clear error messaging and confirmation feedback, the application eliminates double bookings, ensures accurate capacity management, and delivers a seamless, trustworthy booking experience for both venue operators and customers.
 
-With this in mind, this application is designed for two primary user groups. First, it serves music enthusiasts and event-goers who seek a convenient, reliable platform to discover upcoming live music and other events, browse event details, and securely book tickets without the fear of overbooking or capacity conflicts. Second, it caters to venue administrators and staff at Harmonia Hall, who require efficient tools to create and manage events, track real-time capacity and bookings, and maintain accurate event listings. Whether its users are looking to attend their next favorite concert or manage a busy event venue, this application provides an intuitive, reliable solution that enhances the overall event experience for both attendees and venue operators alike.
+With this in mind, this application has been designed for two primary user groups. First, it serves music enthusiasts and event-goers who seek a convenient, reliable platform to discover upcoming live music and other events, browse event details, and securely book tickets without the fear of overbooking or capacity conflicts. Second, it caters to venue administrators and staff at Harmonia Hall, who require efficient tools to create and manage events, track real-time capacity and bookings, and maintain accurate event listings. Whether its users are looking to attend their next favorite concert or manage a busy event venue, this application provides an intuitive, reliable solution that enhances the overall event experience for both attendees and venue operators alike.
 
+### MVP Features
 The MVP (minimum viable product) for this project includes the following core features:
 - User Registration and Authentication: Allow users to create accounts, log in, and log out securely.
 - Event Listings: Display a list of upcoming events with details such as date, time, location, and availability.
@@ -106,17 +112,18 @@ The MVP (minimum viable product) for this project includes the following core fe
 
 <!-- Overview of UX Design of project -->
 ## UX Design
-For the icons, I used [**Font Awesome**](https://fontawesome.com)
+For the social media icons, I used [**Font Awesome**](https://fontawesome.com).
 
 For the colour scheme, I used [**Colormind**](http://colormind.io) to generate a palette based on images of concert venues and music events.
 ![Colormind](/images/colormind-palette.png)
 *screenshot of colour palette generated by Colormind*
 
+For the fonts, I used Google Fonts 'Lato' font, and Bootstrap's default fonts, with Lato being used specifically for the footer.
 
 ### Wireframes
-Wireframes were created for different viewports (mobile, tablet and desktop) to help visualise how the site would look on different devices.
+The following wireframes were created for different sized devices (mobile, tablet and desktop) to help visualise how the site would look on different devices.
 
-I used the software _Balsamiq_, to create the following wireframe diagrams.
+I used [**Balsamiq**](https://balsamiq.com) to create the following wireframe diagrams.
 
 <details>
 <summary><strong>Wireframe Diagrams</strong></summary>
@@ -148,10 +155,15 @@ I used the software _Balsamiq_, to create the following wireframe diagrams.
 </details>
 
 ### Database Structure (ERD)
-The database structure for this project is based around three main models: Event, Booking, and User (using Django's built-in User model). This is illustrated in the Entity Relationship Diagram (ERD) below.
+The database structure for this project is based around three main models: Event, Booking, and User (using Django's built-in User model).The main entities and their relationships are as follows:
+- Event: Represents an event at the concert venue, with attributes such as title, date, time, venue, price, capacity, and description.
+- Booking: Represents a booking made by a user for a specific event, with attributes such as user (foreign key to User), event (foreign key to Event), number of tickets, and booking date.
+- User: Represents a user of the site, with attributes such as username, email, and password (handled by Django's Allauth authentication system).
+
+This is illustrated in the Entity Relationship Diagram (ERD) below, created using [**dbdiagram.io**](https://dbdiagram.io).
 
 ![ERD](/images/erd.png)
-*Entity Relationship Diagram (ERD) showing database structure*
+*Entity Relationship Diagram (ERD) from [dbdiagram.io](https://dbdiagram.io) showing database structure*
 
 <!-- Overview of User Stories project -->
 ## User Stories
@@ -291,21 +303,56 @@ The project board for this project can be found here: https://github.com/users/j
 
 
 ### Outcomes
-- Must Haves: All completed successfully.
-- Should Haves: ...
-- Could Haves: ...
-- Won't Haves: ...
+- Must Haves: All completed successfully, with thorough testing to ensure functionality and usability, reaching the MVP.
+- Should Haves: The Manage Events and About Page user stories were completed successfully. The Profile Management and Edit Profile user stories were not implemented due to time constraints.
+- Could Haves and Won't Haves: These user stories were not implemented as the should haves were prioritised, and were not fully completed.
 
 <!-- Overview of features of the project -->
 ## Features
+
+<details>
+<summary><strong>Feature Details</strong></summary>
+
+### Home Page
+![home page](/images/home.png)
+*screenshot of home page*
 - Home page (with screenshot): what does it offer to a user?
+### What's On Page
+![what's on page](/images/whats-on.png)
+### About Page
+![about page](/images/about.png)
 - About page (with screenshot): what does it offer to a user?
-- bookings... (with screenshot): what does it offer to a user?
+### Event Detail Page
+![event detail page](/images/event-detail.png)
+- Event detail page (with screenshot): what does it offer to a user?
+### Sign In
+![sign in page](/images/signin.png)
 - Sign in... etc.
+### Sign Out
+![sign out page](/images/signout.png)
 - Sign out...
+### Bookings Page
+![bookings page](/images/bookings.png)
+- bookings... (with screenshot): what does it offer to a user?
+### Navigation Bar
+![navigation bar](/images/navbar.png)
 - Navigation bar
+### Footer
+![footer](/images/footer.png)
 - Footer...
+### Django Admin Login
+![Django admin login](/images/admin-login.png)
 - Admin...
+### Django Admin Event Management
+![Django admin event management](/images/admin-events.png)
+- Event management...
+
+
+The main differences between the end product and the wireframes are within the home page, What's On page and the lack of a contact page.
+I decided to simplify the Home page by removing the featured events as a grid, and instead using a carousel to highlight upcoming events. This was to create a cleaner look and feel, and to make it easier for users to get an overview of the events available. Linking to this change, I implemented the card layout featured on the Home page wireframe, into the What's On page. This allowed for a more visual representation of the events, making it easier for users to browse and select events of interest. I would like to make the date element more prominent in future iterations, as I feel this is an important piece of information for users when browsing events.
+Finally, I decided not to prioritise the contact page, as I felt that the About page provided sufficient information about the venue. However, this is something that I would liked to be added in the future to enhance the user experience further. I have included a section in the Future Development part of this README to outline more features and functionality I would like to add.
+
+</details>
 
 <!-- Overview of bugs and solutions -->
 ## Bugs
@@ -339,12 +386,12 @@ The project board for this project can be found here: https://github.com/users/j
 | Log in link | success | success |
 
 ### Lighthouse Testing
-- Description of Lighthouse testing done, e.g., performance, accessibility, best practices, SEO.
+The lighthouse testing was completed for each page, passing all categories. The Best Practices had a lower score due to the use of 3rd party cookies from Cloudinary for image hosting. From my research, this is a common issue when using 3rd party image hosting services, as they often use cookies for tracking and analytics purposes. As this is outside of my control as the developer, I have accepted this lower score in this category.
 ![Lighthouse Report](/images/lighthouse-report.png)
 *Screenshot of Lighthouse report showing scores for performance, accessibility, best practices, and SEO*
 
 ### Responsive Testing
-- Description of responsive testing done, e.g., different devices, screen sizes, etc.
+I tested the responsiveness of the site constantly throughout the development process, using both browser developer tools and real devices such as my iPhone and iPad. I ensured that the layout and functionality of the site adapted correctly to different screen sizes and orientations. When there were issued, I made sure to address them promptly, using media queries and bootstrap to ensure a consistent user experience across all devices.
 
 ### Validator Testing
 
@@ -352,11 +399,15 @@ The project board for this project can be found here: https://github.com/users/j
 ![W3C HTML Validation](/images/w3c-html-validation.png)
 *Screenshot of passing W3C HTML validation*
 
+The HTML code for the site was validated using the W3C Markup Validation Service. Minor errors such as heading issues, were addressed and corrected to ensure compliance with HTML standards.
 #### W3C CSS Validation
 ![W3C CSS Validation](/images/w3c-css-validation.png)
 *Screenshot of passing W3C CSS validation*
+The CSS code for the site was validated using the W3C CSS Validation Service. No errors were found during this validation process.
+#### Python PEP8 Validation
+On validating my Python code using PEP8 standards, I realised that I had issues with my line lengths exceeding the recommended 79 characters. This was due to my linter being set to a different line length limit. I addressed this by adjusting my linter settings to match PEP8 standards, then subsequently, refactoring my code to ensure compliance with the 79 character limit. This involved breaking up longer lines of code into multiple lines, and ensuring that my code was properly indented and formatted. As this was noticed at a later stage, I was not able to address all instances of this issue, but I made sure to correct as many as possible to improve the overall quality and readability of my code. This is something I will be more mindful of in future projects, ensuring that I adhere to coding standards from the outset, although I am also aware that many teams and projects have their own specific coding standards that may differ from this specific guideline.
 
-- Description of validator testing done, e.g., W3C HTML, CSS, Python PEP8, JS (-JS hint? ).
+I did not use any custom JavaScript in this project, so I felt there was no need to validate any JS code.
 
 </details>
 
@@ -379,12 +430,12 @@ I also used Claude to help with debugging certain issues I was having. When doin
 
 <!-- Overview of How the project was deployed -->
 ## Deployment 
-The site was deployed to Heroku from the main branch of my GitHub repository. Bewlow are the steps I took to deploy the site:
+The site was deployed to Heroku from the main branch of my GitHub repository. Below are the steps I took to deploy the site:
 
-1. I navigated to my Heroku account and create a new app
+1. I navigated to my Heroku account and created a new app.
 2. I gave the app an appropriate and unique name and selected the region closest to me (Europe).
 3. In the "Deploy" tab, I connected my GitHub repository to Heroku by searching for the repository name and clicking "Connect".
-4. I then went to the "Settings" tab and clicked on "Reveal Config Vars"
+4. I then went to the "Settings" tab and clicked on "Reveal Config Vars".
 5. I added the necessary config vars, such as my `SECRET_KEY`, `DATABASE_URL`, `CLOUDINARY_URL`, as these environment variables are required for the app to run correctly.
 6. Next, I went back to the "Deploy" tab, selected the main branch, and deployed the app by clicking on "Deploy Branch".
 7. Once the deployment was complete, I navigated to the "Overview" tab and clicked on "Open App" to view my live site.
@@ -408,9 +459,8 @@ Some features that could be added in the future to enhance the functionality and
 - Add Shopping Cart to allow for subtotals, multiple bookings at once.
 - Integrate real payment functionality
 - Option to select venue, to allow for expansion into concerts in other performance spaces within concert venue
-<!-- ========================================
-     CREDITS
-     ======================================== --><!-- Credits for project -->
+
+<!-- Credits for project -->
 ## Credits
 
 ### Code
@@ -426,12 +476,16 @@ For this project, I used the following libraries and frameworks:
 - Heroku: Cloud platform for deploying and hosting the web application.
 
 ### Content
-- Text content sources: e.g., Wikipedia, blogs, articles, etc.
+- Text content on the website is a mixture of original writing, variations on existing content from similar sites and AI-assisted text generation.
+
 
 ### Media
-- Image sources: Unsplash, iStock
+The media used in this project were in two distinct categories: the About page images (including interior and exterior shots of a concert venue) These images were sourced from:
+- Image sources: Unsplash, and are free to use under the Unsplash license.
+- Event images: These were all images taken from various event listing sites. As this is a demo site, and the events are fictitious, I felt this was acceptable for the purposes of demonstrating the functionality of the site. I wanted to ensure that the images used gave a good representation of the type of events that would be held at a concert venue like Harmonia Hall.
 ### Acknowledgements
-- Mentors, tutors, peers, etc.
+I would like to thank 
+
 
 
 - Am I Responsive: for responsive design image
