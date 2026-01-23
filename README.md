@@ -58,7 +58,7 @@
 *Harmonia Hall site on multiple device sizes, using the 'Am I Responsive?' tool*
 <!-- Overview of project -->
 ### Overview
-This project is a full-stack web application built using the Django framework. It uses Python, HTML and CSS to create a dynamic and responsive site for a fictious concert venue called Harmonia Hall. The application allows users to view upcoming events, book tickets, and manage their bookings. It also includes user authentication features, enabling users to create accounts, log in, and log out securely.
+This project is a full-stack web application built using the Django framework. It uses Python, HTML and CSS to create a dynamic and responsive site for a fictitious concert venue called Harmonia Hall. The application allows users to view upcoming events, book tickets, and manage their bookings. It also includes user authentication features, enabling users to create accounts, log in, and log out securely.
 
 You can visit the deployed site at: [Harmonia Hall](https://harmonia-hall-b317b69502c7.herokuapp.com/)
 
@@ -136,7 +136,7 @@ I used [**Balsamiq**](https://balsamiq.com) to create the following wireframe di
 </details>
 
 ### Database Structure (ERD)
-The database structure for this project is based around three main models: Event, Booking, and User (using Django's built-in User model).The main entities and their relationships are as follows:
+The database structure for this project is based around three main models: Event, Booking, and User (using Django's built-in User model). The main entities and their relationships are as follows:
 - Event: Represents an event at the concert venue, with attributes such as title, date, time, venue, price, capacity, and description.
 - Booking: Represents a booking made by a user for a specific event, with attributes such as user (foreign key to User), event (foreign key to Event), number of tickets, and booking date.
 - User: Represents a user of the site, with attributes such as username, email, and password (handled by Django's Allauth authentication system).
@@ -176,7 +176,7 @@ Acceptance criteria:
 - The site displays a list of upcoming events, including dates and times.
 - The site will hide past events from the list of upcoming events.
 #### User Story: View Event Details
-As a **site visitor**, I can **view event details** so that I can **decide wether or not I want to attend**.
+As a **site visitor**, I can **view event details** so that I can **decide whether or not I want to attend**.
 Acceptance criteria:
 - The site displays full details for a selected event.
 - The site shows the current availability for the event.
@@ -211,7 +211,7 @@ Acceptance criteria:
 As a **site user**, I want **my bookings to be associated only with my account** so that **I can be confident my data is private**.
 Acceptance criteria:
 - The site restricts booking access to the booking owner, blocking others from access to the booking data.
-#### User Story: Repsonsive Design
+#### User Story: Responsive Design
 As a **site user** the site **adapts to work well on a range of different devices** so that **I can navigate the site quickly and comfortably on all of my devices**.
 Acceptance criteria:
 - The site is responsive and adapts automatically to the different media screen sizes using break points and media queries.
@@ -242,7 +242,7 @@ As a **site admin**, I can **create and manage events** so that **I can keep the
 Acceptance criteria:
 - Administrators are able to create, view, update and delete events.
 #### User Story: Password Reset
-As a **site user** I want to be able to **reset my password** so that I can**regain access if I forget my credentials**.
+As a **site user** I want to be able to **reset my password** so that I can **regain access if I forget my credentials**.
 Acceptance criteria:
 - Users are allowed to request a password reset using their email, which sends reset instructions to this email.
 - Following these instructions, users are able to assign a new password successfully.
@@ -287,8 +287,8 @@ The project board for this project can be found here: https://github.com/users/j
 
 ### Outcomes
 - Must Haves: All completed successfully, with thorough testing to ensure functionality and usability, reaching the MVP.
-- Should Haves: The Manage Events and About Page user stories were completed successfully. The Profile Management and Edit Profile user stories were not implemented due to time constraints.
-- Could Haves and Won't Haves: These user stories were not implemented as the should haves were prioritised, and were not fully completed.
+- Should Have's: The Manage Events and About Page user stories were completed successfully. The Profile Management and Edit Profile user stories were not implemented due to time constraints.
+- Could Have's and Won't Haves: These user stories were not implemented as the should haves were prioritised, and were not fully completed.
 
 <!-- Overview of features of the project -->
 ## Features
@@ -297,73 +297,73 @@ The project board for this project can be found here: https://github.com/users/j
 <summary><strong>Feature Details</strong></summary>
 
 ### Home Page
-![home page](/images/home.png)
-*screenshot of the home page*
+![Home page](/images/home.png)
+*screenshot of the Home Page*
 
 The home page displays a welcome message to Harmonia Hall, along with a carousel of featured upcoming events and a call-to-action button that directs users to explore all upcoming events via the What's On page.
 ### What's On Page
-![what's on page](/images/whats-on.png)
-*screenshot of the what's on page*
+![What's On page](/images/whats-on.png)
+*screenshot of the What's On page*
 
 The What's On page displays a list of upcoming events in a card layout, with pagination controls to navigate between pages of 6 events at a time. Each event card includes an image, title, date, time, venue, price, and a link to view more details about the event.
 ### About Page
-![about page](/images/about.png)
-*screenshot of the about page*
+![About page](/images/about.png)
+*screenshot of the About page*
 
 The About page provides information about Harmonia Hall, including its history, mission, and facilities. It also includes images of the venue to give users a visual representation of the space.
 ### Event Detail Page
-![event detail page](/images/event-detail.png)
+![Event Detail page](/images/event-detail.png)
 *screenshot of the event detail page*
 
 The Event Detail page displays comprehensive information about a specific event, including its title, date, time, venue, price, capacity, description, and an event image. It also shows the current availability for the event and provides a booking form for logged-in users to reserve tickets, or a prompt to log in/register for non-authenticated users.
 ### Sign In
-![sign in page](/images/sign-in.png)
-*screenshot of the sign in page*
+![Sign In page](/images/sign-in.png)
+*screenshot of the Sign In page*
 
 The sign in page allows users to log in to their accounts using their credentials. It includes fields for username/email and password, along with a submit button to authenticate the user.
 ### Sign Out
-![sign out page](/images/sign-out.png)
-*screenshot of the sign out page*
+![Sign Out page](/images/sign-out.png)
+*screenshot of the Sign Out page*
 
 The sign out page allows the user to sign out of their account, and notifies the user they have been successfully logged out of their account following a logout.
 ### Booking Form Page
-![booking form page](/images/booking-form.png)
-*screenshot of the booking form page*
+![Booking Form page](/images/booking-form.png)
+*screenshot of the Booking Form page*
 
 The booking form page allows logged-in users to create a booking for a specific event. It includes fields for the number of tickets to book, along with a submit button to confirm the booking.
 ### View Bookings Page
-![View bookings page](/images/view-bookings.png)
-*screenshot of the view bookings page*
+![View Bookings page](/images/view-bookings.png)
+*screenshot of the View Bookings page*
 
 The bookings page displays a list of the authenticated user's bookings, including details such as event title, date, time, number of tickets, and booking status. It also provides options to edit or cancel each booking.
 ### Edit Booking Page
-![edit booking page](/images/edit-booking.png)
-*screenshot of the edit booking page*
+![Edit Booking page](/images/edit-booking.png)
+*screenshot of the Edit Booking page*
 
 The edit booking page allows users to modify the details of an existing booking, such as the number of tickets. It includes fields pre-populated with the current booking information and a submit button to save changes.
 ### Navigation Bar
-![navigation bar](/images/navbar.png)
-*screenshot of the navigation bar*
+![Navigation Bar](/images/navbar.png)
+*screenshot of the Navigation Bar*
 
 The navigation bar is fixed at the top of the page that provides links to the main sections of the site, including Home, What's On, About, Register, Login/Logout, and Bookings. It also includes the site logo and is responsive to different screen sizes, with a burger menu for mobile devices.
 
 ### Footer
-![footer](/images/footer.png)
-*screenshot of the footer*
+![Footer](/images/footer.png)
+*screenshot of the Footer*
 
 The footer includes social media icons that link to various social media platforms. It also contains copyright information and is styled to match the overall design of the site.
 ### Django Admin Login
-![Django admin login](/images/django-admin-login.png)
+![Django Admin Login](/images/django-admin-login.png)
 *Admin login page screenshot*
 
 The Django admin login page allows administrators to log in to the backend of the site using their admin credentials.
 ### Django Admin
-![Django admin](/images/django-admin.png)
+![Django Admin](/images/django-admin.png)
 *Django admin dashboard screenshot*
 
 The Django admin dashboard provides administrators with an overview of the site's data, including events, bookings, and users. It allows admins to manage and monitor the site's content and user activity.
 ### Django Admin Event Management
-![Django admin event management](/images/django-admin-events.png)
+![Django Admin Event Management](/images/django-admin-events.png)
 *Django admin event management screenshot*
 
 The Django admin event management page allows administrators to create, view, update, and delete events. It provides a user-friendly interface for managing event details, including title, date, time, venue, price, capacity, and description.
@@ -386,19 +386,19 @@ Finally, I decided not to prioritise the contact page, as I felt that the About 
 ![edit booking page](/images/iphone-footer.png)
 *screenshot of iPhone 11 Pro footer issue*
 
-When viewing pages on an iPhone 11 Pro, the footer bar was not displaying correctly, and was floating above the bottom of the viewport, with white space below it. To try to fix this issue, I asked other developers and copilot for help after changing some CSS properties. The suggestions were similar, such as adding various CSS properties to the footer element. After testing different combinations, I looked online for similar issues, and found that it was likley due to an ios Safari webkit bug. I decided to compromise and add CSS to minus the footer height from the bottom of the body element, which fixed the issue to some extent. However, there was still a small amount of white space below the footer. Because of this, the issue is not fully resolved, but it was much improved.
+When viewing pages on an iPhone 11 Pro, the footer bar was not displaying correctly, and was floating above the bottom of the viewport, with white space below it. To try to fix this issue, I asked other developers and copilot for help after changing some CSS properties. The suggestions were similar, such as adding various CSS properties to the footer element. After testing different combinations, I looked online for similar issues, and found that it was likely due to an iOS Safari WebKit bug. I decided to compromise and add CSS to minus the footer height from the bottom of the body element, which fixed the issue to some extent. However, there was still a small amount of white space below the footer. Because of this, the issue is not fully resolved, but it was much improved.
 
 ### Notification Messages Issue
 ![notification messages issue](/images/notifications-bug.png)
 *screenshot of notification messages issue*
 
-When logging in and out, specifically on the admin pannel, the notficiations were cumlative and stacking ontop of each other. This was due to the way the messages framework in Django works, where messages are stored in the session and displayed on the next page load. To fix this issue, I asked Claude to help me, which suggested I added code to the base.html template to clear the messages after they have been displayed. This ensured that only one message is shown at a time, and prevents them from stacking up.
+When logging in and out, specifically on the admin panel, the notifications were cumulative and stacking on top of each other. This was due to the way the messages framework in Django works, where messages are stored in the session and displayed on the next page load. To fix this issue, I asked Claude to help me, which suggested I added code to the base.html template to clear the messages after they have been displayed. This ensured that only one message is shown at a time, and prevents them from stacking up.
 
 ### Slug Issue
 ![slug issue](/images/slug-bug.png)
 *screenshot of slug issue*
 
-I added some code to automatically generate slugs for events based on their titles. However, I found that when submitting the event form in the admin pannel, the slug field was not being populated correctly, resulting in an error when trying to save the event. To fix this issue, I asked Claude to look at my event model and suggest a solution. Claude pointed out I had missed some asterisks in the save method when calling the super() function. After correcting this, the slug field was populated correctly when saving events.
+I added some code to automatically generate slugs for events based on their titles. However, I found that when submitting the event form in the admin panel, the slug field was not being populated correctly, resulting in an error when trying to save the event. To fix this issue, I asked Claude to look at my event model and suggest a solution. Claude pointed out I had missed some asterisks in the save method when calling the super() function. After correcting this, the slug field was populated correctly when saving events.
 
 
 </details>
@@ -468,7 +468,7 @@ I tested each user story to ensure that the acceptance criteria were met. This i
 | Cancel Bookings | Bookings successfully cancelled, capacity limits updated | Pass |
 | Prevent Booking | Bookings exceeding event capacity prevented, error message displayed | Pass |
 | Data Privacy | Booking access restricted to booking owner | Pass |
-| Repsonsive Design | Site responsive and adapts to different screen sizes | Pass |
+| Responsive Design | Site responsive and adapts to different screen sizes | Pass |
 | Accessibility | Meets WCAG standards, form fields have aria labels, clear error messages | Pass |
 | Manage Events | Admins can create, view, update and delete events | Pass |
 | About Page | Venue information and pictures displayed | Pass |
@@ -483,6 +483,9 @@ I tested each user story to ensure that the acceptance criteria were met. This i
 ### Lighthouse Testing
 ![Lighthouse Report](/images/lighthouse-report.png)
 *Screenshot of Lighthouse report showing scores for performance, accessibility, best practices, and SEO*
+
+The Lighthouse report was generated using the Chrome DevTools Lighthouse panel. The site achieved high scores in performance, accessibility and SEO. Issues were found with 3rd party cookies due to the use of Cloudinary for image hosting. This was noted, but not resolved as it did not impact the overall functionality or user experience of the site. This can been seen in the screenshot below:
+
 ![Cloudinary Cookies](/images/cloudinary-cookies.png)
 *Screenshot showing 3rd party cookies issues due to Cloudinary in Lighthouse report*
 
@@ -532,7 +535,7 @@ I used it to suggest how it could help with certain functions and methods. I wan
 
 I also used Claude to help with debugging certain issues I was having. When doing this, I made sure to understand what the suggestions were doing, and why they would help solve the issue. I would also make sure to challenge the suggestions if I felt they were not correct, which on a number of occasions they were not, despite my careful and descriptive prompting. One particular area that Claude helped in this way, was with booking capacity validation, which was a tricky area to get right. As I primarily used Claude as my client, I created a claude.md file in the root of my project to follow Django best practices. This helped to ensure that the suggestions I received about the Django framework were in line with best practices.
 
-I also used AI to help with writing content for the site, such as the About page text. Again, I made sure to review and edit the content to ensure it fit my specific needs, and that it was accurate and relevant to the project. Seperately, I used AI to generate the logo for the site, based on my description of what I wanted it to look like, what the site was about, and various style preferences I wantd it to match.
+I also used AI to help with writing content for the site, such as the About page text. Again, I made sure to review and edit the content to ensure it fit my specific needs, and that it was accurate and relevant to the project. Separately, I used AI to generate the logo for the site, based on my description of what I wanted it to look like, what the site was about, and various style preferences I wanted it to match.
 
 <!-- Overview of How the project was deployed -->
 ## Deployment
@@ -583,11 +586,10 @@ For this project, I used the following libraries and frameworks:
 - Cloudinary: A cloud-based service for managing images and videos, used here for storing and serving event image files.
 - Django Allauth: An integrated set of Django applications addressing authentication, registration and account management.
 - Psycopg2: Used for connecting Django to a PostgreSQL database, hosted by Code Institute.
-- GitHub: For code repository hosting and project board management.
 - Heroku: Cloud platform for deploying and hosting the web application.
 
 ### Content
-- Text content on the website is a mixture of original writing, variations on existing content from similar sites and AI-assisted text generation.
+Text content on the website is a mixture of original writing, variations on existing content from similar sites and AI-assisted text generation.
 
 ### Media
 The media used in this project were in two distinct categories: the About page images (including interior and exterior shots of a concert venue) These images were sourced from:
@@ -596,3 +598,5 @@ The media used in this project were in two distinct categories: the About page i
 
 ### Acknowledgements
 I would like to thank Code Institute for providing the resources and support needed to complete this project, including the Django framework and deployment guidance. This project was partly based on the CI CodeStar Blog, which provided a solid foundation for building the web application.
+
+<!-- End of README -->
