@@ -9,7 +9,7 @@
       <ul>
         <li><a href="#overview">Overview</a></li>
         <li><a href="#rationale">Rationale</a></li>
-        <li><a href="#MVP-features">MVP Features</a></li>
+        <li><a href="#mvp-features">MVP Features</a></li>
         <li><a href="#desktop-appearance">Desktop Appearance</a></li>
         <li><a href="#tablet-appearance">Tablet Appearance</a></li>
         <li><a href="#mobile-appearance">Mobile Appearance</a></li>
@@ -34,30 +34,11 @@
       </ul>
     </li>
     <li><a href="#features">Features</a></li>
-      <ul>
-        <li><a href="#home-page">Home Page</a></li>
-        <li><a href="#whats-on-page">What's On Page</a></li>
-        <li><a href="#about-page">About Page</a></li>
-        <li><a href="#event-detail-page">Event Detail Page</a></li>
-        <li><a href="#sign-in">Sign In</a></li>
-        <li><a href="#sign-out">Sign Out</a></li>
-        <li><a href="#bookings-page">Bookings Page</a></li>
-        <li><a href="#navigation-bar">Navigation Bar</a></li>
-        <li><a href="#footer">Footer</a></li>
-        <li><a href="#django-admin-login">Django Admin Login</a></li>
-        <li><a href="#django-admin-event-management">Django Admin Event Management</a></li>
-      </ul>
-    </li>
     <li><a href="#bugs">Bugs</a></li>
-      <ul>
-        <li><a href="#bug-1">Bug 1</a></li>
-        <li><a href="#bug-2">Bug 2</a></li>
-        <li><a href="#bug-3">Bug 3</a></li>
-      </ul>
-    </li>
     <li><a href="#testing">Testing</a></li>
       <ul>
         <li><a href="#manual-testing">Manual Testing</a></li>
+        <li><a href="#user-stories-testing">User Stories Testing</a></li>
         <li><a href="#lighthouse-testing">Lighthouse Testing</a></li>
         <li><a href="#responsive-testing">Responsive Testing</a></li>
         <li><a href="#validator-testing">Validator Testing</a></li>
@@ -172,7 +153,6 @@ The ERD shows the relationships between the models:
 
 <!-- Overview of User Stories project -->
 ## User Stories
-### ADD Screenshot of project board here !
 
 <details id="must-haves">
 <summary><strong>Must Have's</strong></summary>
@@ -374,17 +354,17 @@ The navigation bar is fixed at the top of the page that provides links to the ma
 The footer includes social media icons that link to various social media platforms. It also contains copyright information and is styled to match the overall design of the site.
 ### Django Admin Login
 ![Django admin login](/images/django-admin-login.png)
-* Admin login page screenshot*
+*Admin login page screenshot*
 
 The Django admin login page allows administrators to log in to the backend of the site using their admin credentials.
 ### Django Admin
 ![Django admin](/images/django-admin.png)
-* Django admin dashboard screenshot*
+*Django admin dashboard screenshot*
 
 The Django admin dashboard provides administrators with an overview of the site's data, including events, bookings, and users. It allows admins to manage and monitor the site's content and user activity.
 ### Django Admin Event Management
 ![Django admin event management](/images/django-admin-events.png)
-* Django admin event management screenshot*
+*Django admin event management screenshot*
 
 The Django admin event management page allows administrators to create, view, update, and delete events. It provides a user-friendly interface for managing event details, including title, date, time, venue, price, capacity, and description.
 
@@ -398,19 +378,37 @@ Finally, I decided not to prioritise the contact page, as I felt that the About 
 
 <!-- Overview of bugs and solutions -->
 ## Bugs
-- iPhone footer bug - iPhone safari specific problem (Still an issue?)
 
-- Bug 1: description...
-- How it was fixed.
-- Bug 2: description...
-- How it was fixed.
-- Bug 3: description...
-- How it was fixed.
+<details>
+<summary><strong>Bug Details</strong></summary>
+
+### iPhone Footer Issue 
+![edit booking page](/images/iphone-footer.png)
+*screenshot of iPhone 11 Pro footer issue*
+
+When viewing pages on an iPhone 11 Pro, the footer bar was not displaying correctly, and was floating above the bottom of the viewport, with white space below it. To try to fix this issue, I asked other developers and copilot for help after changing some CSS properties. The suggestions were similar, such as adding various CSS properties to the footer element. After testing different combinations, I looked online for similar issues, and found that it was likley due to an ios Safari webkit bug. I decided to compromise and add CSS to minus the footer height from the bottom of the body element, which fixed the issue to some extent. However, there was still a small amount of white space below the footer. Because of this, the issue is not fully resolved, but it was much improved.
+
+### Notification Messages Issue
+![notification messages issue](/images/notifications-bug.png)
+*screenshot of notification messages issue*
+
+When logging in and out, specifically on the admin pannel, the notficiations were cumlative and stacking ontop of each other. This was due to the way the messages framework in Django works, where messages are stored in the session and displayed on the next page load. To fix this issue, I asked Claude to help me, which suggested I added code to the base.html template to clear the messages after they have been displayed. This ensured that only one message is shown at a time, and prevents them from stacking up.
+
+### Slug Issue
+![slug issue](/images/slug-bug.png)
+*screenshot of slug issue*
+
+I added some code to automatically generate slugs for events based on their titles. However, I found that when submitting the event form in the admin pannel, the slug field was not being populated correctly, resulting in an error when trying to save the event. To fix this issue, I asked Claude to look at my event model and suggest a solution. Claude pointed out I had missed some asterisks in the save method when calling the super() function. After correcting this, the slug field was populated correctly when saving events.
+
+
+</details>
+
 <!-- Overview of testing done -->
 ## Testing
 
-<details>
-<summary><strong>Testing Details</strong></summary>
+
+<details id="manual-testing">
+<summary><strong>Manual Testing</strong></summary>
 
 ### Manual Testing
 I completed manual testing throughout the development process, ensuring that all features and functionality worked as intended. I tested the navigation bar links, forms, and booking system to ensure that they were functioning correctly. I also tested the site on an iPhone 11 Pro, using Safari, to ensure that the site was responsive and worked well on mobile devices.
@@ -450,6 +448,10 @@ Page testing:
 | Edit Booking Page | Page loads | Pass |
 
 
+</details>
+
+<details id="user-stories-testing">
+<summary><strong>User Stories Testing</strong></summary>
 
 ### User Stories Testing
 I tested each user story to ensure that the acceptance criteria were met. This included testing user registration, login/logout, viewing upcoming events, viewing event details, creating bookings, viewing bookings, updating bookings and canceling bookings. I also tested the capacity validation to ensure that overbooking was prevented.
@@ -472,19 +474,32 @@ I tested each user story to ensure that the acceptance criteria were met. This i
 | About Page | Venue information and pictures displayed | Pass |
 | View Event Bookings | Admins can view bookings for an event, including total number of bookings per event | Pass |
 
+</details>
+</details>
+
+<details id="lighthouse-testing">
+<summary><strong>Lighthouse Testing</strong></summary>
+
 ### Lighthouse Testing
-The lighthouse testing was completed for each page, passing all categories. The Best Practices had a lower score due to the use of 3rd party cookies from Cloudinary for image hosting. From my research, this is a common issue when using 3rd party image hosting services, as they often use cookies for tracking and analytics purposes. As this is outside of my control as the developer, I have accepted this lower score in this category.
 ![Lighthouse Report](/images/lighthouse-report.png)
 *Screenshot of Lighthouse report showing scores for performance, accessibility, best practices, and SEO*
 ![Cloudinary Cookies](/images/cloudinary-cookies.png)
 *Screenshot showing 3rd party cookies issues due to Cloudinary in Lighthouse report*
 
+</details>
+
+<details id="responsive-testing">
+<summary><strong>Responsive Testing</strong></summary>
+
 ### Responsive Testing
-I tested the responsiveness of the site constantly throughout the development process, using both browser developer tools and real devices such as my iPhone and iPad. I ensured that the layout and functionality of the site adapted correctly to different screen sizes and orientations. When there were issued, I made sure to address them promptly, using media queries and bootstrap to ensure a consistent user experience across all devices.
+I tested the responsiveness of the site constantly throughout the development process, using both browser developer tools and real devices such as my iPhone and iPad. I ensured that the layout and functionality of the site adapted correctly to different screen sizes and orientations. When there were issues, I made sure to address them promptly, using media queries and Bootstrap to ensure a consistent user experience across all devices.
+
+</details>
+
+<details id="validator-testing">
+<summary><strong>Validator Testing</strong></summary>
 
 ### Validator Testing
-
-#### W3C HTML Validation
 ![W3C HTML Validation](/images/w3c-html-validation.png)
 *Screenshot of passing W3C HTML validation*
 
@@ -502,7 +517,7 @@ The CSS code for the site was validated using the W3C CSS Validation Service. No
 
 On validating my Python code using PEP8 standards, I realised that I had issues with my line lengths exceeding the recommended 79 characters. This was due to my linter being set to a different line length limit. I addressed this by adjusting my linter settings to match PEP8 standards, then subsequently, refactoring my code to ensure compliance with the 79 character limit. This involved breaking up longer lines of code into multiple lines, and ensuring that my code was properly indented and formatted.
 
-I did not use any custom JavaScript in this project, so I felt there was no need to validate any JS code.
+I did not use any custom JavaScript in this project, so I felt there was no need to validate any JavaScript code.
 
 </details>
 
@@ -517,14 +532,10 @@ I used it to suggest how it could help with certain functions and methods. I wan
 
 I also used Claude to help with debugging certain issues I was having. When doing this, I made sure to understand what the suggestions were doing, and why they would help solve the issue. I would also make sure to challenge the suggestions if I felt they were not correct, which on a number of occasions they were not, despite my careful and descriptive prompting. One particular area that Claude helped in this way, was with booking capacity validation, which was a tricky area to get right. As I primarily used Claude as my client, I created a claude.md file in the root of my project to follow Django best practices. This helped to ensure that the suggestions I received about the Django framework were in line with best practices.
 
-
-- Which AI tools were used (e.g., ChatGPT, DALL·E 2, etc.)
-- Purpose of use (e.g., code generation, image creation, etc.)
-- How has this been used in the project (bugs, code, planning, etc.)
-- commit messages skeleton
+I also used AI to help with writing content for the site, such as the About page text. Again, I made sure to review and edit the content to ensure it fit my specific needs, and that it was accurate and relevant to the project. Seperately, I used AI to generate the logo for the site, based on my description of what I wanted it to look like, what the site was about, and various style preferences I wantd it to match.
 
 <!-- Overview of How the project was deployed -->
-## Deployment 
+## Deployment
 The site was deployed to Heroku from the main branch of my GitHub repository. Below are the steps I took to deploy the site:
 
 1. I navigated to my Heroku account and created a new app.
@@ -544,12 +555,13 @@ Here is the link to the deployed site: [Harmonia Hall on Heroku](https://harmoni
 <!-- Future development -->
 ## Future Development
 Some features that could be added in the future to enhance the functionality and user experience of the web application include:
+
 - Add more Booking options, e.g for children/over 65’s/disability spaces
-- Interactive JS seat selection for relevant concerts
-- Add 'How to Find Us/Plan your visit' page
+- Interactive JavaScript seat selection for relevant concerts
+- Add 'How to Find Us/Plan your visit' page with map integration
 - Add more descriptive data to each event, i.e. genre, to allow for filtering functionality on What’s On page
-- Add News/Updates page
-- Add site search feature for easier event finding
+- Add News/Updates page for venue announcements, with newsletter sign-up
+- Add site search feature for easier event discovery
 - Add Calendar view to What’s On page
 - Add Shopping Cart to allow for subtotals, multiple bookings at once
 - Implement user profile management (view/edit profile)
@@ -557,7 +569,7 @@ Some features that could be added in the future to enhance the functionality and
 - Add user reviews/ratings for events
 - Add social media sharing functionality for events
 - Implement email notifications for booking confirmations and reminders
-- Integrate real payment functionality
+- Integrate payment functionality
 
 <!-- Credits for project -->
 ## Credits
@@ -577,17 +589,10 @@ For this project, I used the following libraries and frameworks:
 ### Content
 - Text content on the website is a mixture of original writing, variations on existing content from similar sites and AI-assisted text generation.
 
-
 ### Media
 The media used in this project were in two distinct categories: the About page images (including interior and exterior shots of a concert venue) These images were sourced from:
 - Image sources: Unsplash, and are free to use under the Unsplash license.
 - Event images: These were all images taken from various event listing sites. As this is a demo site, and the events are fictitious, I felt this was acceptable for the purposes of demonstrating the functionality of the site. I wanted to ensure that the images used gave a good representation of the type of events that would be held at a concert venue like Harmonia Hall.
 
 ### Acknowledgements
-I would like to thank Code Institute for providing the resources and support needed to complete this project, including the Django framework and deployment guidance. This project was based on the CI CodeStar Blog Project template, which provided a solid foundation for building the web application.
-
-
-
-- Am I Responsive: for responsive design image
-- Colormind: for colour palette generation
-- Balsamiq: for wireframe creation
+I would like to thank Code Institute for providing the resources and support needed to complete this project, including the Django framework and deployment guidance. This project was partly based on the CI CodeStar Blog, which provided a solid foundation for building the web application.
