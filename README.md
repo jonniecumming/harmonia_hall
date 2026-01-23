@@ -74,7 +74,7 @@
 ## About the Project
 
 ![Am I Responsive](/images/responsive.png)
-*'Am I Responsive' site, showing the Harmonia Hall site on multiple device sizes*
+*Harmonia Hall site on multiple device sizes, using the 'Am I Responsive?' tool*
 <!-- Overview of project -->
 ### Overview
 This project is a full-stack web application built using the Django framework. It uses Python, HTML and CSS to create a dynamic and responsive site for a fictious concert venue called Harmonia Hall. The application allows users to view upcoming events, book tickets, and manage their bookings. It also includes user authentication features, enabling users to create accounts, log in, and log out securely.
@@ -165,6 +165,11 @@ This is illustrated in the Entity Relationship Diagram (ERD) below, created usin
 ![ERD](/images/erd.png)
 *Entity Relationship Diagram (ERD) from [dbdiagram.io](https://dbdiagram.io) showing database structure*
 
+The ERD shows the relationships between the models:
+- A User can have multiple Bookings (one-to-many relationship).
+- An Event can have multiple Bookings (one-to-many relationship).
+- A Booking is associated with one User and one Event (many-to-one relationship).
+
 <!-- Overview of User Stories project -->
 ## User Stories
 ### ADD Screenshot of project board here !
@@ -236,7 +241,6 @@ Acceptance criteria:
 - The site meets the WCAG standards for colour contrast, text size and keyboard navigation.
 - Form fields have suitable aria labels.
 - Error messages are clear and descriptive.
-- Interactive elements are accessible via keyboard shortcuts and screen readers.
 
 </details>
 
@@ -298,7 +302,6 @@ There were no "won't have" user stories for this project.
 ### Project Board
 ![GitHub Project board](/images/project-board.png)
 *Screenshot of the project board on GitHub*
-
 The project board for this project can be found here: https://github.com/users/jonniecumming/projects/12/views/1
 
 
@@ -315,50 +318,77 @@ The project board for this project can be found here: https://github.com/users/j
 
 ### Home Page
 ![home page](/images/home.png)
-*screenshot of home page*
-- Home page (with screenshot): what does it offer to a user?
+*screenshot of the home page*
+
+The home page displays a welcome message to Harmonia Hall, along with a carousel of featured upcoming events and a call-to-action button that directs users to explore all upcoming events via the What's On page.
 ### What's On Page
 ![what's on page](/images/whats-on.png)
+*screenshot of the what's on page*
+
+The What's On page displays a list of upcoming events in a card layout, with pagination controls to navigate between pages of 6 events at a time. Each event card includes an image, title, date, time, venue, price, and a link to view more details about the event.
 ### About Page
 ![about page](/images/about.png)
-- About page (with screenshot): what does it offer to a user?
+*screenshot of the about page*
+
+The About page provides information about Harmonia Hall, including its history, mission, and facilities. It also includes images of the venue to give users a visual representation of the space.
 ### Event Detail Page
 ![event detail page](/images/event-detail.png)
-- Event detail page (with screenshot): what does it offer to a user?
+*screenshot of the event detail page*
+
+The Event Detail page displays comprehensive information about a specific event, including its title, date, time, venue, price, capacity, description, and an event image. It also shows the current availability for the event and provides a booking form for logged-in users to reserve tickets, or a prompt to log in/register for non-authenticated users.
 ### Sign In
 ![sign in page](/images/sign-in.png)
-- Sign in... etc.
+*screenshot of the sign in page*
+
+The sign in page allows users to log in to their accounts using their credentials. It includes fields for username/email and password, along with a submit button to authenticate the user.
 ### Sign Out
 ![sign out page](/images/sign-out.png)
-- Sign out...
+*screenshot of the sign out page*
+
+The sign out page allows the user to sign out of their account, and notifies the user they have been successfully logged out of their account following a logout.
 ### Booking Form Page
 ![booking form page](/images/booking-form.png)
-- Booking form page (with screenshot): what does it offer to a user?
+*screenshot of the booking form page*
+
+The booking form page allows logged-in users to create a booking for a specific event. It includes fields for the number of tickets to book, along with a submit button to confirm the booking.
 ### View Bookings Page
 ![View bookings page](/images/view-bookings.png)
-- bookings... (with screenshot): what does it offer to a user?
+*screenshot of the view bookings page*
+
+The bookings page displays a list of the authenticated user's bookings, including details such as event title, date, time, number of tickets, and booking status. It also provides options to edit or cancel each booking.
 ### Edit Booking Page
 ![edit booking page](/images/edit-booking.png)
-- Edit booking page (with screenshot): what does it offer to a user?
+*screenshot of the edit booking page*
+
+The edit booking page allows users to modify the details of an existing booking, such as the number of tickets. It includes fields pre-populated with the current booking information and a submit button to save changes.
 ### Navigation Bar
 ![navigation bar](/images/navbar.png)
-- Navigation bar
-### Title Image
-![title image](/images/title-image.png)
-- Title image...
+*screenshot of the navigation bar*
+
+The navigation bar is fixed at the top of the page that provides links to the main sections of the site, including Home, What's On, About, Register, Login/Logout, and Bookings. It also includes the site logo and is responsive to different screen sizes, with a burger menu for mobile devices.
+
 ### Footer
 ![footer](/images/footer.png)
-- Footer...
+*screenshot of the footer*
+
+The footer includes social media icons that link to various social media platforms. It also contains copyright information and is styled to match the overall design of the site.
 ### Django Admin Login
 ![Django admin login](/images/django-admin-login.png)
-- Admin...
+* Admin login page screenshot*
+
+The Django admin login page allows administrators to log in to the backend of the site using their admin credentials.
 ### Django Admin
 ![Django admin](/images/django-admin.png)
-- Admin...
+* Django admin dashboard screenshot*
+
+The Django admin dashboard provides administrators with an overview of the site's data, including events, bookings, and users. It allows admins to manage and monitor the site's content and user activity.
 ### Django Admin Event Management
 ![Django admin event management](/images/django-admin-events.png)
-- Event management...
+* Django admin event management screenshot*
 
+The Django admin event management page allows administrators to create, view, update, and delete events. It provides a user-friendly interface for managing event details, including title, date, time, venue, price, capacity, and description.
+
+### Differences Between Wireframes and End Product
 
 The main differences between the end product and the wireframes are within the home page, What's On page and the lack of a contact page.
 I decided to simplify the Home page by removing the featured events as a grid, and instead using a carousel to highlight upcoming events. This was to create a cleaner look and feel, and to make it easier for users to get an overview of the events available. Linking to this change, I implemented the card layout featured on the Home page wireframe, into the What's On page. This allowed for a more visual representation of the events, making it easier for users to browse and select events of interest. I would like to make the date element more prominent in future iterations, as I feel this is an important piece of information for users when browsing events.
@@ -369,7 +399,6 @@ Finally, I decided not to prioritise the contact page, as I felt that the About 
 <!-- Overview of bugs and solutions -->
 ## Bugs
 - iPhone footer bug - iPhone safari specific problem (Still an issue?)
-- 
 
 - Bug 1: description...
 - How it was fixed.
@@ -384,18 +413,64 @@ Finally, I decided not to prioritise the contact page, as I felt that the About 
 <summary><strong>Testing Details</strong></summary>
 
 ### Manual Testing
-- Description of manual testing done, e.g., functionality, links, forms, etc.
+I completed manual testing throughout the development process, ensuring that all features and functionality worked as intended. I tested the navigation bar links, forms, and booking system to ensure that they were functioning correctly. I also tested the site on an iPhone 11 Pro, using Safari, to ensure that the site was responsive and worked well on mobile devices.
 
+Navigation bar testing:
 | Test | Expected Result | Pass/Fail |
 |--- |--- |--- |
-| Home Page | Page loads with carousel | Pass |
-| Login Form | User logged in | Pass |
-| Carousel | Next event displays | Pass |
-| Responsivity | Layout adjusts | Pass |
-| Home page link (nav bar) | success | success |
-| Home page link (title) | success | success |
-| About page link | success | success |
-| Log in link | success | success |
+| 'Home' page link | link redirects to Home page | Pass |
+| 'Home' page link (title image) | link redirects to Home page | Pass |
+| 'What's On' page link | link redirects to What's On page | Pass |
+| 'About' page link | link redirects to About page | Pass |
+| 'Register' page link | link redirects to Register page | Pass |
+| 'Login' page link | link redirects to Login page | Pass |
+| 'Logout' page link | link redirects to Logout page | Pass |
+| 'Bookings' page link | link redirects to Bookings page | Pass |
+
+Footer testing:
+| Test | Expected Result | Pass/Fail |
+|--- |--- |--- |
+| Facebook icon link | link redirects to Facebook page | Pass |
+| Twitter (X) icon link | link redirects to Twitter page | Pass |
+| Instagram icon link | link redirects to Instagram page | Pass |
+| Youtube icon link | link redirects to Youtube page | Pass |
+
+Page testing:
+| Test | Expected Result | Pass/Fail |
+|--- |--- |--- |
+| Home Page | Page loads | Pass |
+| What's On Page | Page loads | Pass |
+| About Page | Page loads | Pass |
+| Register Page | Page loads | Pass |
+| Login Page | Page loads | Pass |
+| Logout Page | Page loads | Pass |
+| Bookings Page | Page loads | Pass |
+| Event Detail Page | Page loads | Pass |
+| Booking Form Page | Page loads | Pass |
+| Edit Booking Page | Page loads | Pass |
+
+
+
+### User Stories Testing
+I tested each user story to ensure that the acceptance criteria were met. This included testing user registration, login/logout, viewing upcoming events, viewing event details, creating bookings, viewing bookings, updating bookings and canceling bookings. I also tested the capacity validation to ensure that overbooking was prevented.
+
+| User Story | Expected Result | Pass/Fail |
+|--- |--- |--- |
+| User Registration | Account created with valid details, redirected, error message for invalid details | Pass
+| User Log in/Log out | Authenticated with valid credentials, access denied for invalid details, redirected after log in/out | Pass |
+| View Upcoming Events | List of upcoming events displayed, past events hidden | Pass |
+| View Event Details | Full details for selected event displayed, current availability shown | Pass |
+| Create Booking | Booking created for logged-in users, confirmed when capacity available, capacity updated | | Pass |
+| View My Bookings | Only authenticated user's bookings displayed, booking details and status shown | Pass |
+| Update Bookings | Existing bookings updated, validated, capacity limits enforced | Pass |
+| Cancel Bookings | Bookings successfully cancelled, capacity limits updated | Pass |
+| Prevent Booking | Bookings exceeding event capacity prevented, error message displayed | Pass |
+| Data Privacy | Booking access restricted to booking owner | Pass |
+| Repsonsive Design | Site responsive and adapts to different screen sizes | Pass |
+| Accessibility | Meets WCAG standards, form fields have aria labels, clear error messages | Pass |
+| Manage Events | Admins can create, view, update and delete events | Pass |
+| About Page | Venue information and pictures displayed | Pass |
+| View Event Bookings | Admins can view bookings for an event, including total number of bookings per event | Pass |
 
 ### Lighthouse Testing
 The lighthouse testing was completed for each page, passing all categories. The Best Practices had a lower score due to the use of 3rd party cookies from Cloudinary for image hosting. From my research, this is a common issue when using 3rd party image hosting services, as they often use cookies for tracking and analytics purposes. As this is outside of my control as the developer, I have accepted this lower score in this category.
