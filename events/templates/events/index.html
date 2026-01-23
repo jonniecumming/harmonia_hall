@@ -9,8 +9,8 @@ town.
 
 <!-- index.html content starts here -->
 <!-- Welcome message to Harmonia Hall -->
-<div class="container mt-5">
-    <div class="jumbotron text-center bg-light p-2 rounded">
+<div class="container mt-4">
+    <div class="jumbotron text-center bg-light p-1 rounded">
         <h1 class="display-4">Welcome to Harmonia Hall</h1>
         <p class="lead">Discover and book tickets for the best live music events in town!</p>
         <a class="btn btn-primary btn-lg" href="{% url 'event-list' %}" role="button">Explore Events</a>
@@ -19,7 +19,7 @@ town.
 
 <!-- Bootstrap Carousel for Featured Events -->
 {% if carousel_events %}
-<div class="container mt-2 mb-5">
+<div class="container mt-2 mb-4">
     <h2 class="mb-4 text-center">Featured Upcoming Events</h2>
 
     <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
