@@ -411,7 +411,7 @@ I added some code to automatically generate slugs for events based on their titl
 <summary><strong>Manual Testing</strong></summary>
 
 ### Manual Testing
-I completed manual testing throughout the development process, ensuring that all features and functionality worked as intended. I tested the navigation bar links, forms, and booking system to ensure that they were functioning correctly. I also tested the site on an iPhone 11 Pro, using Safari, to ensure that the site was responsive and worked well on mobile devices.
+I completed manual testing throughout the development process using Google Chrome, ensuring that all features and functionality worked as intended. I tested the navigation bar links, forms, and booking system to ensure that they were functioning correctly. I also tested the site on an iPhone 11 Pro, using Safari, to ensure that the site was responsive and worked well on mobile devices.
 
 Navigation bar testing:
 | Test | Expected Result | Pass/Fail |
