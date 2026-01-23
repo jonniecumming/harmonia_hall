@@ -415,9 +415,12 @@ I tested the responsiveness of the site constantly throughout the development pr
 
 The HTML code for the site was validated using the W3C Markup Validation Service. Minor errors such as heading issues, were addressed and corrected to ensure compliance with HTML standards.
 #### W3C CSS Validation
+
 ![W3C CSS Validation](/images/w3c-css-validation.png)
 *Screenshot of passing W3C CSS validation*
+
 The CSS code for the site was validated using the W3C CSS Validation Service. No errors were found during this validation process.
+
 #### CI Linter PEP8 Validation
 ![CI Linter PEP8 Validation](/images/ci-linter-validation.png)
 *Screenshot of passing CI Linter PEP8 validation*
@@ -466,16 +469,20 @@ Here is the link to the deployed site: [Harmonia Hall on Heroku](https://harmoni
 <!-- Future development -->
 ## Future Development
 Some features that could be added in the future to enhance the functionality and user experience of the web application include:
-- Booking options for children/over 65’s/disability spaces
+- Add more Booking options, e.g for children/over 65’s/disability spaces
 - Interactive JS seat selection for relevant concerts
-- New Page: How to find us/Plan your visit
-- Add more descriptive data to each event, i.e. genre, to allow for filtering functionality on What’s on page
-- Add News/updates page
-- Add site search feature
-- Calendar view for what’s on page
-- Add Shopping Cart to allow for subtotals, multiple bookings at once.
+- Add 'How to Find Us/Plan your visit' page
+- Add more descriptive data to each event, i.e. genre, to allow for filtering functionality on What’s On page
+- Add News/Updates page
+- Add site search feature for easier event finding
+- Add Calendar view to What’s On page
+- Add Shopping Cart to allow for subtotals, multiple bookings at once
+- Implement user profile management (view/edit profile)
+- Implement admin profile management (view/edit profile)
+- Add user reviews/ratings for events
+- Add social media sharing functionality for events
+- Implement email notifications for booking confirmations and reminders
 - Integrate real payment functionality
-- Option to select venue, to allow for expansion into concerts in other performance spaces within concert venue
 
 <!-- Credits for project -->
 ## Credits
@@ -500,8 +507,9 @@ For this project, I used the following libraries and frameworks:
 The media used in this project were in two distinct categories: the About page images (including interior and exterior shots of a concert venue) These images were sourced from:
 - Image sources: Unsplash, and are free to use under the Unsplash license.
 - Event images: These were all images taken from various event listing sites. As this is a demo site, and the events are fictitious, I felt this was acceptable for the purposes of demonstrating the functionality of the site. I wanted to ensure that the images used gave a good representation of the type of events that would be held at a concert venue like Harmonia Hall.
+
 ### Acknowledgements
-I would like to thank 
+I would like to thank Code Institute for providing the resources and support needed to complete this project, including the Django framework and deployment guidance. This project was based on the CI CodeStar Blog Project template, which provided a solid foundation for building the web application.
 
 
 
